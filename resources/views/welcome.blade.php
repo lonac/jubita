@@ -34,7 +34,7 @@
 						<div class="row align-items-center">
 							<div class="col-lg-2 col-md-2 col-sm-3 col-4">
 								<a class="nav-brand" href="#">
-									<img src="{{asset('assets/img/logo-light.png')}}" class="logo" alt="" />
+									<img src="{{asset('assets/img/logo2.png')}}" class="logo" alt="" />
 								</a>
 							</div>
 							<div class="col-lg-10 col-md-10 col-sm-9 col-8">
@@ -134,7 +134,7 @@
 			<!-- ============================================================== -->
 			
 
-        <!-- =========================== News & Articles =================================== -->
+        <!-- =========================== Banner Start =================================== -->
 			<section class="gray">
 				<div class="container">
 					<div class="row">
@@ -312,8 +312,161 @@
 					</div>
 				</div>
 			</section>
-			<!-- =========================== News & Articles =================================== -->
+			<!-- =========================== Banner Ends =================================== -->
         
+
+			<!-- =========================== About Us =================================== -->
+			<section class="image-bg" style="background:url(https://via.placeholder.com/1920x820) no-repeat;" data-overlay="5">
+				<div class="container">
+					<div class="row align-items-center">
+					
+						<div class="col-lg-5 col-md-6 col-sm-12">
+							<h2>More from <span class="theme-cl">JUBITA</span></h2>
+							<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
+						</div>
+						
+						<div class="col-lg-7 col-md-6 col-sm-12">
+							
+							
+									
+							<div class="row">
+								<div class="col-lg-12 col-md-12">
+									<div class="owl-carousel products-slider owl-theme">
+									
+										<!-- Single Item -->
+										<div class="item">
+											<div class="woo_product_grid">
+												<span class="woo_pr_tag hot">Tourism</span>
+												<div class="woo_product_thumb">
+													<img src="{{asset('assets/img/tz.jpg')}}" class="img-fluid" alt="" />
+												</div>
+												<div class="woo_product_caption center">
+													<div class="woo_rate">
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="woo_title">
+														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
+													</div>
+													<div class="woo_price">
+														<h6>$72.47<span class="less_price">$112.10</span></h6>
+													</div>
+												</div>								
+											</div>
+										</div>
+										
+										<!-- Single Item -->
+										<div class="item">
+											<div class="woo_product_grid">
+												<div class="woo_product_thumb">
+													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
+												</div>
+												<div class="woo_product_caption center">
+													<div class="woo_rate">
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="woo_title">
+														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
+													</div>
+													<div class="woo_price">
+														<h6>$72.47<span class="less_price">$112.10</span></h6>
+													</div>
+												</div>
+												<div class="woo_product_cart hover">
+													<ul>
+														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
+														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
+														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
+													</ul>
+												</div>								
+											</div>
+										</div>
+										
+										<!-- Single Item -->
+										<div class="item">
+											<div class="woo_product_grid">
+												<span class="woo_pr_tag new">New</span>
+												<div class="woo_product_thumb">
+													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
+												</div>
+												<div class="woo_product_caption center">
+													<div class="woo_rate">
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="woo_title">
+														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
+													</div>
+													<div class="woo_price">
+														<h6>$72.47<span class="less_price">$112.10</span></h6>
+													</div>
+												</div>
+												<div class="woo_product_cart hover">
+													<ul>
+														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
+														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
+														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
+													</ul>
+												</div>								
+											</div>
+										</div>
+										
+										<!-- Single Item -->
+										<div class="item">
+											<div class="woo_product_grid">
+												<span class="woo_offer_sell">Save 20% Off</span>
+												<div class="woo_product_thumb">
+													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
+												</div>
+												<div class="woo_product_caption center">
+													<div class="woo_rate">
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star filled"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="woo_title">
+														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
+													</div>
+													<div class="woo_price">
+														<h6>$72.47<span class="less_price">$112.10</span></h6>
+													</div>
+												</div>
+												<div class="woo_product_cart hover">
+													<ul>
+														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
+														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
+														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
+													</ul>
+												</div>								
+											</div>
+										</div>
+										
+									
+									</div>
+									
+								</div>
+							</div>
+
+
+								
+							
+						</div>
+						
+					</div>
+				</div>
+			</section>
 
 			<!-- ======================== Hot Deals & Offers Start ==================== -->
 			<section class="">
@@ -323,7 +476,7 @@
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<div class="sec-heading-flex pl-2 pr-2">
 								<div class="sec-heading-flex-one">
-									<h2>Business and Products</h2>
+									<h2>Buiashara na Bidhaa</h2>
 								</div>
 								<div class="sec-heading-flex-last">
 									<a href="#" class="btn btn-theme">View More<i class="ti-arrow-right ml-2"></i></a>
@@ -595,6 +748,119 @@
 				</div>
 			</section>
 			<div class="clearfix"></div>
+
+
+						<!-- =========================== About Us =================================== -->
+						<section>
+				<div class="container">
+					<div class="row">
+					
+						<div class="col-lg-5 col-md-5 col-sm-12 ml-auto">
+							<div class="about_video">
+								<div class="thumb">
+									<img class="pro_img img-fluid w10" src="{{asset('assets/img/drsamia.jpg')}}" alt="7.jpg">
+								</div>
+							</div>
+							<h2>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h2>
+							<a href="#" class="btn btn-theme mt-2">Read More</a>
+						</div>
+
+						<div class="col-lg-7 col-md-7 col-sm-12">
+							
+					<!-- Order Items -->
+<div class="card style-2 mb-4">
+	<div class="card-header">
+		<h4 class="mb-0">Recently News</h4>
+	</div>
+	<div class="card-body">
+		<ul class="item-groups">
+
+			<!-- Economic News -->
+			<li>
+				<div class="row align-items-center">
+					<div class="col-4 col-md-3 col-xl-2">
+						<a href="#">
+							<img src="https://via.placeholder.com/500x500" alt="Economy" class="img-fluid">
+						</a>
+					</div>
+
+					<div class="col">
+						<p class="mb-2 font-size-sm font-weight-bold">
+							<a class="text-body" href="#">
+								Tanzania Economy Records Steady Growth
+							</a><br>
+							<span class="theme-cl">Economic News</span>
+						</p>
+
+						<div class="font-size-sm text-muted">
+							The government reports improved GDP growth driven by agriculture, 
+							infrastructure projects, and increased local investment.
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<!-- Political News -->
+			<li>
+				<div class="row align-items-center">
+					<div class="col-4 col-md-3 col-xl-2">
+						<a href="#">
+							<img src="https://via.placeholder.com/500x500" alt="Politics" class="img-fluid">
+						</a>
+					</div>
+
+					<div class="col">
+						<p class="mb-2 font-size-sm font-weight-bold">
+							<a class="text-body" href="#">
+								Government Emphasizes Peace Ahead of Elections
+							</a><br>
+							<span class="theme-cl">Political News</span>
+						</p>
+
+						<div class="font-size-sm text-muted">
+							National leaders call for unity, calm, and democratic participation 
+							as the country prepares for upcoming electoral activities.
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<!-- Business / Policy News -->
+			<li>
+				<div class="row align-items-center">
+					<div class="col-4 col-md-3 col-xl-2">
+						<a href="#">
+							<img src="https://via.placeholder.com/500x500" alt="Business" class="img-fluid">
+						</a>
+					</div>
+
+					<div class="col">
+						<p class="mb-2 font-size-sm font-weight-bold">
+							<a class="text-body" href="#">
+								New Policies Aim to Support Local Entrepreneurs
+							</a><br>
+							<span class="theme-cl">Business & Policy</span>
+						</p>
+
+						<div class="font-size-sm text-muted">
+							The government introduces measures to reduce taxes and improve 
+							access to loans for small and medium enterprises across Tanzania.
+						</div>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+</div>
+
+						
+						
+					</div>
+				</div>
+			</section>
+
+
 			<!-- ======================== Hot Deals & Offers End ==================== -->
 			
 			<!-- ======================== new, trending & Offers Start ==================== -->
@@ -791,7 +1057,7 @@
 										<i class="ti-shopping-cart"></i>
 									</div>
 									<div class="facts_caption">
-										<h4>Free Home Delivery</h4>
+										<h4>Breaking News/h4>
 										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
 									</div>
 								</div>
@@ -803,7 +1069,7 @@
 										<i class="ti-money"></i>
 									</div>
 									<div class="facts_caption">
-										<h4>Money Back Guarantee</h4>
+										<h4>Clear and Real Info</h4>
 										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
 									</div>
 								</div>
@@ -815,7 +1081,7 @@
 										<i class="ti-headphone-alt"></i>
 									</div>
 									<div class="facts_caption">
-										<h4>24x7 Online Support</h4>
+										<h4>Always available Support</h4>
 										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
 									</div>
 								</div>
@@ -836,8 +1102,8 @@
 									
 									<div class="address_infos">
 										<ul>
-											<li><i class="ti-home theme-cl"></i>#302 Brick Market, Jalsa California<br>United State HQS1130</li>
-											<li><i class="ti-headphone-alt theme-cl"></i>(41) 254 758 4572</li>
+											<li><i class="ti-home theme-cl"></i>#DODOMA HQ Building, Dodoma<br>Tanzania</li>
+											<li><i class="ti-headphone-alt theme-cl"></i>(255) 254 758 4572</li>
 										</ul>
 									</div>
 									
