@@ -114,7 +114,8 @@
                                             <li><a href="#"><span>Biashara</span></a></li>
                                             <li><a href="#"><span>Teknolojia</span></a></li>
                                             <li><a href="#"><span>Jiopolitiki</span></a></li>
-                                            <li><a href="#"><span>Mawasiliano</span></a></li>
+                                            <li><a href="#"><span>Fedha</span></a></li>
+											<li><a href="#"><span>Mawasiliano</span></a></li>
 										
 										</ul>
 
@@ -312,55 +313,37 @@
 					</div>
 				</div>
 			</section>
-			<!-- =========================== Banner Ends =================================== -->
+		<!-- =========================== Banner Ends =================================== -->
         
 
 			<!-- =========================== More from Jubita =================================== -->
-			<section class="jubita-strip">
-    <div class="container">
-        <div class="row align-items-center">
+			<section class="jubita-featured-story">
+				<div class="container-fluid">
+					<div class="row align-items-center no-gutters">
 
-            <!-- Left Text -->
-            <div class="col-lg-4 col-md-12">
-                <div class="jubita-strip-text">
-                    <h4>More from <span class="theme-cl">JUBITA</span></h4>
-                    <p>Latest news, business & featured stories</p>
-                </div>
-            </div>
+					<!-- LEFT COLUMN -->
+					<div class="col-lg-6 col-md-12 left-column">
+						<div class="story-content">
+						<span class="story-category">Business</span>
+						<h2 class="story-title">Tanzania's Economy Shows Strong Recovery in 2026</h2>
+						<a href="#" class="btn-story">Read Full Story</a>
+						</div>
+					</div>
 
-            <!-- Right Scroll Strip -->
-            <div class="col-lg-8 col-md-12">
-                <div class="jubita-css-slider">
+					<!-- RIGHT COLUMN -->
+					<div class="col-lg-6 col-md-12 right-column">
+						<div class="story-image">
+						<img src="{{ asset('assets/img/tz.jpg') }}" alt="Tanzania Economy" class="img-fluid">
+						</div>
+					</div>
 
-                    <div class="jubita-item">
-                        <img src="{{ asset('assets/img/tz.jpg') }}" alt="">
-                        <h6>Tourism Growth in Tanzania</h6>
-                    </div>
-
-                    <div class="jubita-item">
-                        <img src="https://via.placeholder.com/400x300" alt="">
-                        <h6>Business & Investment Update</h6>
-                    </div>
-
-                    <div class="jubita-item">
-                        <img src="https://via.placeholder.com/400x300" alt="">
-                        <h6>Sports Highlights</h6>
-                    </div>
-
-                    <div class="jubita-item">
-                        <img src="https://via.placeholder.com/400x300" alt="">
-                        <h6>Environment & Conservation</h6>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+					</div>
+				</div>
+			</section>
 
 
-			<!-- ======================== Hot Deals & Offers Start ==================== -->
+
+			<!-- ======================== Business/Sell/Buy Start ==================== -->
 			<section class="">
 				<div class="container">
 					
@@ -639,97 +622,167 @@
 					</div>
 				</div>
 			</section>
-
+			<!-- ======================== Business/Sell/Buy End ==================== -->
 
 			
 			<div class="clearfix"></div>
 
-
-			<!-- =========================== About Us =================================== -->
-		
+			<!-- =========================== Start Highlights =================================== -->
 			<section class="jubita-blog-section">
-  <div class="container">
+				<div class="container">
 
-    <!-- Section Header -->
-    <div class="section-header text-center mb-4">
-      <h2 class="section-title">Jubita Highlights</h2>
-      <div class="section-divider"></div>
-    </div>
+					<!-- Section Header -->
+					<div class="section-header text-center mb-4">
+					<h2 class="section-title">Politics</h2>
+					<div class="section-divider"></div>
+					</div>
 
-    <!-- Unified Row -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
+					<!-- Unified Row -->
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
 
-        <div class="blog-unified-card d-flex flex-wrap">
+							<div class="blog-unified-card d-flex flex-wrap">
 
-          <!-- LEFT FEATURE STORY -->
-          <div class="col-lg-5 col-md-12 feature-side">
-            <div class="feature-card">
-              <div class="feature-img">
-                <img src="{{asset('assets/img/drsamia.jpg')}}" alt="President Dr. Samia">
-              </div>
-              <div class="feature-content">
-                <h3>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h3>
-                <p class="feature-desc">Insights on Tanzania's economic growth and new financial policies.</p>
-                <a href="#" class="btn btn-feature">Read More</a>
-              </div>
-            </div>
-          </div>
+							<!-- LEFT FEATURE STORY -->
+							<div class="col-lg-5 col-md-12 feature-side">
+								<div class="feature-card">
+								<div class="feature-img">
+									<img src="{{asset('assets/img/drsamia.jpg')}}" alt="President Dr. Samia">
+								</div>
+								<div class="feature-content">
+									<h3>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h3>
+									<p class="feature-desc">Insights on Tanzania's economic growth and new financial policies.</p>
+									<a href="#" class="btn btn-feature">Read More</a>
+								</div>
+								</div>
+							</div>
 
-          <!-- RIGHT NEWS HIGHLIGHTS -->
-          <div class="col-lg-7 col-md-12 news-side">
-            <div class="recent-news-card">
+							<!-- RIGHT NEWS HIGHLIGHTS -->
+							<div class="col-lg-7 col-md-12 news-side">
+								<div class="recent-news-card">
 
-              <div class="news-header">
-                <h4>Highlights</h4>
-              </div>
+								<div class="news-header">
+									<h4>Highlights</h4>
+								</div>
 
-              <div class="news-list-wrapper">
+								<div class="news-list-wrapper">
 
-                <!-- News Item 1 -->
-                <div class="news-item d-flex">
-                  
-                  <div class="news-content">
-                    <span class="news-category">Economic News</span>
-                    <h5 class="news-title"><a href="#">Tanzania Economy Records Steady Growth</a></h5>
-                    <p class="news-desc">The government reports improved GDP growth driven by agriculture and infrastructure projects.</p>
-                  </div>
-                </div>
+									<!-- News Item 1 -->
+									<div class="news-item d-flex">
+									
+									<div class="news-content">
+										<span class="news-category">Economic News</span>
+										<h5 class="news-title"><a href="#">Tanzania Economy Records Steady Growth</a></h5>
+										<p class="news-desc">The government reports improved GDP growth driven by agriculture and infrastructure projects.</p>
+									</div>
+									</div>
 
-                <!-- News Item 2 -->
-                <div class="news-item d-flex">
-                  
-                  <div class="news-content">
-                    <span class="news-category">Political News</span>
-                    <h5 class="news-title"><a href="#">Government Emphasizes Peace Ahead of Elections</a></h5>
-                    <p class="news-desc">National leaders call for unity and democratic participation during upcoming elections.</p>
-                  </div>
-                </div>
+									<!-- News Item 2 -->
+									<div class="news-item d-flex">
+									
+									<div class="news-content">
+										<span class="news-category">Political News</span>
+										<h5 class="news-title"><a href="#">Government Emphasizes Peace Ahead of Elections</a></h5>
+										<p class="news-desc">National leaders call for unity and democratic participation during upcoming elections.</p>
+									</div>
+									</div>
 
-                <!-- News Item 3 -->
-                <div class="news-item d-flex">
-                 
-                  <div class="news-content">
-                    <span class="news-category">Business & Policy</span>
-                    <h5 class="news-title"><a href="#">New Policies Support Local Entrepreneurs</a></h5>
-                    <p class="news-desc">Measures introduced to improve access to loans for small and medium enterprises.</p>
-                  </div>
-                </div>
+									<!-- News Item 3 -->
+									<div class="news-item d-flex">
+									
+									<div class="news-content">
+										<span class="news-category">Business & Policy</span>
+										<h5 class="news-title"><a href="#">New Policies Support Local Entrepreneurs</a></h5>
+										<p class="news-desc">Measures introduced to improve access to loans for small and medium enterprises.</p>
+									</div>
+									</div>
 
-              </div>
-            </div>
-          </div>
+								</div>
+								</div>
+							</div>
 
-        </div> <!-- End blog-unified-card -->
+							</div> <!-- End blog-unified-card -->
 
-      </div>
-    </div>
+						</div>
+					</div>
 
-  </div>
-</section>
+				</div>
+			</section>
+			<!-- =========================== End of Highlights =================================== -->
 
 
-			
+
+			<!-- =========================== Reviews Start =================================== -->
+			<section class="jubita-reviews">
+				<div class="container">
+					<!-- Section Title -->
+					<div class="section-header text-center mb-5">
+					<h2>Reviews & Recommendations</h2>
+					<hr class="section-divider">
+					</div>
+
+					<div class="row">
+
+					<!-- Review Item 1 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="review-card">
+						<div class="review-category">Forbes Vetted</div>
+						<div class="review-title">
+							<a href="#">Walking Pad Deals: Shop Editor-Approved Models For Up To 35% Off</a>
+						</div>
+						<div class="review-author">
+							By Jordan Thomas, Forbes Staff and Bianca Alvarez, Forbes Staff
+						</div>
+						</div>
+					</div>
+
+					<!-- Review Item 2 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="review-card">
+						<div class="review-category">Tech Insights</div>
+						<div class="review-title">
+							<a href="#">Best Noise-Cancelling Headphones of 2026: Expert Picks</a>
+						</div>
+						<div class="review-author">
+							By Alex Green, Tech Staff
+						</div>
+						</div>
+					</div>
+
+					<!-- Review Item 3 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="review-card">
+						<div class="review-category">Travel</div>
+						<div class="review-title">
+							<a href="#">Top 10 Safari Destinations in Tanzania You Can't Miss</a>
+						</div>
+						<div class="review-author">
+							By Sarah Lee, Travel Staff
+						</div>
+						</div>
+					</div>
+
+					<!-- Review Item 4 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="review-card">
+						<div class="review-category">Health</div>
+						<div class="review-title">
+							<a href="#">Fitness Trackers: Best Models for 2026 Reviewed</a>
+						</div>
+						<div class="review-author">
+							By Mark Wilson, Health Staff
+						</div>
+						</div>
+					</div>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- =========================== Reviews Ends =================================== -->
+
+
+			<!-- =========================== latest insight Start =================================== -->
 			<section class="jubita-forbes-wrapper">
 				<div class="container">
 
@@ -872,164 +925,225 @@
 				</div>
 			</section>
 
+			<!-- =========================== latest insight end =================================== -->
 
 
+			<div class="clearfix"></div>
 
-			<!-- ======================== new, trending & Offers Start ==================== -->
-			<section class="gray bt-mid">
-				<div class="container">					
+			<!-- =========================== Tech insight start =================================== -->
+			<section class="tech-insights">
+				<div class="container">
+
+					<!-- Section Header -->
+					<div class="section-header text-center mb-5">
+					<h2>Technology Insights</h2>
+					<hr class="section-divider">
+					</div>
+
 					<div class="row">
-						
-						<!-- Col-lg-4 Col-md-4 -->
-						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-							<!-- Heading Title -->
-							<div class="sec-heading-flex pl-2 pr-2">
-								<div class="sec-heading-flex-one border">
-									<h2>New & Trending</h2>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-						
+
+					<!-- Tech Card 1 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="tech-card">
+						<div class="tech-category">AI & Robotics</div>
+						<div class="tech-title">
+							<a href="#">Top AI Tools Revolutionizing Business in 2026</a>
 						</div>
-						<!-- /Col-lg-4 Col-md-4 -->
-						
-						<!-- Col-lg-4 Col-md-4 -->
-						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-							<!-- Heading Title -->
-							<div class="sec-heading-flex pl-2 pr-2">
-								<div class="sec-heading-flex-one border">
-									<h2>Hot Offers</h2>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-						
+						<div class="tech-author">By Alex Morgan, Tech Staff</div>
 						</div>
-						<!-- /Col-lg-4 Col-md-4 -->
-						
-						<!-- Col-lg-4 Col-md-4 -->
-						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-							<!-- Heading Title -->
-							<div class="sec-heading-flex pl-2 pr-2">
-								<div class="sec-heading-flex-one border">
-									<h2>Hot Deals & Offers</h2>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Best Sellers</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-							
-							<!-- Single Products -->
-							<div class="woo_verticle_product">
-								<div class="woo_vertivle_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="woo_verticle_product_caption">
-									<h4 class="woo_verticle_title"><a href="#">Food & Drink</a></h4>
-									<span class="verticle_offer">12% Off</span>
-									<h4 class="woo_verticle_price text-info">$97.00</h4>
-								</div>
-							</div>
-						
+					</div>
+
+					<!-- Tech Card 2 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="tech-card">
+						<div class="tech-category">Gadgets</div>
+						<div class="tech-title">
+							<a href="#">Best Smartwatches of 2026: Expert Reviews & Deals</a>
 						</div>
-						<!-- /Col-lg-4 Col-md-4 -->
-						
+						<div class="tech-author">By Sarah Kim, Tech Editor</div>
+						</div>
+					</div>
+
+					<!-- Tech Card 3 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="tech-card">
+						<div class="tech-category">Software</div>
+						<div class="tech-title">
+							<a href="#">Top Productivity Apps Every Professional Should Try</a>
+						</div>
+						<div class="tech-author">By Mark Wilson, Tech Contributor</div>
+						</div>
+					</div>
+
+					<!-- Tech Card 4 -->
+					<div class="col-lg-3 col-md-6 col-sm-12">
+						<div class="tech-card">
+						<div class="tech-category">Startups</div>
+						<div class="tech-title">
+							<a href="#">5 Innovative Tech Startups Changing the Market</a>
+						</div>
+						<div class="tech-author">By Lisa Brown, Tech Reporter</div>
+						</div>
+					</div>
+
 					</div>
 				</div>
 			</section>
+			<!-- =========================== Tech insight end =================================== -->
+
+
+
+
+
+			<!-- ======================== Pricing trend Start ==================== -->
+			<section class="market-prices">
+				<div class="container">
+					
+					<!-- Section Header -->
+					<div class="section-header text-center mb-4">
+					<h2>Price Trends & Market Updates</h2>
+					<hr class="section-divider">
+					<p>Kupanda na kushuka kwa bei za mazao, mafuta, ndani na nje ya nchi</p>
+					</div>
+
+					<div class="market-scroll-wrapper">
+					<div class="market-row">
+
+						<!-- Column 1 -->
+						<div class="market-column">
+						<div class="market-column-header">New & Trending</div>
+						<div class="market-item">
+							<div class="market-title">Maize</div>
+							<div class="market-price">Tsh 1,200 - 1,500</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Rice</div>
+							<div class="market-price">Tsh 2,400 - 2,800</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Oil</div>
+							<div class="market-price">Tsh 3,500 - 3,800</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Beans</div>
+							<div class="market-price">Tsh 2,200 - 2,500</div>
+						</div>
+						</div>
+
+						<!-- Column 2 -->
+						<div class="market-column">
+						<div class="market-column-header">Hot Offers</div>
+						<div class="market-item">
+							<div class="market-title">Maize</div>
+							<div class="market-price">Tsh 1,180 - 1,450</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Rice</div>
+							<div class="market-price">Tsh 2,350 - 2,750</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Oil</div>
+							<div class="market-price">Tsh 3,400 - 3,750</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Beans</div>
+							<div class="market-price">Tsh 2,150 - 2,480</div>
+						</div>
+						</div>
+
+						<!-- Column 3 -->
+						<div class="market-column">
+						<div class="market-column-header">Hot Deals & Updates</div>
+						<div class="market-item">
+							<div class="market-title">Maize</div>
+							<div class="market-price">Tsh 1,100 - 1,500</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Rice</div>
+							<div class="market-price">Tsh 2,300 - 2,780</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Oil</div>
+							<div class="market-price">Tsh 3,300 - 3,800</div>
+						</div>
+						<div class="market-item">
+							<div class="market-title">Beans</div>
+							<div class="market-price">Tsh 2,100 - 2,500</div>
+						</div>
+						</div>
+
+						<!-- Add more columns as needed -->
+					</div>
+					</div>
+					
+				</div>
+			</section>
+
+			<!-- ======================== Pricing trend End ==================== -->
+
+
 			<div class="clearfix"></div>
 			<!-- ======================== new, trending & Offers End ==================== -->
 			
+
+			<!-- ============================ Start Advisory ================================== -->
+			<section class="jubita-advisory">
+				<div class="container">
+					
+					<!-- Section Header -->
+					<div class="section-header text-center mb-5">
+					<h2>Advisory & Guidance</h2>
+					<hr class="section-divider">
+					</div>
+
+					<div class="row align-items-start">
+
+					<!-- Featured Advisory Image -->
+					<div class="col-lg-5 col-md-12 col-sm-12 mb-4 mb-lg-0">
+						<div class="advisory-featured">
+						<img src="{{asset('assets/img/advisory.jpg')}}" alt="Advisory" class="img-fluid">
+						<div class="advisory-featured-title">
+							<a href="#">How Businesses Can Prepare for Regulatory Changes in 2026</a>
+						</div>
+						<div class="advisory-featured-author">By Daniel Smith, Advisory Expert</div>
+						</div>
+					</div>
+
+					<!-- Advisory Articles List -->
+					<div class="col-lg-7 col-md-12 col-sm-12">
+						<ul class="advisory-list">
+						
+						<li class="advisory-item">
+							<a href="#">Top 5 Legal Changes Every Startup Should Know</a>
+							<div class="advisory-author">By Sarah Lee, Legal Advisory</div>
+						</li>
+
+						<li class="advisory-item">
+							<a href="#">Managing Risk During Economic Uncertainty</a>
+							<div class="advisory-author">By Mark Wilson, Finance Consultant</div>
+						</li>
+
+						<li class="advisory-item">
+							<a href="#">Effective Leadership Practices for Small Businesses</a>
+							<div class="advisory-author">By Lisa Brown, Business Advisor</div>
+						</li>
+
+						<li class="advisory-item">
+							<a href="#">How to Build a Resilient Supply Chain</a>
+							<div class="advisory-author">By Alex Morgan, Logistics Expert</div>
+						</li>
+
+						</ul>
+					</div>
+
+					</div>
+				</div>
+			</section>
+			<!-- ============================ End Advisory ================================== -->
+
+
+
+
 			<!-- ============================ Call To Action ================================== -->
 			<section class="theme-bg call_action_wrap-wrap">
 				<div class="container">
@@ -1179,7 +1293,7 @@
 						<div class="row align-items-center">
 							
 							<div class="col-lg-6 col-md-8">
-								<p class="mb-0">Â©Copyright 2020 Odex. Designd By <a href="https://bootstrapdesigns.net">BootstrapDesigns</a>.</p>
+								<p class="mb-0">Â©Copyright 2025 JUBITA.</p>
 							</div>
 							
 							<div class="col-lg-6 col-md-6 text-right">
@@ -1197,65 +1311,7 @@
 			</footer>
 			<!-- ============================ Footer End ================================== -->
 			
-			<!-- cart -->
-			<div class="w3-ch-sideBar w3-bar-block w3-card-2 w3-animate-right" style="display:none;right:0;" id="rightMenu">
-				<div class="rightMenu-scroll">
-					<h4 class="cart_heading">Your cart</h4>
-					<button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large"><i class="ti-close"></i></button>
-					<div class="right-ch-sideBar" id="side-scroll">
-						
-						<div class="cart_select_items">
-							<!-- Single Item -->
-							<div class="cart_selected_single">
-								<div class="cart_selected_single_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="cart_selected_single_caption">
-									<h4 class="product_title">Mahik Book pro</h4>
-									<span class="numberof_item">$15x2</span>
-									<a href="#" class="text-danger">Remove</a>
-								</div>
-							</div>
-							<!-- Single Item -->
-							<div class="cart_selected_single">
-								<div class="cart_selected_single_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="cart_selected_single_caption">
-									<h4 class="product_title">Mahik Book pro</h4>
-									<span class="numberof_item">$15x2</span>
-									<a href="#" class="text-danger">Remove</a>
-								</div>
-							</div>
-							<!-- Single Item -->
-							<div class="cart_selected_single">
-								<div class="cart_selected_single_thumb">
-									<a href="#"><img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="cart_selected_single_caption">
-									<h4 class="product_title">Mahik Book pro</h4>
-									<span class="numberof_item">$15x2</span>
-									<a href="#" class="text-danger">Remove</a>
-								</div>
-							</div>
-						</div>
-						
-						<div class="cart_subtotal">
-							<h6>Subtotal<span class="theme-cl">$120.47</span></h6>
-						</div>
-						
-						<div class="cart_action">
-							<ul>
-								<li><a href="" class="btn btn-go-cart btn-theme">View/Edit Cart</a></li>
-								<li><a href="" class="btn btn-checkout">Checkout Now</a></li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			<!-- cart -->
-			
+		
 		
 			
 			<!-- Product View -->

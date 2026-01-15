@@ -9956,3 +9956,611 @@ ul.tp-list li {
         height: auto;
     }
 }
+
+
+
+
+/* ==================== Featured Story Section ==================== */
+.jubita-featured-story {
+    background-color: #000; /* black background */
+    color: #fff; /* text color white */
+    padding: 60px 0; /* vertical padding */
+}
+
+/* Remove gutter space */
+.jubita-featured-story .row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* Left Column */
+.left-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.story-content {
+    max-width: 500px;
+}
+
+.story-category {
+    display: block;
+    color: #ff7a00; /* orange for category */
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.story-title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.btn-story {
+    display: inline-block;
+    background: #ff7a00;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-story:hover {
+    background: #e56700;
+}
+
+/* Right Column */
+/* Right Column Image */
+.right-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* no extra padding */
+}
+
+.story-image {
+    width: 100%;           /* take full column width */
+    max-height: 200px;     /* limit the height to prevent distortion */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-image img {
+    width: auto;           /* let width adjust automatically */
+    height: 100%;          /* fill height of container */
+    object-fit: contain;   /* fit image inside container without cropping */
+    border-radius: 5px;
+}
+
+
+/* Responsive */
+@media (max-width: 991px) {
+    .story-title {
+        font-size: 28px;
+    }
+    .story-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .jubita-featured-story {
+        padding: 40px 0;
+    }
+    .story-title {
+        font-size: 24px;
+    }
+    .story-image img {
+        max-height: 400px;
+    }
+}
+
+
+
+/* Make the row a flex container for equal height columns */
+.gray .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* columns same height */
+}
+
+/* LEFT SIDEBAR */
+.gray .row > .col-lg-3:first-child {
+    border-right: 1px solid #ddd; /* vertical line */
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CENTER BLOG POST */
+.gray .row > .col-lg-6 {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+/* RIGHT SIDEBAR */
+.gray .row > .col-lg-3:last-child {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make all columns stretch to the same height */
+.blog-sidebar, .blog-news.big-detail-wrap {
+    flex: 1; /* fill the height of the row */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stretch each widget evenly in sidebars */
+.blog-sidebar .side-widget {
+    margin-bottom: 20px;
+    flex: 1; /* stretch to fill space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure inner content fills widget */
+.blog-sidebar .side-widget-body {
+    flex: 1;
+}
+
+/* Footer padding / spacing fix */
+.gray {
+    padding-bottom: 50px; /* space at the bottom */
+}
+
+/* Optional: subtle footer demarcation */
+.gray::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #ccc; /* light line at bottom */
+    margin-top: 20px;
+}
+
+/* Responsive: remove borders on smaller screens */
+@media (max-width: 991px) {
+    .gray .row {
+        display: block;
+    }
+    .gray .row > .col-lg-3:first-child,
+    .gray .row > .col-lg-6,
+    .gray .row > .col-lg-3:last-child {
+        border: none;
+        padding: 0;
+    }
+    .blog-sidebar, .blog-news.big-detail-wrap {
+        height: auto;
+    }
+    .gray::after {
+        display: none;
+    }
+}
+
+
+
+
+/* ================= Reviews Section ================= */
+.jubita-reviews {
+    padding: 60px 0;
+    background-color: #f1f1f1; /* light gray background for the section */
+}
+
+/* Section Header */
+.jubita-reviews .section-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.jubita-reviews .section-divider {
+    width: 80px;
+    height: 3px;
+    background-color: #ff7a00; /* orange line for emphasis */
+    margin: 0 auto;
+    border: none;
+    border-radius: 2px;
+}
+
+/* Review Card */
+.review-card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Category */
+.review-category {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ff7a00;
+    margin-bottom: 12px;
+}
+
+/* Title */
+.review-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.review-title a {
+    color: #222;
+    text-decoration: none;
+}
+
+.review-title a:hover {
+    color: #ff7a00;
+    text-decoration: underline;
+}
+
+/* Author */
+.review-author {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .review-card {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .review-title {
+        font-size: 16px;
+    }
+    .review-author {
+        font-size: 13px;
+    }
+}
+
+
+
+/* ================= Technology Section ================= */
+/* ================= Technology Section – Clean Design ================= */
+.tech-insights {
+    padding: 70px 0;
+    background-color: #1f1f1f; /* dark background for modern feel */
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Section Header */
+.tech-insights .section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.tech-insights .section-divider {
+    width: 80px;
+    height: 3px;
+    background-color: #ff7a00; /* accent color for divider */
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Tech Card */
+.tech-card {
+    background-color: #2c2c2c; /* slightly lighter dark card */
+    padding: 25px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #ff7a00; /* small accent line for style */
+}
+
+/* Hover effect */
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Category */
+.tech-category {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ff7a00;
+    margin-bottom: 12px;
+}
+
+/* Title */
+.tech-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.tech-title a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.tech-title a:hover {
+    color: #ff7a00;
+    text-decoration: underline;
+}
+
+/* Author */
+.tech-author {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .tech-card {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .tech-title {
+        font-size: 16px;
+    }
+    .tech-author {
+        font-size: 13px;
+    }
+}
+
+
+
+/* ================= Advisory Section ================= */
+.jubita-advisory {
+    padding: 70px 0;
+    background-color: #f9f9f9;
+    font-family: 'Inter', sans-serif;
+    color: #222;
+}
+
+/* Section Header */
+.jubita-advisory .section-header h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.jubita-advisory .section-divider {
+    width: 80px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Featured Advisory */
+.advisory-featured {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.advisory-featured img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.advisory-featured-title a {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+
+.advisory-featured-title a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.advisory-featured-author {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Advisory Articles List */
+.advisory-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.advisory-item {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.advisory-item a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+}
+
+.advisory-item a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.advisory-author {
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Hover effect */
+.advisory-item:hover, .advisory-featured:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .advisory-featured {
+        margin-bottom: 25px;
+    }
+}
+
+
+
+/* ================= Market Prices Section ================= */
+.market-prices {
+    padding: 60px 0;
+    background-color: #f3f3f3;
+    font-family: 'Inter', sans-serif;
+    color: #222;
+}
+
+/* Section Header */
+.market-prices .section-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.market-prices .section-header p {
+    font-size: 14px;
+    color: #555;
+}
+
+.market-prices .section-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Horizontal scroll wrapper */
+.market-scroll-wrapper {
+    overflow-x: auto;
+    padding: 15px 0;
+}
+
+.market-row {
+    display: flex;
+    gap: 20px;
+    min-width: 900px; /* ensures scroll on smaller screens */
+}
+
+/* Individual Column */
+.market-column {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+}
+
+/* Column Header */
+.market-column-header {
+    font-size: 18px;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+/* Market Item */
+.market-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.market-item:last-child {
+    border-bottom: none;
+}
+
+.market-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+}
+
+.market-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #28a745;
+}
+
+/* Scrollbar styling for modern look */
+.market-scroll-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.market-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 3px;
+}
+
+.market-scroll-wrapper::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .market-row {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 575px) {
+    .market-row {
+        min-width: 400px;
+    }
+}
+
+
+
+
