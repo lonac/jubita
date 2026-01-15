@@ -64,7 +64,7 @@
 										</div>
 										<div class="ss_cart_content">
 											<strong>Call Us:</strong>
-											<span>+91 855 606 8402</span>
+											<span>+255 855 606 8402</span>
 										</div>
 									</div>
 									
@@ -351,7 +351,7 @@
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<div class="sec-heading-flex pl-2 pr-2">
 								<div class="sec-heading-flex-one">
-									<h2>Buiashara na Bidhaa</h2>
+									<h2>Biashara na Bidhaa</h2>
 								</div>
 								<div class="sec-heading-flex-last">
 									<a href="#" class="btn btn-theme">View More<i class="ti-arrow-right ml-2"></i></a>
@@ -1152,8 +1152,8 @@
 							
 							<div class="call_action_wrap">
 								<div class="call_action_wrap-head">
-									<h3>Do You Have Questions ?</h3>
-									<span>We'll help you to grow your career and growth.</span>
+									<h3>Do You want to stay connected?</h3>
+									<span>Subscribe and get more updates from JUBITA.</span>
 								</div>
 								<div class="newsletter_box">
 									<div class="input-group">
@@ -1240,10 +1240,23 @@
 								<div class="footer_widget">
 									<h4 class="widget_title">Categories</h4>
 									<ul class="footer-menu">
-										<li><a href="#">Organic</a></li>
-										<li><a href="#">Grocery</a></li>
-										<li><a href="#">Education</a></li>
-										<li><a href="#">Furniture</a></li>
+											<li class="active"><a href="#">Nyumbani </a></li>
+                                            <li><a href="#"><span>Masoko</span></a></li>
+                                            <li><a href="#"><span>Uchumi</span></a></li>
+                                            <li><a href="#"><span>Biashara</span></a></li>
+                                           
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-lg-2 col-md-2">
+								<div class="footer_widget">
+									<h4 class="widget_title">More Category</h4>
+									<ul class="footer-menu">
+											<li><a href="#"><span>Teknolojia</span></a></li>
+                                            <li><a href="#"><span>Jiopolitiki</span></a></li>
+                                            <li><a href="#"><span>Fedha</span></a></li>
+											<li><a href="#"><span>Mawasiliano</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -1260,17 +1273,7 @@
 								</div>
 							</div>
 							
-							<div class="col-lg-2 col-md-2">
-								<div class="footer_widget">
-									<h4 class="widget_title">Latest News</h4>
-									<ul class="footer-menu">
-										<li><a href="#">Offers & Deals</a></li>
-										<li><a href="#">My Account</a></li>
-										<li><a href="#">My Products</a></li>
-										<li><a href="#">Favorites</a></li>
-									</ul>
-								</div>
-							</div>
+						
 							
 							<div class="col-lg-2 col-md-2">
 								<div class="footer_widget">
@@ -1278,8 +1281,8 @@
 									<ul class="footer-menu">
 										<li><a href="#">Conditions</a></li>
 										<li><a href="#">Privacy</a></li>
-										<li><a href="#">Blog</a></li>
 										<li><a href="#">FAQs</a></li>
+										<li><a href="#"><span>Mawasiliano</span></a></li>
 									</ul>
 								</div>
 							</div>
@@ -1313,130 +1316,7 @@
 			
 		
 		
-			
-			<!-- Product View -->
-			<div class="modal fade" id="viewproduct-over" tabindex="-1" role="dialog" aria-labelledby="add-payment" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content" id="view-product">
-						<span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
-						<div class="modal-body">
-							<div class="row align-items-center">
-					
-						<div class="col-lg-6 col-md-12 col-sm-12">
-								<div class="sp-wrap">
-									<img src="https://via.placeholder.com/800x900" class="img-fluid rounded" alt="">
-								</div>
-							</div>
-							
-							<div class="col-lg-6 col-md-12 col-sm-12">
-								<div class="woo_pr_detail">
-									
-									<div class="woo_cats_wrps">
-										<a href="#" class="woo_pr_cats">Casual Shirt</a>
-										<span class="woo_pr_trending">Trending</span>
-									</div>
-									<h2 class="woo_pr_title">Fresh Green Pineapple</h2>
-									
-									<div class="woo_pr_reviews">
-										<div class="woo_pr_rating">
-											<i class="fa fa-star filled"></i>
-											<i class="fa fa-star filled"></i>
-											<i class="fa fa-star filled"></i>
-											<i class="fa fa-star filled"></i>
-											<i class="fa fa-star"></i>
-											<span class="woo_ave_rat">4.8</span>
-										</div>
-										<div class="woo_pr_total_reviews">
-											<a href="#">(124 Reviews)</a>
-										</div>
-									</div>
-									
-									<div class="woo_pr_price">
-										<div class="woo_pr_offer_price">
-											<h3>$149<sup>.00</sup><span class="org_price">$199<sup>.99</sup></span></h3>
-										</div>
-									</div>
-									
-									<div class="woo_pr_short_desc">
-										<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores voluptatem quia voluptas sit aspernatur.</p>
-									</div>
-									
-									<div class="woo_pr_color flex_inline_center mb-3">
-										<div class="woo_pr_varient">
-											<h6>Size:</h6>
-										</div>
-										<div class="woo_colors_list pl-3">
-											<div class="custom-varient custom-size">
-												<input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne" value="5" data-toggle="form-caption" data-target="#sizeCaption">
-												<label class="custom-control-label" for="sizeRadioOne">SM</label>
-											</div>
-											<div class="custom-varient custom-size">
-												<input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioTwo" value="6" data-toggle="form-caption" data-target="#sizeCaption">
-												<label class="custom-control-label" for="sizeRadioTwo">M</label>
-											</div>
-											<div class="custom-varient custom-size">
-												<input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioThree" value="6.6" data-toggle="form-caption" data-target="#sizeCaption">
-												<label class="custom-control-label" for="sizeRadioThree">L</label>
-											</div>
-											<div class="custom-varient custom-size">
-												<input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioFour" value="7" data-toggle="form-caption" data-target="#sizeCaption" checked>
-												<label class="custom-control-label" for="sizeRadioFour">XL</label>
-											</div>
-										</div>
-									</div>
-									
-									<div class="woo_pr_color flex_inline_center mb-3">
-										<div class="woo_pr_varient">
-											<h6>Color:</h6>
-										</div>
-										<div class="woo_colors_list pl-3">
-											<div class="custom-varient custom-color red">
-												<input type="radio" class="custom-control-input" name="colorRadio" id="red" value="5" data-toggle="form-caption" data-target="#colorCaption">
-												<label class="custom-control-label" for="red">5</label>
-											</div>
-											<div class="custom-varient custom-color green">
-												<input type="radio" class="custom-control-input" name="colorRadio" id="green" value="6" data-toggle="form-caption" data-target="#colorCaption">
-												<label class="custom-control-label" for="green">6</label>
-											</div>
-											<div class="custom-varient custom-color purple">
-												<input type="radio" class="custom-control-input" name="colorRadio" id="purple" value="6.6" data-toggle="form-caption" data-target="#colorCaption" checked>
-												<label class="custom-control-label" for="purple">6.5</label>
-											</div>
-											<div class="custom-varient custom-color yellow">
-												<input type="radio" class="custom-control-input" name="colorRadio" id="yellow" value="7" data-toggle="form-caption" data-target="#colorCaption">
-												<label class="custom-control-label" for="yellow">7</label>
-											</div>
-											<div class="custom-varient custom-color blue">
-												<input type="radio" class="custom-control-input" name="colorRadio" id="blue" value="6" data-toggle="form-caption" data-target="#colorCaption">
-												<label class="custom-control-label" for="blue">7.5</label>
-											</div>
-										</div>
-									</div>
-									
-									<div class="woo_btn_action">
-										<div class="col-12 col-lg-auto">
-											<input type="number" class="form-control mb-2 full-width" value="1" />
-										</div>
-									</div>
-									
-									<div class="woo_btn_action">
-										<div class="col-12 col-lg-auto">
-											<button type="submit" class="btn btn-block btn-dark mb-2">Add to Cart <i class="ti-shopping-cart-full ml-2"></i></button>
-										</div>
-										<div class="col-12 col-lg-auto">
-											<button class="btn btn-gray btn-block mb-2" data-toggle="button">Wishlist <i class="ti-heart ml-2"></i></button>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Modal -->
+		
 
 		</div>
 		<!-- ============================================================== -->
