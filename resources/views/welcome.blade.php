@@ -315,158 +315,50 @@
 			<!-- =========================== Banner Ends =================================== -->
         
 
-			<!-- =========================== About Us =================================== -->
-			<section class="image-bg" style="background:url(https://via.placeholder.com/1920x820) no-repeat;" data-overlay="5">
-				<div class="container">
-					<div class="row align-items-center">
-					
-						<div class="col-lg-5 col-md-6 col-sm-12">
-							<h2>More from <span class="theme-cl">JUBITA</span></h2>
-							<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
-						</div>
-						
-						<div class="col-lg-7 col-md-6 col-sm-12">
-							
-							
-									
-							<div class="row">
-								<div class="col-lg-12 col-md-12">
-									<div class="owl-carousel products-slider owl-theme">
-									
-										<!-- Single Item -->
-										<div class="item">
-											<div class="woo_product_grid">
-												<span class="woo_pr_tag hot">Tourism</span>
-												<div class="woo_product_thumb">
-													<img src="{{asset('assets/img/tz.jpg')}}" class="img-fluid" alt="" />
-												</div>
-												<div class="woo_product_caption center">
-													<div class="woo_rate">
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star"></i>
-													</div>
-													<div class="woo_title">
-														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-													</div>
-													<div class="woo_price">
-														<h6>$72.47<span class="less_price">$112.10</span></h6>
-													</div>
-												</div>								
-											</div>
-										</div>
-										
-										<!-- Single Item -->
-										<div class="item">
-											<div class="woo_product_grid">
-												<div class="woo_product_thumb">
-													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-												</div>
-												<div class="woo_product_caption center">
-													<div class="woo_rate">
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star"></i>
-													</div>
-													<div class="woo_title">
-														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-													</div>
-													<div class="woo_price">
-														<h6>$72.47<span class="less_price">$112.10</span></h6>
-													</div>
-												</div>
-												<div class="woo_product_cart hover">
-													<ul>
-														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-													</ul>
-												</div>								
-											</div>
-										</div>
-										
-										<!-- Single Item -->
-										<div class="item">
-											<div class="woo_product_grid">
-												<span class="woo_pr_tag new">New</span>
-												<div class="woo_product_thumb">
-													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-												</div>
-												<div class="woo_product_caption center">
-													<div class="woo_rate">
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star"></i>
-													</div>
-													<div class="woo_title">
-														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-													</div>
-													<div class="woo_price">
-														<h6>$72.47<span class="less_price">$112.10</span></h6>
-													</div>
-												</div>
-												<div class="woo_product_cart hover">
-													<ul>
-														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-													</ul>
-												</div>								
-											</div>
-										</div>
-										
-										<!-- Single Item -->
-										<div class="item">
-											<div class="woo_product_grid">
-												<span class="woo_offer_sell">Save 20% Off</span>
-												<div class="woo_product_thumb">
-													<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-												</div>
-												<div class="woo_product_caption center">
-													<div class="woo_rate">
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star filled"></i>
-														<i class="fa fa-star"></i>
-													</div>
-													<div class="woo_title">
-														<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-													</div>
-													<div class="woo_price">
-														<h6>$72.47<span class="less_price">$112.10</span></h6>
-													</div>
-												</div>
-												<div class="woo_product_cart hover">
-													<ul>
-														<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-														<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-														<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-													</ul>
-												</div>								
-											</div>
-										</div>
-										
-									
-									</div>
-									
-								</div>
-							</div>
+			<!-- =========================== More from Jubita =================================== -->
+			<section class="jubita-strip">
+    <div class="container">
+        <div class="row align-items-center">
 
+            <!-- Left Text -->
+            <div class="col-lg-4 col-md-12">
+                <div class="jubita-strip-text">
+                    <h4>More from <span class="theme-cl">JUBITA</span></h4>
+                    <p>Latest news, business & featured stories</p>
+                </div>
+            </div>
 
-								
-							
-						</div>
-						
-					</div>
-				</div>
-			</section>
+            <!-- Right Scroll Strip -->
+            <div class="col-lg-8 col-md-12">
+                <div class="jubita-css-slider">
+
+                    <div class="jubita-item">
+                        <img src="{{ asset('assets/img/tz.jpg') }}" alt="">
+                        <h6>Tourism Growth in Tanzania</h6>
+                    </div>
+
+                    <div class="jubita-item">
+                        <img src="https://via.placeholder.com/400x300" alt="">
+                        <h6>Business & Investment Update</h6>
+                    </div>
+
+                    <div class="jubita-item">
+                        <img src="https://via.placeholder.com/400x300" alt="">
+                        <h6>Sports Highlights</h6>
+                    </div>
+
+                    <div class="jubita-item">
+                        <img src="https://via.placeholder.com/400x300" alt="">
+                        <h6>Environment & Conservation</h6>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 
 			<!-- ======================== Hot Deals & Offers Start ==================== -->
 			<section class="">
@@ -747,122 +639,242 @@
 					</div>
 				</div>
 			</section>
+
+
+			
 			<div class="clearfix"></div>
 
 
-						<!-- =========================== About Us =================================== -->
-						<section>
+			<!-- =========================== About Us =================================== -->
+		
+			<section class="jubita-blog-section">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center mb-4">
+      <h2 class="section-title">Jubita Highlights</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Unified Row -->
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <div class="blog-unified-card d-flex flex-wrap">
+
+          <!-- LEFT FEATURE STORY -->
+          <div class="col-lg-5 col-md-12 feature-side">
+            <div class="feature-card">
+              <div class="feature-img">
+                <img src="{{asset('assets/img/drsamia.jpg')}}" alt="President Dr. Samia">
+              </div>
+              <div class="feature-content">
+                <h3>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h3>
+                <p class="feature-desc">Insights on Tanzania's economic growth and new financial policies.</p>
+                <a href="#" class="btn btn-feature">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT NEWS HIGHLIGHTS -->
+          <div class="col-lg-7 col-md-12 news-side">
+            <div class="recent-news-card">
+
+              <div class="news-header">
+                <h4>Highlights</h4>
+              </div>
+
+              <div class="news-list-wrapper">
+
+                <!-- News Item 1 -->
+                <div class="news-item d-flex">
+                  
+                  <div class="news-content">
+                    <span class="news-category">Economic News</span>
+                    <h5 class="news-title"><a href="#">Tanzania Economy Records Steady Growth</a></h5>
+                    <p class="news-desc">The government reports improved GDP growth driven by agriculture and infrastructure projects.</p>
+                  </div>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="news-item d-flex">
+                  
+                  <div class="news-content">
+                    <span class="news-category">Political News</span>
+                    <h5 class="news-title"><a href="#">Government Emphasizes Peace Ahead of Elections</a></h5>
+                    <p class="news-desc">National leaders call for unity and democratic participation during upcoming elections.</p>
+                  </div>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="news-item d-flex">
+                 
+                  <div class="news-content">
+                    <span class="news-category">Business & Policy</span>
+                    <h5 class="news-title"><a href="#">New Policies Support Local Entrepreneurs</a></h5>
+                    <p class="news-desc">Measures introduced to improve access to loans for small and medium enterprises.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End blog-unified-card -->
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+			
+			<section class="jubita-forbes-wrapper">
 				<div class="container">
-					<div class="row">
-					
-						<div class="col-lg-5 col-md-5 col-sm-12 ml-auto">
-							<div class="about_video">
-								<div class="thumb">
-									<img class="pro_img img-fluid w10" src="{{asset('assets/img/drsamia.jpg')}}" alt="7.jpg">
+
+					<!-- Section Head -->
+					<div class="jubita-section-head text-center mb-4">
+						<h2>Latest Insights & News</h2>
+						<hr class="section-divider">
+					</div>
+
+					<div class="jubita-forbes-cards rounded-section p-4">
+						<div class="row">
+
+							<!-- LEFT COLUMN -->
+							<div class="col-lg-3 col-md-6">
+								<h5 class="forbes-cat-title">News</h5>
+
+								<ul class="forbes-list-card">
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Politics" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Politics</span>
+												<h6><a href="#">Government Announces Policy Reforms</a></h6>
+												<small>By Jubita Desk</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Economy" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Economy</span>
+												<h6><a href="#">Inflation Trends to Watch</a></h6>
+												<small>By A. Mushi</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="World" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">World</span>
+												<h6><a href="#">Global Leaders Meet for Climate Talks</a></h6>
+												<small>By Reuters</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Health" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Health</span>
+												<h6><a href="#">Hospitals Embrace Digital Records</a></h6>
+												<small>By M. Joseph</small>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<!-- CENTER COLUMN FEATURE -->
+							<div class="col-lg-6 col-md-12">
+								<h5 class="forbes-cat-title">Lifestyle</h5>
+
+								<div class="forbes-feature-card">
+									<img src="{{ asset('assets/img/tz.jpg') }}" alt="Lifestyle" class="img-fluid rounded">
+									<h3><a href="#">How Urban Living Is Changing Modern Tanzanian Culture</a></h3>
+									<p class="author">By Jubita Lifestyle Editor</p>
+									<a href="#" class="btn btn-theme btn-sm mt-2">Read More</a>
 								</div>
 							</div>
-							<h2>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h2>
-							<a href="#" class="btn btn-theme mt-2">Read More</a>
-						</div>
 
-						<div class="col-lg-7 col-md-7 col-sm-12">
-							
-					<!-- Order Items -->
-<div class="card style-2 mb-4">
-	<div class="card-header">
-		<h4 class="mb-0">Recently News</h4>
-	</div>
-	<div class="card-body">
-		<ul class="item-groups">
+							<!-- RIGHT COLUMN -->
+							<div class="col-lg-3 col-md-6">
+								<h5 class="forbes-cat-title">Business</h5>
 
-			<!-- Economic News -->
-			<li>
-				<div class="row align-items-center">
-					<div class="col-4 col-md-3 col-xl-2">
-						<a href="#">
-							<img src="https://via.placeholder.com/500x500" alt="Economy" class="img-fluid">
-						</a>
-					</div>
+								<ul class="forbes-list-card">
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Startups" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Startups</span>
+												<h6><a href="#">Tech Startups Raising Capital</a></h6>
+												<small>By B. Kweka</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Markets" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Markets</span>
+												<h6><a href="#">Stock Market Shows Positive Signs</a></h6>
+												<small>By Jubita Finance</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Energy" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Energy</span>
+												<h6><a href="#">Renewable Energy Projects Expand</a></h6>
+												<small>By Energy Desk</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Trade" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Trade</span>
+												<h6><a href="#">Regional Trade Agreements Explained</a></h6>
+												<small>By Editorial Team</small>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
 
-					<div class="col">
-						<p class="mb-2 font-size-sm font-weight-bold">
-							<a class="text-body" href="#">
-								Tanzania Economy Records Steady Growth
-							</a><br>
-							<span class="theme-cl">Economic News</span>
-						</p>
-
-						<div class="font-size-sm text-muted">
-							The government reports improved GDP growth driven by agriculture, 
-							infrastructure projects, and increased local investment.
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<!-- Political News -->
-			<li>
-				<div class="row align-items-center">
-					<div class="col-4 col-md-3 col-xl-2">
-						<a href="#">
-							<img src="https://via.placeholder.com/500x500" alt="Politics" class="img-fluid">
-						</a>
-					</div>
-
-					<div class="col">
-						<p class="mb-2 font-size-sm font-weight-bold">
-							<a class="text-body" href="#">
-								Government Emphasizes Peace Ahead of Elections
-							</a><br>
-							<span class="theme-cl">Political News</span>
-						</p>
-
-						<div class="font-size-sm text-muted">
-							National leaders call for unity, calm, and democratic participation 
-							as the country prepares for upcoming electoral activities.
 						</div>
 					</div>
-				</div>
-			</li>
 
-			<!-- Business / Policy News -->
-			<li>
-				<div class="row align-items-center">
-					<div class="col-4 col-md-3 col-xl-2">
-						<a href="#">
-							<img src="https://via.placeholder.com/500x500" alt="Business" class="img-fluid">
-						</a>
-					</div>
-
-					<div class="col">
-						<p class="mb-2 font-size-sm font-weight-bold">
-							<a class="text-body" href="#">
-								New Policies Aim to Support Local Entrepreneurs
-							</a><br>
-							<span class="theme-cl">Business & Policy</span>
-						</p>
-
-						<div class="font-size-sm text-muted">
-							The government introduces measures to reduce taxes and improve 
-							access to loans for small and medium enterprises across Tanzania.
-						</div>
-					</div>
-				</div>
-			</li>
-
-		</ul>
-	</div>
-</div>
-
-						
-						
-					</div>
 				</div>
 			</section>
 
 
-			<!-- ======================== Hot Deals & Offers End ==================== -->
-			
+
+
 			<!-- ======================== new, trending & Offers Start ==================== -->
 			<section class="gray bt-mid">
 				<div class="container">					

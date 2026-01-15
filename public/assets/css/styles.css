@@ -9530,3 +9530,429 @@ ul.tp-list li {
     line-height: 15px;
 }
 }
+
+/* Wrapper */
+.jubita-forbes-wrapper {
+    padding: 60px 0;
+    background: #f9f9f9;
+}
+
+/* Section Head */
+.jubita-section-head h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: #ff7a00;
+    margin: 0 auto 30px auto;
+    border: 0;
+    border-radius: 2px;
+}
+
+/* Rounded cards wrapper */
+.rounded-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+/* Keep Forbes/Card styles intact */
+.forbes-cat-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.forbes-list-card li {
+    margin-bottom: 20px;
+}
+
+.forbes-list-card .mini-cat {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #888;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.forbes-list-card h6 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 2px;
+}
+
+.forbes-list-card h6 a {
+    color: #000;
+    text-decoration: none;
+}
+
+.forbes-list-card h6 a:hover {
+    text-decoration: underline;
+}
+
+.forbes-list-card small {
+    font-size: 12px;
+    color: #666;
+}
+
+.forbes-list-card img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.forbes-feature-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.forbes-feature-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    line-height: 1.25;
+}
+
+.forbes-feature-card h3 a {
+    color: #000;
+    text-decoration: none;
+}
+
+.forbes-feature-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.forbes-feature-card .author {
+    font-size: 13px;
+    color: #666;
+}
+
+.btn-theme {
+    background: #ff7a00;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-theme:hover {
+    background: #e56700;
+    color: #fff;
+}
+
+.jubita-highlights {
+    background: #f9f9f9;
+}
+
+/* Left feature card */
+.highlight-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.highlight-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.highlight-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.highlight-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.btn-highlight {
+    background: #ff7a00;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-highlight:hover {
+    background: #e56700;
+}
+
+/* Right highlights list */
+.recent-news-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    height: 100%; /* Matches left card height */
+    display: flex;
+    flex-direction: column;
+}
+
+.news-header h4 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.news-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+.news-item:last-child {
+    border-bottom: 0;
+}
+
+.news-category {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ff7a00;
+    margin-bottom: 3px;
+}
+
+.news-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.news-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.news-title a:hover {
+    text-decoration: underline;
+}
+
+.news-desc {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .highlight-title {
+        font-size: 20px;
+    }
+    .news-title {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+/* =================== Jubita Blog Section =================== */
+.jubita-blog-section {
+    background: #f8f8f8;
+    padding: 50px 0 30px 0; /* Top & bottom spacing */
+}
+
+/* Section header with divider */
+.section-header {
+    margin-bottom: 40px;
+}
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: #ff7a00;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Unified card wrapper */
+.blog-unified-card {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0; /* subtle demarcation */
+}
+
+/* Left Feature */
+.feature-side {
+    border-right: 1px solid #e0e0e0; /* demarcation line */
+    padding: 0;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.feature-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.feature-content {
+    padding: 20px;
+}
+
+.feature-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feature-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn-feature {
+    background: #ff7a00;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.btn-feature:hover {
+    background: #e56700;
+}
+
+/* Right News Side */
+.news-side {
+    padding: 20px;
+}
+
+.recent-news-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-header h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.news-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Individual news item */
+.news-item {
+    display: flex;
+    gap: 12px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.news-img img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-category {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff7a00;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.news-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.news-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.news-title a:hover {
+    text-decoration: underline;
+}
+
+.news-desc {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .blog-unified-card {
+        flex-direction: column;
+    }
+    .feature-side {
+        border-right: 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .news-item {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 767px) {
+    .news-item {
+        flex-direction: column;
+    }
+    .news-img img {
+        width: 100%;
+        height: auto;
+    }
+}
