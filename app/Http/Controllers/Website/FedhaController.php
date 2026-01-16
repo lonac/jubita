@@ -12,7 +12,11 @@ class FedhaController extends Controller
      */
     public function index()
     {
-        //
+       // return view('website.pages.fedha.index');
+
+       $title = "FEDHA";
+        return view('website.shared.blog_view',compact('title'));
+
     }
 
     /**

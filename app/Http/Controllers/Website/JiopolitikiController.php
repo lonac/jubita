@@ -12,7 +12,10 @@ class JiopolitikiController extends Controller
      */
     public function index()
     {
-        //
+        // return view('website.pages.jiopolitiki.index');
+        $title = "JIOPOLITIKI";
+        return view('website.shared.blog_view',compact('title'));
+
     }
 
     /**

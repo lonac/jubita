@@ -12,7 +12,10 @@ class UchumiController extends Controller
      */
     public function index()
     {
-        //
+        $title = "UCHUMI";
+        return view('website.shared.blog_view',compact('title'));
+        //return view('website.pages.uchumi.index');
+
     }
 
     /**

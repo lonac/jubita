@@ -12,7 +12,11 @@ class BiasharaController extends Controller
      */
     public function index()
     {
-        //
+       // return view('website.pages.biashara.index');
+
+       $title = "BIASHARA";
+        return view('website.shared.blog_view',compact('title'));
+
     }
 
     /**

@@ -12,7 +12,10 @@ class TecknolojiaController extends Controller
      */
     public function index()
     {
-        //
+        $title = "TEKNOLOJIA";
+        return view('website.shared.blog_view',compact('title'));
+        //return view('website.pages.teknolojia.index');
+
     }
 
     /**

@@ -5,10 +5,10 @@
 		<meta name="author" content="www.frebsite.nl" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-        <title>JUBITA</title>
+        <title>@yield('title')</title>
 		 
         <!-- Custom CSS -->
-        <link href="assets/css/styles.css" rel="stylesheet">
+        <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet">
 		
     </head>
 	
@@ -108,14 +108,14 @@
 									<div class="nav-menus-wrapper" style="transition-property: none;">
 										<ul class="nav-menu">
 										
-											<li class="active"><a href="#">Nyumbani </a></li>
-                                            <li><a href="#"><span>Masoko</span></a></li>
-                                            <li><a href="#"><span>Uchumi</span></a></li>
-                                            <li><a href="#"><span>Biashara</span></a></li>
-                                            <li><a href="#"><span>Teknolojia</span></a></li>
-                                            <li><a href="#"><span>Jiopolitiki</span></a></li>
-                                            <li><a href="#"><span>Fedha</span></a></li>
-											<li><a href="#"><span>Mawasiliano</span></a></li>
+											<li class="active"><a href="{{route('home')}}">Nyumbani </a></li>
+                                            <li><a href="{{route('masoko.index')}}"><span>Masoko</span></a></li>
+                                            <li><a href="{{route('uchumi.index')}}"><span>Uchumi</span></a></li>
+                                            <li><a href="{{route('biashara.index')}}"><span>Biashara</span></a></li>
+                                            <li><a href="{{route('teknolojia.index')}}"><span>Teknolojia</span></a></li>
+                                            <li><a href="{{route('jiopolitiki.index')}}"><span>Jiopolitiki</span></a></li>
+                                            <li><a href="{{route('fedha.index')}}"><span>Fedha</span></a></li>
+											<li><a href="{{route('mawasiliano.index')}}"><span>Mawasiliano</span></a></li>
 										
 										</ul>
 
@@ -319,16 +319,16 @@
 		<!-- ============================================================== -->
 		<!-- All Jquery -->
 		<!-- ============================================================== -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/metisMenu.min.js"></script>
-		<script src="assets/js/owl-carousel.js"></script>
-		<script src="assets/js/ion.rangeSlider.min.js"></script>
-		<script src="assets/js/smoothproducts.js"></script>
-		<script src="assets/js/jquery-rating.js"></script>
-		<script src="assets/js/jQuery.style.switcher.js"></script>
-		<script src="assets/js/custom.js"></script>
+		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+		<script src="{{asset('assets/js/popper.min.js')}}"></script>
+		<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
+		<script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+		<script src="{{asset('assets/js/ion.rangeSlider.min.js')}}"></script>
+		<script src="{{asset('assets/js/smoothproducts.js')}}"></script>
+		<script src="{{asset('assets/js/jquery-rating.js')}}"></script>
+		<script src="{{asset('assets/js/jQuery.style.switcher.js')}}"></script>
+		<script src="{{asset('assets/js/custom.js')}}"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->

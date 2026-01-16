@@ -12,7 +12,8 @@ class MasokoController extends Controller
      */
     public function index()
     {
-        return view('website.pages.masoko.index');
+        $title = "MASOKO";
+        return view('website.shared.blog_view',compact('title'));
     }
 
     /**

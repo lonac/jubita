@@ -1,6 +1,8 @@
 @extends('website.shared.index')
 
-@Section('title','Masoko')
+
+@section('title', $title)
+
 
 @section('content')
 
@@ -12,11 +14,11 @@
 						
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<div class="text-center">
-								<h2 class="breadcrumbs_title">MASOKO</h2>
+								<h2 class="breadcrumbs_title">{{$title}}</h2>
 								<nav aria-label="breadcrumb">
 								  <ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{route('home')}}"><i class="ti-home"></i></a></li>
-									<li class="breadcrumb-item active" aria-current="page">MASOKO</li>
+									<li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
 								  </ol>
 								</nav>
 							</div>
@@ -182,7 +184,7 @@
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<div class="sec-heading-flex pl-2 pr-2">
 								<div class="sec-heading-flex-one">
-									<h2>Get more from MASOKO</h2>
+									<h2>Get more from {{$title}}</h2>
 								</div>
 								<div class="sec-heading-flex-last">
 									<a href="#" class="btn btn-theme">View More<i class="ti-arrow-right ml-2"></i></a>
