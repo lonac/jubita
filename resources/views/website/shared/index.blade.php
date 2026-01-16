@@ -109,13 +109,13 @@
 										<ul class="nav-menu">
 										
 											<li class="active"><a href="{{route('home')}}">Nyumbani </a></li>
-                                            <li><a href="{{route('masoko.index')}}"><span>Masoko</span></a></li>
-                                            <li><a href="{{route('uchumi.index')}}"><span>Uchumi</span></a></li>
-                                            <li><a href="{{route('biashara.index')}}"><span>Biashara</span></a></li>
-                                            <li><a href="{{route('teknolojia.index')}}"><span>Teknolojia</span></a></li>
-                                            <li><a href="{{route('jiopolitiki.index')}}"><span>Jiopolitiki</span></a></li>
-                                            <li><a href="{{route('fedha.index')}}"><span>Fedha</span></a></li>
-											<li><a href="{{route('mawasiliano.index')}}"><span>Mawasiliano</span></a></li>
+                                            <li><a href="{{route('masoko')}}"><span>Masoko</span></a></li>
+                                            <li><a href="{{route('uchumi')}}"><span>Uchumi</span></a></li>
+                                            <li><a href="{{route('biashara')}}"><span>Biashara</span></a></li>
+                                            <li><a href="{{route('teknolojia')}}"><span>Teknolojia</span></a></li>
+                                            <li><a href="{{route('jiopolitiki')}}"><span>Jiopolitiki</span></a></li>
+                                            <li><a href="{{route('fedha')}}"><span>Fedha</span></a></li>
+											<li><a href="{{route('mawasiliano')}}"><span>Mawasiliano</span></a></li>
 										
 										</ul>
 

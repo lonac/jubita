@@ -13,8 +13,7 @@ class MawasilianoController extends Controller
     public function index()
     {
        // return view('website.pages.mawasiliano.index');
-       $title = "MAWASILIANO";
-        return view('website.shared.blog_view',compact('title'));
+      
 
     }
 

@@ -7,6 +7,8 @@
 @section('content')
 
 
+
+
 	<!-- =========================== Breadcrumbs =================================== -->
     <div class="breadcrumbs_wrap dark">
 				<div class="container">
@@ -29,153 +31,92 @@
 			</div>
 			<!-- =========================== Breadcrumbs =================================== -->
 			
-			
-			<!-- =========================== News & Articles =================================== -->
-			<section class="gray">
+
+
+			<!-- =========================== latest insight Start =================================== -->
+			<section class="jubita-forbes-wrapper">
 				<div class="container">
-					<div class="row">
-	
-						<div class="col-lg-8 col-md-12 col-sm-12">
-							<article class="blog-news big-detail-wrap">
-								<div class="blog-detail-wrap">
-								
-									<!-- Featured Image -->
-									<figure class="img-holder">
-										<a href="blog-detail.html"><img src="{{asset('assets/img/img.webp')}}" class="img-responsive" alt="News"></a>
-										<div class="blog-post-date theme-bg">
-											Mar 12, 2017
-										</div>
-									</figure>
-									
-									<!-- Blog Content -->
-									<div class="full blog-content">
-										<div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 comment-detail </div>
-										<a href="blog-detail.html"><h3>Helping Kids Grow Up Stronger</h3></a>
-										<div class="blog-text">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-											
-										
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-											<div class="post-meta">Filed Under: <span class="category"><a href="#" class="theme-cl">Technology</a></span></div>
-										</div>
-										
-									
-										
-									</div>
-									<!-- Blog Content -->
-									
-								</div>
-							</article>
-							
-						
-									
-						</div>
-						
-						<!-- Sidebar Start -->
-						<div class="col-lg-4 col-md-12 col-sm-12">
-							<div class="blog-sidebar">
-								
-								<div class="side-widget">
-									<div class="side-widget-header">
-										<h4><i class="ti-check-box"></i>Latest Blogs</h4>
-									</div>
-									<div class="side-widget-body p-t-10">
-										<div class="side-list">
-											<ul class="side-blog-list">
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Freel Documentry</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Nov 26, 2017</span> | <a href="#" rel="tag">Documentry</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Preez Food Rock</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Oct 10, 2017</span> | <a href="#" rel="tag">Food</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Cricket Buzz High</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Oct 07, 2017</span> | <a href="#" rel="tag">Sport</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Tour travel Tick</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Sep 27, 2017</span> | <a href="#" rel="tag">Travel</a>					
-														</div>
-													</div>
-												</li>
 
-                                                <li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Freel Documentry</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Nov 26, 2017</span> | <a href="#" rel="tag">Documentry</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Preez Food Rock</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Oct 10, 2017</span> | <a href="#" rel="tag">Food</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Cricket Buzz High</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Oct 07, 2017</span> | <a href="#" rel="tag">Sport</a>					
-														</div>
-													</div>
-												</li>
-												
-												<li>
-													
-													<div class="blog-list-info">
-														<h5><a href="#" title="blog">Tour travel Tick</a></h5>
-														<div class="blog-post-meta">
-															<span class="updated">Sep 27, 2017</span> | <a href="#" rel="tag">Travel</a>					
-														</div>
-													</div>
-												</li>
+				
+					<div class="jubita-forbes-cards rounded-section p-4">
+						<div class="row">
 
-											</ul>
-										</div>
-									</div>
+						
+							<!-- CENTER COLUMN FEATURE -->
+							<div class="col-lg-8 col-md-12">
+								<h5 class="forbes-cat-title">Lifestyle</h5>
+
+								<div class="forbes-feature-card">
+									<img src="{{ asset('assets/img/tz.jpg') }}" alt="Lifestyle" class="img-fluid rounded">
+									<h3><a href="#">How Urban Living Is Changing Modern Tanzanian Culture</a></h3>
+									<p class="author">By Jubita Lifestyle Editor</p>
+									<a href="#" class="btn btn-theme btn-sm mt-2">Read More</a>
 								</div>
-								
 							</div>
+
+							<!-- RIGHT COLUMN -->
+							<div class="col-lg-4 col-md-6">
+								<h5 class="forbes-cat-title">Business</h5>
+
+								<ul class="forbes-list-card">
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Startups" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Startups</span>
+												<h6><a href="#">Tech Startups Raising Capital</a></h6>
+												<small>By B. Kweka</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Markets" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Markets</span>
+												<h6><a href="#">Stock Market Shows Positive Signs</a></h6>
+												<small>By Jubita Finance</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Energy" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Energy</span>
+												<h6><a href="#">Renewable Energy Projects Expand</a></h6>
+												<small>By Energy Desk</small>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="row align-items-center">
+											<div class="col-4">
+												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Trade" class="img-fluid rounded"></a>
+											</div>
+											<div class="col-8">
+												<span class="mini-cat">Trade</span>
+												<h6><a href="#">Regional Trade Agreements Explained</a></h6>
+												<small>By Editorial Team</small>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
 						</div>
-						
 					</div>
+
 				</div>
 			</section>
-			<!-- =========================== News & Articles =================================== -->
-
-            
+			
+	
 			<!-- ======================== Business/Sell/Buy Start ==================== -->
 			<section class="">
 				<div class="container">

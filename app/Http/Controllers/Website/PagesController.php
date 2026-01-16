@@ -23,6 +23,14 @@ class PagesController extends Controller
         return view('website.shared.blog_view',compact('title'));
     }
 
+
+    public function fedha()
+    {
+        $title = "FEDHA";
+        return view('website.shared.blog_view',compact('title'));
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */

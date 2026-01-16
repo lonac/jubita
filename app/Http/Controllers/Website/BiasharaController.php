@@ -14,8 +14,7 @@ class BiasharaController extends Controller
     {
        // return view('website.pages.biashara.index');
 
-       $title = "BIASHARA";
-        return view('website.shared.blog_view',compact('title'));
+      
 
     }
 

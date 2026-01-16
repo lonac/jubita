@@ -14,8 +14,7 @@ class FedhaController extends Controller
     {
        // return view('website.pages.fedha.index');
 
-       $title = "FEDHA";
-        return view('website.shared.blog_view',compact('title'));
+      
 
     }
 
