@@ -10605,3 +10605,158 @@ ul.tp-list li {
 }
 
 
+
+
+
+/* =============================
+   JUBITA BANNER BASE
+============================= */
+
+.jubita-banner {
+    background: #f4f6f8;
+    padding: 40px 0;
+}
+
+.jubita-banner img {
+    width: 100%;
+    display: block;
+}
+
+/* =============================
+   LEFT & RIGHT SIDEBARS
+============================= */
+
+/* =============================
+   JUBITA BANNER SECTION
+============================= */
+.jubita-banner {
+    background-color: #f8f9fa; /* light gray background for the banner section */
+    padding: 40px 0;
+    position: relative;
+}
+
+/* Bottom demarcation line */
+.jubita-banner::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #0d6efd; /* blue line for separation */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Container styling */
+.jubita-banner .container {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* LEFT SIDEBAR */
+.jubita-sidebar {
+    padding: 0;
+}
+
+.sidebar-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #111827;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 5px;
+}
+
+.sidebar-blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-blog-list li {
+    margin-bottom: 15px;
+}
+
+.sidebar-blog-list li a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111827;
+    text-decoration: none;
+}
+
+.sidebar-blog-list li a:hover {
+    color: #0d6efd;
+}
+
+.sidebar-meta {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 3px;
+}
+
+/* RIGHT SIDEBAR */
+.right-sidebar .post-grid-layout {
+    margin-bottom: 20px;
+}
+
+.post-article-header img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.post-article-cat {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #0d6efd;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.post-short-des a {
+    color: #111827;
+    text-decoration: none;
+}
+
+.post-short-des a:hover {
+    color: #0d6efd;
+}
+
+.post-article-footer {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+/* CENTER POST */
+.blog-news.big-detail-wrap figure.img-holder img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* MOBILE: center image first */
+@media (max-width: 991px) {
+    .jubita-banner .order-lg-2 {
+        order: -1; /* center content goes first */
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

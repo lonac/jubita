@@ -4,128 +4,183 @@
 
 
         <!-- =========================== Banner Start =================================== -->
-        <section class="jubita-banner">
-    <div class="container">
-        <div class="row">
-            <!-- LEFT SIDEBAR -->
-            <div class="col-lg-3 col-md-12 order-lg-1 order-2">
-                <div class="jubita-sidebar">
-                    <h4 class="sidebar-title">Hivi Punde</h4>
-                    <ul class="sidebar-blog-list">
-                        <li>
-                            <a href="#">The full installation of business and its real articulated articles</a>
-                            <div class="sidebar-meta">
-                                By Daniel Dax · Nov 26, 2017 · Documentary
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Simply dummy text of the printing and typesetting industry</a>
-                            <div class="sidebar-meta">
-                                By Jane Doe · Oct 10, 2017 · Food
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Articulated articles to enhance sustainable energy</a>
-                            <div class="sidebar-meta">
-                                By John Smith · Oct 07, 2017 · Sports
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Simply dummy text of the printing and typesetting industry</a>
-                            <div class="sidebar-meta">
-                                By Jane Doe · Oct 10, 2017 · Food
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Articulated articles to enhance sustainable energy</a>
-                            <div class="sidebar-meta">
-                                By John Smith · Oct 07, 2017 · Sports
-                            </div>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </div>
+			<section class="gray">
+				<div class="container">
+					<div class="row">
 
-            <!-- CENTER POST -->
-            <div class="col-lg-6 col-md-12 col-sm-12 order-lg-2 order-1">
-                <article class="blog-news big-detail-wrap">
-                    <div class="blog-detail-wrap">
-                        <!-- Featured Image -->
-                        <figure class="img-holder">
-                            <a href="#"><img src="{{asset('assets/img/img.webp')}}" class="img-responsive" alt="News"></a>
-                            <div class="blog-post-date theme-bg">Mar 12, 2017</div>
-                        </figure>
+                    <!-- Left Start -->
+						<div class="col-lg-3 col-md-12 col-sm-12">
+							<div class="blog-sidebar">
+								
+								<div class="side-widget">
+									<div class="side-widget-header">
+										<h4><i class="ti-check-box"></i>Hivi Punde</h4>
+									</div>
+									<div class="side-widget-body p-t-10">
+										<div class="side-list">
+											<ul class="side-blog-list">
+												<li>
+													<div class="blog-list-info">
+														<h5><a href="#" title="blog">The full installation of business and its real articulated artciles to enhance sustainable energy</a></h5>
+														<div class="blog-post-meta">
+															<span class="updated">Nov 26, 2017</span> | <a href="#" rel="tag">Documentry</a>					
+														</div>
+													</div>
+												</li>
+												
+												<li>
+													
+													<div class="blog-list-info">
+														<h5><a href="#" title="blog">simply dummy text of the printing and typesetting industry.</a></h5>
+														<div class="blog-post-meta">
+															<span class="updated">Oct 10, 2017</span> | <a href="#" rel="tag">Food</a>					
+														</div>
+													</div>
+												</li>
+												
+												<li>
+													<div class="blog-list-info">
+														<h5><a href="#" title="blog">Articulated artciles to enhance sustainable energy</a></h5>
+														<div class="blog-post-meta">
+															<span class="updated">Oct 07, 2017</span> | <a href="#" rel="tag">Sport</a>					
+														</div>
+													</div>
+												</li>
+												
 
-                        <!-- Blog Content -->
-                        <div class="full blog-content">
-                            <div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 comment-detail </div>
-                            <a href="#"><h3>Helping Kids Grow Up Stronger</h3></a>
-                            <div class="blog-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>                                        
-                                    <br> <a href="#">Read More</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								<div class="side-widget">
+									<div class="side-widget-header">
+										<h4><i class="ti-briefcase"></i>Top Categories</h4>
+									</div>
+									<div class="side-widget-body p-t-10 p-b-0">
+										<div class="side-list">
+											<ul class="category-list">
+												<li><a href="#">Biashara <span>4</span></a></li>
+												<li><a href="#">Uchumi <span>7</span></a></li>
+												<li><a href="#">Jiopolitiki <span>10</span></a></li>
+												<li><a href="#">Masoko <span>55</span></a></li>
+												<li><a href="#">Teknolojia<span>17</span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+	
+                        <!-- center post -->
+						<div class="col-lg-6 col-md-12 col-sm-12">
+							<article class="blog-news big-detail-wrap">
+								<div class="blog-detail-wrap">
+								
+									<!-- Featured Image -->
+									<figure class="img-holder">
+										<a href="#"><img src="{{asset('assets/img/img.webp')}}" class="img-responsive" alt="News"></a>
+										<div class="blog-post-date theme-bg">
+											Mar 12, 2017
+										</div>
+									</figure>
+									
+									<!-- Blog Content -->
+									<div class="full blog-content">
+										<div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 comment-detail </div>
+										<a href="#"><h3>Helping Kids Grow Up Stronger</h3></a>
+										<div class="blog-text">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>										
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.
+                                                <br> <a href="#">Read More</a>
 
-            <!-- RIGHT SIDEBAR -->
-            <div class="col-lg-3 col-md-12 col-sm-12 order-lg-3 order-3">
-                <div class="right-sidebar">
-                    <ul class="side-blog-list">
-                        <li>
-                            <article class="post-grid-layout">
-                                <a href="#">
-                                    <div class="post-article-header">
-                                        <img src="{{asset('assets/img/tr.webp')}}" class="img-fluid mx-auto" alt="">
-                                    </div>
-                                </a>
-                                <div class="post-article box-inner">
-                                    <div class="post-grid-caption-header">
-                                        <span class="post-article-cat theme-bg">Biashara</span>
-                                        <div class="post-short-des">
-                                            <a href="#">Simply dummy text of the printing and typesetting industry.</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-article-footer">
-                                    <div class="post-author"><a href="#" class="theme-cl">A. Kushar</a></div>
-                                    <span><i class="ti-calendar mr-1"></i>3 days ago</span>
-                                </div>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="post-grid-layout">
-                                <a href="#">
-                                    <div class="post-article-header">
-                                        <img src="{{asset('assets/img/b.webp')}}" class="img-fluid mx-auto" alt="">
-                                    </div>
-                                </a>
-                                <div class="post-article box-inner">
-                                    <div class="post-grid-caption-header">
-                                        <span class="post-article-cat theme-bg">Uchumi</span>
-                                        <div class="post-short-des">
-                                            <a href="#">Simply dummy text of the printing and typesetting industry.</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-article-footer">
-                                    <div class="post-author"><a href="#" class="theme-cl">B Lonac</a></div>
-                                    <span><i class="ti-calendar mr-1"></i>2 Min ago</span>
-                                </div>
-                            </article>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                            </p>
+										</div>
+										
+									</div>
+									<!-- Blog Content -->
+									
+								</div>
+							</article>
+									
+						</div>
+						
+						<!-- Right Sidebar -->
+						<div class="col-lg-3 col-md-12 col-sm-12">
+							<div class="blog-sidebar">
+								
+								<div class="side-widget">
+									
+									<div class="side-widget-body p-t-10">
+										<div class="side-list">
+											<ul class="side-blog-list">
+												<li>
+                                                    <article class="post-grid-layout">
+                                                        <a href="#">
+                                                            <div class="post-article-header">
+                                                                <img src="{{asset('assets/img/tr.webp')}}" class="img-fluid mx-auto" alt="">
+                                                            </div>
+                                                        </a>
+                                                        <div class="post-article box-inner">
+                                                            <div class="post-grid-caption-header">
+                                                                <span class="post-article-cat theme-bg">Biashara</span>
+                                                                <div class="post-short-des"> <a href="#">
+                                                                    simply dummy text of the printing and typesetting industry. </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-article-footer">
+                                                            <div class="post-author">
+                                                                <a href="#" class="theme-cl">
+                                                                    A. Kushar 
+                                                                </a>
+                                                            </div>
+                                                            <span><i class="ti-calendar mr-1"></i>3 days ago</span>
+                                                        </div>
+                                                    </article>
+												</li>
+												
+												<li>
+                                                    <article class="post-grid-layout">
+                                                        <a href="#">
+                                                            <div class="post-article-header">
+                                                                <img src="{{asset('assets/img/b.webp')}}" class="img-fluid mx-auto" alt="">
+                                                            </div>
+                                                        </a>
+                                                        <div class="post-article box-inner">
+                                                            <div class="post-grid-caption-header">
+                                                                <span class="post-article-cat theme-bg">Uchumi</span>
+                                                                <div class="post-short-des"> <a href="#">
+                                                                    simply dummy text of the printing and typesetting industry. </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="post-article-footer">
+                                                            <div class="post-author">
+                                                                <a href="#" class="theme-cl">
+                                                                    B Lonac
+                                                                </a>
+                                                            </div>
+                                                            <span><i class="ti-calendar mr-1"></i>2 Min ago</span>
+                                                        </div>
+                                                    </article>
+												</li>
+											
+											</ul>
+										</div>
+									</div>
 
-        </div>
-    </div>
-</section>
-
-
+								</div>
+								
+						
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</section>
 		<!-- =========================== Banner Ends =================================== -->
         
 
