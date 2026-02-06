@@ -48,12 +48,22 @@ Route::middleware('auth')->namespace('App\Http\Controllers')->group(function () 
 
 
 
-     //Expenses 
-    Route::prefix('expenses')->name('expenses.')->group(function () {
-        Route::resource('expenses','ExpenseController');
+     //content 
+    Route::prefix('content')->name('content.')->group(function () {
+        Route::resource('content','Content\ContentController');
+    });
+
+      //content 
+      Route::prefix('product')->name('product.')->group(function () {
+        Route::resource('product','Product\ProductController');
     });
 
 
+    //Market 
+    Route::prefix('market')->name('market.')->group(function () {
+        Route::resource('market_price','Market\MarketPriceController');
+    });
+    
 
 
     
@@ -63,7 +73,7 @@ Route::middleware('auth')->namespace('App\Http\Controllers')->group(function () 
         Route::resource('categories','Configure\CategoryController');
         Route::resource('post_type','Configure\PostTypeController');
         Route::resource('role','Configure\RoleController');
-
+        Route::resource('commodity_type','Configure\CommodityTypeController');
     });
 
 

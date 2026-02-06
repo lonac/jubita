@@ -6,26 +6,26 @@
             <li>
                 <a href="#" class="waves-effect"> <i class="fa fa-globe fa-fw"></i> <span class="hide-menu">Contents<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">  
-                    <li> <a href="#">Registrations</a> </li>
-                    <li> <a href="#">List</a> </li>
+                    <li> <a href="{{route('content.content.create')}}">Registrations</a> </li>
+                    <li> <a href="{{route('content.content.index')}}">List</a> </li>
                 </ul>
-            </li>
+            </li> 
 
 
             <li>
                 <a href="#" class="waves-effect"> <i class="fa fa-list fa-fw"></i> <span class="hide-menu">Products<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">  
-                    <li> <a href="#">Registrations</a> </li>
-                    <li> <a href="#">List</a> </li>
+                    <li> <a href="{{route('product.product.create')}}">Registrations</a> </li>
+                    <li> <a href="{{route('product.product.index')}}">List</a> </li>
                 </ul>
             </li>
 
-
-            <li>
+            
+            <li> 
                 <a href="#" class="waves-effect"> <i class="fa fa-money fa-fw"></i> <span class="hide-menu">Markets<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">  
-                    <li> <a href="#">Registrations</a> </li>
-                    <li> <a href="#">List</a> </li>
+                    <li> <a href="{{route('market.market_price.create')}}">Registrations</a> </li>
+                    <li> <a href="{{route('market.market_price.index')}}">List</a> </li>
                 </ul>
             </li>
 
@@ -40,6 +40,7 @@
                 <ul class="nav nav-second-level"> 
                     <li> <a href="{{route('settings.categories.index')}}">Categories</a> </li>
                     <li> <a href="{{route('settings.post_type.index')}}">Post Types</a> </li> 
+                    <li> <a href="{{route('settings.commodity_type.index')}}">Commodity Type</a> </li>
                     <li> <a href="{{route('settings.role.index')}}">Roles & Permissions</a> </li>
                     <li><a href="#">Passwords</a></li>
                 </ul>

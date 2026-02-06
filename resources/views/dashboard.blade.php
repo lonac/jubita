@@ -17,21 +17,21 @@
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="white-box text-center bg-warning text-white rounded">
-                <h1 class="counter">-</h1>
+                <h1 class="counter">265</h1>
                 <p>Posts</p>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
             <div class="white-box text-center bg-megna text-white rounded">
-                <h1 class="counter">-</h1>
+                <h1 class="counter">54</h1>
                 <p>Pending</p>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
             <div class="white-box text-center bg-primary text-white rounded">
-                <h1 class="counter">-</h1>
+                <h1 class="counter">250</h1>
                 <p>Published</p>
             </div>
         </div>
@@ -39,7 +39,7 @@
 
         <div class="col-md-3 col-sm-6">
             <div class="white-box text-center bg-success text-white rounded">
-                <h1 class="counter">-</h1>
+                <h1 class="counter">17,896</h1>
                 <p>Visitors</p>
             </div>
         </div>
