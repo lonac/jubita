@@ -995,6 +995,17 @@ img.avatar-60 {
 img.avatar-70 {
     max-width:70px;
 }
+
+
+
+
+
+
+
+
+
+
+
 /*-------------- Global Settings: Alerts & Notification --------------*/
 .alert-primary {
     color: #0055ff;
@@ -3883,7 +3894,7 @@ nav a {
     min-height: 100px;
     display: flex;
 	position: relative;
-    align-items: center;
+    align-items: left;
 }
 .search_blocks .form-control{
     border: none;
@@ -8984,7 +8995,7 @@ ul.footer_social_links li a {
     color:#333333 !important;
 }
 .header_nav.header-fixed{
-    position: fixed;
+    position: relative;
     z-index: 999;
     width: 100%;
     top: 0;
@@ -9770,6 +9781,28 @@ ul.tp-list li {
         font-size: 14px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10744,6 +10777,115 @@ ul.tp-list li {
         margin-bottom: 20px;
     }
 }
+
+/* ===========================
+   NAVIGATION & MEGA MENU ONLY
+=========================== */
+
+.header_nav {
+    background: #111; /* dark black background for economic theme */
+    border-bottom: 1px solid #222;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: flex-start; /* left to right alignment */
+    gap: 30px;
+}
+
+.nav-menu > li {
+    position: relative;
+}
+
+.nav-menu > li > a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 20px 0;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-menu > li > a:hover {
+    color: #00bfff; /* highlight on hover */
+}
+
+/* ===========================
+   MEGA MENU
+=========================== */
+.mega-parent {
+    position: static !important;
+}
+
+.mega-menu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #18181c; /* dark dropdown background */
+    padding: 60px 80px;
+    display: none;
+    border-top: 2px solid #00bfff;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    z-index: 999;
+}
+
+@media (min-width: 992px) {
+    .mega-parent:hover .mega-menu {
+        display: block; /* show on hover */
+    }
+}
+
+.mega-row {
+    display: flex;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+.mega-col h4 {
+    color: #00bfff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.mega-col a {
+    display: block;
+    padding: 8px 0;
+    color: #ccc;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.mega-col a:hover {
+    color: #fff;
+    padding-left: 8px;
+}
+
+/* ===========================
+   RESPONSIVE NAV
+=========================== */
+@media (max-width: 991px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 0;
+    }
+    .mega-menu {
+        position: relative;
+        width: 100%;
+        padding: 30px;
+    }
+    .mega-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+
+
 
 
 

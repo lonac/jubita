@@ -6,13 +6,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('App\Http\Controllers\Website')->group(function () {
     Route::get('/', 'PagesController@index')->name('home');
+    Route::get('/article/{slug}', 'PagesController@showArticle')->name('article.show');
     Route::get('/masoko', 'PagesController@masoko')->name('masoko');
     Route::get('/biashara', 'PagesController@biashara')->name('biashara');
     Route::get('/fedha', 'PagesController@fedha')->name('fedha');
     Route::get('/jiopolitiki', 'PagesController@jiopolitiki')->name('jiopolitiki');
     Route::get('/mawasiliano', 'PagesController@mawasiliano')->name('mawasiliano');
-    Route::get('/teknolojia', 'PagesController@teknolojia')->name('teknolojia');
+    Route::get('/teknolojia', 'TecknolojiaController@index')->name('teknolojia');
     Route::get('/uchumi', 'PagesController@uchumi')->name('uchumi');
+    Route::get('/advisory', 'AdvisoryController@index')->name('advisory');
+    Route::get('/reviews', 'ReviewsController@index')->name('reviews');
 
 });
 
@@ -24,7 +27,8 @@ Route::prefix('website')->namespace('App\Http\Controllers\Website')->group(funct
     Route::resource('mawasiliano', 'MawasilianoController');
     Route::resource('teknolojia', 'TecknolojiaController');
     Route::resource('uchumi', 'UchumiController');
-
+    Route::resource('advisory', 'AdvisoryController');
+    Route::resource('reviews', 'ReviewsController');
 });
 
 

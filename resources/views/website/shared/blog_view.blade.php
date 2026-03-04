@@ -44,69 +44,48 @@
 						
 							<!-- CENTER COLUMN FEATURE -->
 							<div class="col-lg-8 col-md-12">
-								<h5 class="forbes-cat-title">Lifestyle</h5>
+								<h5 class="forbes-cat-title">Featured in {{ $title }}</h5>
 
+								@if($featuredPost)
 								<div class="forbes-feature-card">
-									<img src="{{ asset('assets/img/tz.jpg') }}" alt="Lifestyle" class="img-fluid rounded">
-									<h3><a href="#">How Urban Living Is Changing Modern Tanzanian Culture</a></h3>
-									<p class="author">By Jubita Lifestyle Editor</p>
-									<a href="#" class="btn btn-theme btn-sm mt-2">Read More</a>
+									<img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : asset('assets/img/tz.jpg') }}" alt="{{ $featuredPost->title }}" class="img-fluid rounded">
+									<h3><a href="{{ route('article.show', $featuredPost->slug) }}">{{ $featuredPost->title }}</a></h3>
+									<p class="author">By {{ $featuredPost->author?->name ?? 'Jubita Desk' }}</p>
+									<p class="excerpt">{{ $featuredPost->excerpt }}</p>
+									<a href="{{ route('article.show', $featuredPost->slug) }}" class="btn btn-theme btn-sm mt-2">Read More</a>
 								</div>
+								@else
+								<div class="text-center p-5">
+									<p>No featured articles in this category yet.</p>
+								</div>
+								@endif
 							</div>
 
 							<!-- RIGHT COLUMN -->
 							<div class="col-lg-4 col-md-6">
-								<h5 class="forbes-cat-title">Business</h5>
+								<h5 class="forbes-cat-title">Recent Updates</h5>
 
 								<ul class="forbes-list-card">
+									@foreach($categoryPosts as $post)
 									<li>
 										<div class="row align-items-center">
 											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Startups" class="img-fluid rounded"></a>
+												<a href="{{ route('article.show', $post->slug) }}">
+													<img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://via.placeholder.com/80x80' }}" alt="{{ $post->title }}" class="img-fluid rounded">
+												</a>
 											</div>
 											<div class="col-8">
-												<span class="mini-cat">Startups</span>
-												<h6><a href="#">Tech Startups Raising Capital</a></h6>
-												<small>By B. Kweka</small>
+												<span class="mini-cat">{{ $post->category?->name }}</span>
+												<h6><a href="{{ route('article.show', $post->slug) }}">{{ Str::limit($post->title, 50) }}</a></h6>
+												<small>By {{ $post->author?->name ?? 'Jubita Desk' }}</small>
 											</div>
 										</div>
 									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Markets" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Markets</span>
-												<h6><a href="#">Stock Market Shows Positive Signs</a></h6>
-												<small>By Jubita Finance</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Energy" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Energy</span>
-												<h6><a href="#">Renewable Energy Projects Expand</a></h6>
-												<small>By Energy Desk</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Trade" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Trade</span>
-												<h6><a href="#">Regional Trade Agreements Explained</a></h6>
-												<small>By Editorial Team</small>
-											</div>
-										</div>
-									</li>
+									@endforeach
+
+									@if($categoryPosts->isEmpty() && !$featuredPost)
+									<li>No recent articles found.</li>
+									@endif
 								</ul>
 							</div>
 

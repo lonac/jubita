@@ -2,960 +2,304 @@
 
 @section('content')
 
-
-        <!-- =========================== Banner Start =================================== -->
-        <section class="jubita-banner">
+<!-- =========================== Hero Section Start =================================== -->
+<section class="p-0 border-bottom">
     <div class="container">
-        <div class="row">
-            <!-- LEFT SIDEBAR -->
-            <div class="col-lg-3 col-md-12 order-lg-1 order-2">
-                <div class="jubita-sidebar">
-                    <h4 class="sidebar-title">Hivi Punde</h4>
-                    <ul class="sidebar-blog-list">
-                        <li>
-                            <a href="#">The full installation of business and its real articulated articles</a>
-                            <div class="sidebar-meta">
-                                By Daniel Dax · Nov 26, 2017 · Documentary
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Simply dummy text of the printing and typesetting industry</a>
-                            <div class="sidebar-meta">
-                                By Jane Doe · Oct 10, 2017 · Food
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Articulated articles to enhance sustainable energy</a>
-                            <div class="sidebar-meta">
-                                By John Smith · Oct 07, 2017 · Sports
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Simply dummy text of the printing and typesetting industry</a>
-                            <div class="sidebar-meta">
-                                By Jane Doe · Oct 10, 2017 · Food
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">Articulated articles to enhance sustainable energy</a>
-                            <div class="sidebar-meta">
-                                By John Smith · Oct 07, 2017 · Sports
-                            </div>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </div>
-
-            <!-- CENTER POST -->
-            <div class="col-lg-6 col-md-12 col-sm-12 order-lg-2 order-1">
-                <article class="blog-news big-detail-wrap">
-                    <div class="blog-detail-wrap">
-                        <!-- Featured Image -->
-                        <figure class="img-holder">
-                            <a href="#"><img src="{{asset('assets/img/img.webp')}}" class="img-responsive" alt="News"></a>
-                            <div class="blog-post-date theme-bg">Mar 12, 2017</div>
-                        </figure>
-
-                        <!-- Blog Content -->
-                        <div class="full blog-content">
-                            <div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 comment-detail </div>
-                            <a href="#"><h3>Helping Kids Grow Up Stronger</h3></a>
-                            <div class="blog-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>                                        
-                                    <br> <a href="#">Read More</a>
-                                </p>
-                            </div>
+        <div class="row no-gutters">
+            
+            <!-- Main Featured Story -->
+            <div class="col-lg-8 col-md-12 border-right pr-lg-5 pt-4">
+                @if($featuredPost)
+                <article class="forbes-card mb-4">
+                    <div class="meta-info mb-2">
+                        <span class="text-danger font-weight-bold">ILIOCHAGULIWA</span> | {{ strtoupper($featuredPost->category?->name) }}
+                    </div>
+                    <a href="{{ route('article.show', $featuredPost->slug) }}" class="text-decoration-none">
+                        <h1 class="mb-3" style="font-weight: 900; line-height: 1.0; letter-spacing: -2px; font-size: 3.8rem; color: #000;">{{ $featuredPost->title }}</h1>
+                    </a>
+                    <figure class="mb-4 position-relative overflow-hidden rounded-0">
+                        <a href="{{ route('article.show', $featuredPost->slug) }}">
+                            <img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200' }}" class="img-fluid w-100 transition-scale" alt="{{ $featuredPost->title }}" style="max-height: 500px; object-fit: cover;">
+                        </a>
+                    </figure>
+                    <div class="post-excerpt mb-4">
+                        <p class="lead text-dark" style="font-size: 1.25rem; line-height: 1.6; font-family: var(--forbes-font-serif); font-weight: 400;">{{ Str::limit($featuredPost->excerpt, 250) }}</p>
+                    </div>
+                    <div class="d-flex align-items-center border-top pt-3">
+                        <div class="meta-info mb-0" style="font-size: 13px; letter-spacing: 0.5px;">
+                            Na <span class="text-dark font-weight-bold">{{ strtoupper($featuredPost->author?->name ?? 'Jubita Desk') }}</span> | {{ $featuredPost->published_at?->format('d M, Y') ?? $featuredPost->created_at->format('d M, Y') }}
                         </div>
                     </div>
                 </article>
+                @endif
             </div>
 
-            <!-- RIGHT SIDEBAR -->
-            <div class="col-lg-3 col-md-12 col-sm-12 order-lg-3 order-3">
-                <div class="right-sidebar">
-                    <ul class="side-blog-list">
-                        <li>
-                            <article class="post-grid-layout">
-                                <a href="#">
-                                    <div class="post-article-header">
-                                        <img src="{{asset('assets/img/tr.webp')}}" class="img-fluid mx-auto" alt="">
-                                    </div>
-                                </a>
-                                <div class="post-article box-inner">
-                                    <div class="post-grid-caption-header">
-                                        <span class="post-article-cat theme-bg">Biashara</span>
-                                        <div class="post-short-des">
-                                            <a href="#">Simply dummy text of the printing and typesetting industry.</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-article-footer">
-                                    <div class="post-author"><a href="#" class="theme-cl">A. Kushar</a></div>
-                                    <span><i class="ti-calendar mr-1"></i>3 days ago</span>
-                                </div>
-                            </article>
-                        </li>
-                        <li>
-                            <article class="post-grid-layout">
-                                <a href="#">
-                                    <div class="post-article-header">
-                                        <img src="{{asset('assets/img/b.webp')}}" class="img-fluid mx-auto" alt="">
-                                    </div>
-                                </a>
-                                <div class="post-article box-inner">
-                                    <div class="post-grid-caption-header">
-                                        <span class="post-article-cat theme-bg">Uchumi</span>
-                                        <div class="post-short-des">
-                                            <a href="#">Simply dummy text of the printing and typesetting industry.</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-article-footer">
-                                    <div class="post-author"><a href="#" class="theme-cl">B Lonac</a></div>
-                                    <span><i class="ti-calendar mr-1"></i>2 Min ago</span>
-                                </div>
-                            </article>
-                        </li>
-                    </ul>
+            <!-- The Latest Sidebar -->
+            <div class="col-lg-4 col-md-12 pl-lg-5 pt-4 bg-light">
+                <div class="cat-header">
+                    <h2 class="m-0" style="font-size: 20px;">Hivi Punde</h2>
                 </div>
+                <ul class="sidebar-list p-0" style="list-style: none;">
+                    @forelse($latestNews as $news)
+                    <li class="py-3 border-bottom">
+                        <div class="meta-info text-primary mb-1" style="font-size: 11px; font-weight: 800; letter-spacing: 1px;">{{ strtoupper($news->category?->name) }}</div>
+                        <a href="{{ route('article.show', $news->slug) }}" class="h5 font-weight-bold text-dark d-block" style="line-height: 1.3; font-size: 17px; text-decoration: none;">{{ $news->title }}</a>
+                        <div class="meta text-muted small mt-2" style="font-weight: 600;">{{ $news->published_at?->diffForHumans() ?? $news->created_at->diffForHumans() }}</div>
+                    </li>
+                    @empty
+                    <li class="py-3 text-muted small">Hakuna habari mpya kwa sasa.</li>
+                    @endforelse
+                </ul>
             </div>
 
         </div>
     </div>
 </section>
-
-
-		<!-- =========================== Banner Ends =================================== -->
-        
-
-			<!-- =========================== More from Jubita =================================== -->
-			<section class="jubita-featured-story">
-				<div class="container-fluid">
-					<div class="row align-items-center no-gutters">
-
-					<!-- LEFT COLUMN -->
-					<div class="col-lg-6 col-md-12 left-column">
-						<div class="story-content">
-						<span class="story-category">Business</span>
-						<h2 class="story-title">Tanzania's Economy Shows Strong Recovery in 2026</h2>
-						<a href="#" class="btn-story">Read Full Story</a>
-						</div>
-					</div>
-
-					<!-- RIGHT COLUMN -->
-					<div class="col-lg-6 col-md-12 right-column">
-						<div class="story-image">
-						<img src="{{ asset('assets/img/tz.jpg') }}" alt="Tanzania Economy" class="img-fluid">
-						</div>
-					</div>
-
-					</div>
-				</div>
-			</section>
-
-
-
-			<!-- ======================== Business/Sell/Buy Start ==================== -->
-			<section class="">
-				<div class="container">
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="sec-heading-flex pl-2 pr-2">
-								<div class="sec-heading-flex-one">
-									<h2>Biashara na Bidhaa</h2>
-								</div>
-								<div class="sec-heading-flex-last">
-									<a href="#" class="btn btn-theme">View More<i class="ti-arrow-right ml-2"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12">
-							<div class="owl-carousel products-slider owl-theme">
-							
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag hot">Hot</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag new">New</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_offer_sell">Save 10% Off</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag hot">Hot</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag new">New</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-							
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ======================== Business/Sell/Buy End ==================== -->
-
-			
-			<div class="clearfix"></div>
-
-			<!-- =========================== Start Highlights =================================== -->
-			<section class="jubita-blog-section">
-				<div class="container">
-
-					<!-- Section Header -->
-					<div class="section-header text-center mb-4">
-					<h2 class="section-title">Politics</h2>
-					<div class="section-divider"></div>
-					</div>
-
-					<!-- Unified Row -->
-					<div class="row justify-content-center">
-						<div class="col-lg-10">
-
-							<div class="blog-unified-card d-flex flex-wrap">
-
-							<!-- LEFT FEATURE STORY -->
-							<div class="col-lg-5 col-md-12 feature-side">
-								<div class="feature-card">
-								<div class="feature-img">
-									<img src="{{asset('assets/img/drsamia.jpg')}}" alt="President Dr. Samia">
-								</div>
-								<div class="feature-content">
-									<h3>What President Hon. Dr. Samia Suluhu <span class="theme-cl">said on Finance</span></h3>
-									<p class="feature-desc">Insights on Tanzania's economic growth and new financial policies.</p>
-									<a href="#" class="btn btn-feature">Read More</a>
-								</div>
-								</div>
-							</div>
-
-							<!-- RIGHT NEWS HIGHLIGHTS -->
-							<div class="col-lg-7 col-md-12 news-side">
-								<div class="recent-news-card">
-
-								<div class="news-header">
-									<h4>Highlights</h4>
-								</div>
-
-								<div class="news-list-wrapper">
-
-									<!-- News Item 1 -->
-									<div class="news-item d-flex">
-									
-									<div class="news-content">
-										<span class="news-category">Economic News</span>
-										<h5 class="news-title"><a href="#">Tanzania Economy Records Steady Growth</a></h5>
-										<p class="news-desc">The government reports improved GDP growth driven by agriculture and infrastructure projects.</p>
-									</div>
-									</div>
-
-									<!-- News Item 2 -->
-									<div class="news-item d-flex">
-									
-									<div class="news-content">
-										<span class="news-category">Political News</span>
-										<h5 class="news-title"><a href="#">Government Emphasizes Peace Ahead of Elections</a></h5>
-										<p class="news-desc">National leaders call for unity and democratic participation during upcoming elections.</p>
-									</div>
-									</div>
-
-									<!-- News Item 3 -->
-									<div class="news-item d-flex">
-									
-									<div class="news-content">
-										<span class="news-category">Business & Policy</span>
-										<h5 class="news-title"><a href="#">New Policies Support Local Entrepreneurs</a></h5>
-										<p class="news-desc">Measures introduced to improve access to loans for small and medium enterprises.</p>
-									</div>
-									</div>
-
-								</div>
-								</div>
-							</div>
-
-							</div> <!-- End blog-unified-card -->
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-			<!-- =========================== End of Highlights =================================== -->
-
-
-
-			<!-- =========================== Reviews Start =================================== -->
-			<section class="jubita-reviews">
-				<div class="container">
-					<!-- Section Title -->
-					<div class="section-header text-center mb-5">
-					<h2>Reviews & Recommendations</h2>
-					<hr class="section-divider">
-					</div>
-
-					<div class="row">
-
-					<!-- Review Item 1 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="review-card">
-						<div class="review-category">Forbes Vetted</div>
-						<div class="review-title">
-							<a href="#">Walking Pad Deals: Shop Editor-Approved Models For Up To 35% Off</a>
-						</div>
-						<div class="review-author">
-							By Jordan Thomas, Forbes Staff and Bianca Alvarez, Forbes Staff
-						</div>
-						</div>
-					</div>
-
-					<!-- Review Item 2 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="review-card">
-						<div class="review-category">Tech Insights</div>
-						<div class="review-title">
-							<a href="#">Best Noise-Cancelling Headphones of 2026: Expert Picks</a>
-						</div>
-						<div class="review-author">
-							By Alex Green, Tech Staff
-						</div>
-						</div>
-					</div>
-
-					<!-- Review Item 3 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="review-card">
-						<div class="review-category">Travel</div>
-						<div class="review-title">
-							<a href="#">Top 10 Safari Destinations in Tanzania You Can't Miss</a>
-						</div>
-						<div class="review-author">
-							By Sarah Lee, Travel Staff
-						</div>
-						</div>
-					</div>
-
-					<!-- Review Item 4 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="review-card">
-						<div class="review-category">Health</div>
-						<div class="review-title">
-							<a href="#">Fitness Trackers: Best Models for 2026 Reviewed</a>
-						</div>
-						<div class="review-author">
-							By Mark Wilson, Health Staff
-						</div>
-						</div>
-					</div>
-
-					</div>
-				</div>
-			</section>
-
-			<!-- =========================== Reviews Ends =================================== -->
-
-
-			<!-- =========================== latest insight Start =================================== -->
-			<section class="jubita-forbes-wrapper">
-				<div class="container">
-
-					<!-- Section Head -->
-					<div class="jubita-section-head text-center mb-4">
-						<h2>Latest Insights & News</h2>
-						<hr class="section-divider">
-					</div>
-
-					<div class="jubita-forbes-cards rounded-section p-4">
-						<div class="row">
-
-							<!-- LEFT COLUMN -->
-							<div class="col-lg-3 col-md-6">
-								<h5 class="forbes-cat-title">News</h5>
-
-								<ul class="forbes-list-card">
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Politics" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Politics</span>
-												<h6><a href="#">Government Announces Policy Reforms</a></h6>
-												<small>By Jubita Desk</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Economy" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Economy</span>
-												<h6><a href="#">Inflation Trends to Watch</a></h6>
-												<small>By A. Mushi</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="World" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">World</span>
-												<h6><a href="#">Global Leaders Meet for Climate Talks</a></h6>
-												<small>By Reuters</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Health" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Health</span>
-												<h6><a href="#">Hospitals Embrace Digital Records</a></h6>
-												<small>By M. Joseph</small>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-
-							<!-- CENTER COLUMN FEATURE -->
-							<div class="col-lg-6 col-md-12">
-								<h5 class="forbes-cat-title">Lifestyle</h5>
-
-								<div class="forbes-feature-card">
-									<img src="{{ asset('assets/img/tz.jpg') }}" alt="Lifestyle" class="img-fluid rounded">
-									<h3><a href="#">How Urban Living Is Changing Modern Tanzanian Culture</a></h3>
-									<p class="author">By Jubita Lifestyle Editor</p>
-									<a href="#" class="btn btn-theme btn-sm mt-2">Read More</a>
-								</div>
-							</div>
-
-							<!-- RIGHT COLUMN -->
-							<div class="col-lg-3 col-md-6">
-								<h5 class="forbes-cat-title">Business</h5>
-
-								<ul class="forbes-list-card">
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Startups" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Startups</span>
-												<h6><a href="#">Tech Startups Raising Capital</a></h6>
-												<small>By B. Kweka</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Markets" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Markets</span>
-												<h6><a href="#">Stock Market Shows Positive Signs</a></h6>
-												<small>By Jubita Finance</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Energy" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Energy</span>
-												<h6><a href="#">Renewable Energy Projects Expand</a></h6>
-												<small>By Energy Desk</small>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="#"><img src="https://via.placeholder.com/80x80" alt="Trade" class="img-fluid rounded"></a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">Trade</span>
-												<h6><a href="#">Regional Trade Agreements Explained</a></h6>
-												<small>By Editorial Team</small>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-
-			<!-- =========================== latest insight end =================================== -->
-
-
-			<div class="clearfix"></div>
-
-			<!-- =========================== Tech insight start =================================== -->
-			<section class="tech-insights">
-				<div class="container">
-
-					<!-- Section Header -->
-					<div class="section-header text-center mb-5">
-					<h2>Technology Insights</h2>
-					<hr class="section-divider">
-					</div>
-
-					<div class="row">
-
-					<!-- Tech Card 1 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="tech-card">
-						<div class="tech-category">AI & Robotics</div>
-						<div class="tech-title">
-							<a href="#">Top AI Tools Revolutionizing Business in 2026</a>
-						</div>
-						<div class="tech-author">By Alex Morgan, Tech Staff</div>
-						</div>
-					</div>
-
-					<!-- Tech Card 2 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="tech-card">
-						<div class="tech-category">Gadgets</div>
-						<div class="tech-title">
-							<a href="#">Best Smartwatches of 2026: Expert Reviews & Deals</a>
-						</div>
-						<div class="tech-author">By Sarah Kim, Tech Editor</div>
-						</div>
-					</div>
-
-					<!-- Tech Card 3 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="tech-card">
-						<div class="tech-category">Software</div>
-						<div class="tech-title">
-							<a href="#">Top Productivity Apps Every Professional Should Try</a>
-						</div>
-						<div class="tech-author">By Mark Wilson, Tech Contributor</div>
-						</div>
-					</div>
-
-					<!-- Tech Card 4 -->
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="tech-card">
-						<div class="tech-category">Startups</div>
-						<div class="tech-title">
-							<a href="#">5 Innovative Tech Startups Changing the Market</a>
-						</div>
-						<div class="tech-author">By Lisa Brown, Tech Reporter</div>
-						</div>
-					</div>
-
-					</div>
-				</div>
-			</section>
-			<!-- =========================== Tech insight end =================================== -->
-
-
-
-
-
-			<!-- ======================== Pricing trend Start ==================== -->
-			<section class="market-prices">
-				<div class="container">
-					
-					<!-- Section Header -->
-					<div class="section-header text-center mb-4">
-					<h2>Price Trends & Market Updates</h2>
-					<hr class="section-divider">
-					<p>Kupanda na kushuka kwa bei za mazao, mafuta, ndani na nje ya nchi</p>
-					</div>
-
-					<div class="market-scroll-wrapper">
-					<div class="market-row">
-
-						<!-- Column 1 -->
-						<div class="market-column">
-						<div class="market-column-header">New & Trending</div>
-						<div class="market-item">
-							<div class="market-title">Maize</div>
-							<div class="market-price">Tsh 1,200 - 1,500</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Rice</div>
-							<div class="market-price">Tsh 2,400 - 2,800</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Oil</div>
-							<div class="market-price">Tsh 3,500 - 3,800</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Beans</div>
-							<div class="market-price">Tsh 2,200 - 2,500</div>
-						</div>
-						</div>
-
-						<!-- Column 2 -->
-						<div class="market-column">
-						<div class="market-column-header">Hot Offers</div>
-						<div class="market-item">
-							<div class="market-title">Maize</div>
-							<div class="market-price">Tsh 1,180 - 1,450</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Rice</div>
-							<div class="market-price">Tsh 2,350 - 2,750</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Oil</div>
-							<div class="market-price">Tsh 3,400 - 3,750</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Beans</div>
-							<div class="market-price">Tsh 2,150 - 2,480</div>
-						</div>
-						</div>
-
-						<!-- Column 3 -->
-						<div class="market-column">
-						<div class="market-column-header">Hot Deals & Updates</div>
-						<div class="market-item">
-							<div class="market-title">Maize</div>
-							<div class="market-price">Tsh 1,100 - 1,500</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Rice</div>
-							<div class="market-price">Tsh 2,300 - 2,780</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Oil</div>
-							<div class="market-price">Tsh 3,300 - 3,800</div>
-						</div>
-						<div class="market-item">
-							<div class="market-title">Beans</div>
-							<div class="market-price">Tsh 2,100 - 2,500</div>
-						</div>
-						</div>
-
-						<!-- Add more columns as needed -->
-					</div>
-					</div>
-					
-				</div>
-			</section>
-
-			<!-- ======================== Pricing trend End ==================== -->
-
-
-			<div class="clearfix"></div>
-			<!-- ======================== new, trending & Offers End ==================== -->
-			
-
-			<!-- ============================ Start Advisory ================================== -->
-			<section class="jubita-advisory">
-				<div class="container">
-					
-					<!-- Section Header -->
-					<div class="section-header text-center mb-5">
-					<h2>Advisory & Guidance</h2>
-					<hr class="section-divider">
-					</div>
-
-					<div class="row align-items-start">
-
-					<!-- Featured Advisory Image -->
-					<div class="col-lg-5 col-md-12 col-sm-12 mb-4 mb-lg-0">
-						<div class="advisory-featured">
-						<img src="{{asset('assets/img/advisory.jpg')}}" alt="Advisory" class="img-fluid">
-						<div class="advisory-featured-title">
-							<a href="#">How Businesses Can Prepare for Regulatory Changes in 2026</a>
-						</div>
-						<div class="advisory-featured-author">By Daniel Smith, Advisory Expert</div>
-						</div>
-					</div>
-
-					<!-- Advisory Articles List -->
-					<div class="col-lg-7 col-md-12 col-sm-12">
-						<ul class="advisory-list">
-						
-						<li class="advisory-item">
-							<a href="#">Top 5 Legal Changes Every Startup Should Know</a>
-							<div class="advisory-author">By Sarah Lee, Legal Advisory</div>
-						</li>
-
-						<li class="advisory-item">
-							<a href="#">Managing Risk During Economic Uncertainty</a>
-							<div class="advisory-author">By Mark Wilson, Finance Consultant</div>
-						</li>
-
-						<li class="advisory-item">
-							<a href="#">Effective Leadership Practices for Small Businesses</a>
-							<div class="advisory-author">By Lisa Brown, Business Advisor</div>
-						</li>
-
-						<li class="advisory-item">
-							<a href="#">How to Build a Resilient Supply Chain</a>
-							<div class="advisory-author">By Alex Morgan, Logistics Expert</div>
-						</li>
-
-						</ul>
-					</div>
-
-					</div>
-				</div>
-			</section>
-			<!-- ============================ End Advisory ================================== -->
-
-
-
-
+<!-- =========================== Hero Section End =================================== -->
+
+<!-- =========================== Markets Ticker Start =================================== -->
+<div class="ticker-wrap">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center">
+            <div class="px-3 font-weight-bold text-uppercase small border-right mr-3" style="white-space: nowrap;">TAARIFA ZA SOKO</div>
+            <div class="marquee-wrapper">
+                <div class="marquee-content">
+                    @forelse($marketPrices as $price)
+                    <div class="d-inline-block px-4 border-right border-secondary">
+                        <span class="small font-weight-bold">{{ strtoupper($price->commodity?->name) }}</span> 
+                        <span class="small ml-2">Tsh {{ number_format($price->price_max) }}</span>
+                        <span class="small ml-1 text-success"><i class="fas fa-caret-up"></i></span>
+                    </div>
+                    @empty
+                    <div class="d-inline-block px-4 small">Masoko yanaandaliwa...</div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========================== Markets Ticker End =================================== -->
+
+<!-- =========================== JIOPOLITIKI Section Start =================================== -->
+<section class="border-bottom">
+    <div class="container">
+        <div class="cat-header">
+            <h2>Jiopolitiki</h2>
+            <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+        </div>
+        <div class="row">
+            @forelse($politicsPosts as $post)
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="forbes-card h-100">
+                    <figure class="mb-3 overflow-hidden rounded-0">
+                        <a href="{{ route('article.show', $post->slug) }}">
+                            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=600' }}" class="img-fluid w-100 transition-scale" style="height: 180px; object-fit: cover;">
+                        </a>
+                    </figure>
+                    <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
+                        <h4 class="h5 font-weight-bold text-dark mb-2" style="line-height: 1.3; font-family: var(--forbes-font-serif); font-size: 1.1rem;">{{ $post->title }}</h4>
+                    </a>
+                    <div class="meta-info" style="font-size: 11px; font-weight: 700;">NA {{ strtoupper($post->author?->name ?? 'Jubita Desk') }}</div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12"><p class="text-muted">Habari za Jiopolitiki zinakuja hivi punde...</p></div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- =========================== JIOPOLITIKI Section End =================================== -->
+
+<!-- =========================== UCHUMI Section Start =================================== -->
+<section class="bg-light border-bottom">
+    <div class="container">
+        <div class="cat-header">
+            <h2>Uchumi</h2>
+            <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+        </div>
+        <div class="row">
+            <!-- Main Economy Feature -->
+            <div class="col-lg-7 mb-4 border-right pr-lg-4">
+                @if($economyPosts->isNotEmpty())
+                @php $ep = $economyPosts->first(); @endphp
+                <div class="forbes-card">
+                    <a href="{{ route('article.show', $ep->slug) }}" class="text-decoration-none">
+                        <img src="{{ $ep->featured_image ? asset('storage/'.$ep->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=800' }}" class="img-fluid rounded-0 mb-3 w-100" style="height: 380px; object-fit: cover;">
+                        <h3 class="font-weight-bold text-dark" style="font-size: 2rem; line-height: 1.1; font-family: var(--forbes-font-serif);">{{ $ep->title }}</h3>
+                    </a>
+                    <p class="text-muted mt-3" style="font-size: 1.05rem; line-height: 1.5;">{{ Str::limit($ep->excerpt, 180) }}</p>
+                </div>
+                @else
+                <div class="forbes-card">
+                    <p class="text-muted">Hakuna habari za Uchumi kwa sasa.</p>
+                </div>
+                @endif
+            </div>
+            <!-- Secondary Economy News -->
+            <div class="col-lg-5 pl-lg-4">
+                <ul class="sidebar-list p-0" style="list-style: none;">
+                    @forelse($economyPosts->skip(1) as $post)
+                    <li class="py-3 border-bottom">
+                        <a href="{{ route('article.show', $post->slug) }}" class="h5 font-weight-bold text-dark d-block text-decoration-none" style="font-family: var(--forbes-font-serif); font-size: 1.2rem; line-height: 1.3;">{{ $post->title }}</a>
+                        <div class="meta-info mt-2" style="font-size: 11px; font-weight: 700; color: var(--forbes-gray);">{{ $post->published_at?->format('d M, Y') ?? '2026' }}</div>
+                    </li>
+                    @empty
+                    @endforelse
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =========================== UCHUMI Section End =================================== -->
+
+<!-- =========================== BIASHARA Section Start =================================== -->
+<section class="border-bottom">
+    <div class="container">
+        <div class="cat-header">
+            <h2>Biashara</h2>
+            <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+        </div>
+        <div class="row">
+            @forelse($businessList as $biz)
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="forbes-card h-100">
+                    <figure class="mb-3 overflow-hidden rounded-0 border">
+                        <a href="{{ route('article.show', $biz->slug) }}">
+                            <img src="{{ $biz->featured_image ? asset('storage/'.$biz->featured_image) : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600' }}" class="img-fluid w-100 transition-scale" style="height: 160px; object-fit: cover;">
+                        </a>
+                    </figure>
+                    <a href="{{ route('article.show', $biz->slug) }}" class="text-decoration-none">
+                        <h4 class="h6 font-weight-bold text-dark mb-0" style="line-height: 1.4; font-family: var(--forbes-font-serif); font-size: 1rem;">{{ $biz->title }}</h4>
+                    </a>
+                </div>
+            </div>
+            @empty
+            <div class="col-12"><p class="text-muted">Habari za biashara zinakuja...</p></div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- =========================== BIASHARA Section End =================================== -->
+
+<!-- =========================== MASOKO Section Start =================================== -->
+<section class="bg-dark text-white py-5 border-bottom">
+    <div class="container">
+        <div class="cat-header border-light" style="border-bottom-color: rgba(255,255,255,0.2);">
+            <h2 class="text-white">Masoko ya Fedha</h2>
+            <a href="#" class="view-all text-light font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+        </div>
+        <div class="row mt-4">
+            @forelse($marketNews as $m)
+            <div class="col-md-4 mb-4">
+                <div class="border-left border-secondary pl-3 h-100">
+                    <div class="meta-info text-warning mb-2" style="font-size: 10px; font-weight: 800; letter-spacing: 1px;">MASOKO</div>
+                    <a href="{{ route('article.show', $m->slug) }}" class="text-white text-decoration-none">
+                        <h5 class="serif font-weight-bold h5 mb-0" style="font-family: var(--forbes-font-serif); line-height: 1.3;">{{ $m->title }}</h5>
+                    </a>
+                </div>
+            </div>
+            @empty
+            <div class="col-12"><p class="text-light">Taarifa za masoko zinakuja...</p></div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- =========================== MASOKO Section End =================================== -->
+
+<!-- =========================== TEKNOLOJIA Section Start =================================== -->
+<section class="border-bottom">
+    <div class="container">
+        <div class="cat-header">
+            <h2>Teknolojia</h2>
+            <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+        </div>
+        <div class="row">
+            @forelse($techInsightPosts as $post)
+            <div class="col-md-6 mb-4">
+                <div class="d-flex align-items-center border p-3 rounded-0 bg-white shadow-sm h-100">
+                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=200' }}" class="rounded-0 mr-3" style="width: 140px; height: 100px; object-fit: cover; flex-shrink: 0;">
+                    <div>
+                        <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
+                            <h5 class="font-weight-bold text-dark mb-2" style="font-family: var(--forbes-font-serif); font-size: 1.1rem; line-height: 1.3;">{{ $post->title }}</h5>
+                        </a>
+                        <p class="small text-muted mb-0">{{ Str::limit($post->excerpt, 80) }}</p>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12"><p class="text-muted">Uchambuzi wa teknolojia unakuja...</p></div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- =========================== TEKNOLOJIA Section End =================================== -->
+
+<!-- ======================== Real Estate & Automotive Showcase ==================== -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Houses -->
+            <div class="col-lg-6 border-right pr-lg-4 mb-5 mb-lg-0">
+                <div class="cat-header">
+                    <h2>Nyumba & Viwanja</h2>
+                    <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Soko la Nyumba <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+                </div>
+                <div class="row">
+                    @forelse($houseProducts->take(2) as $house)
+                    <div class="col-sm-6 mb-4">
+                        <div class="card border-0 shadow-sm rounded-0">
+                            <img src="{{ $house->image ? (strpos($house->image, 'http') === 0 ? $house->image : asset('storage/'.$house->image)) : 'https://via.placeholder.com/400x300' }}" class="card-img-top rounded-0" style="height: 180px; object-fit: cover;">
+                            <div class="card-body p-3">
+                                <h6 class="font-weight-bold mb-1" style="font-family: var(--forbes-font-sans); letter-spacing: -0.5px;">{{ $house->name }}</h6>
+                                <p class="text-primary font-weight-bold small mb-0">Tsh {{ number_format($house->price) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12 text-muted small">Tangazo la nyumba halijapatikana.</div>
+                    @endforelse
+                </div>
+            </div>
+            <!-- Cars -->
+            <div class="col-lg-6 pl-lg-4">
+                <div class="cat-header">
+                    <h2>Magari</h2>
+                    <a href="#" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Showroom <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+                </div>
+                <div class="row">
+                    @forelse($carProducts->take(2) as $car)
+                    <div class="col-sm-6 mb-4">
+                        <div class="card border-0 shadow-sm rounded-0">
+                            <img src="{{ $car->image ? (strpos($car->image, 'http') === 0 ? $car->image : asset('storage/'.$car->image)) : 'https://via.placeholder.com/400x300' }}" class="card-img-top rounded-0" style="height: 180px; object-fit: cover;">
+                            <div class="card-body p-3">
+                                <h6 class="font-weight-bold mb-1" style="font-family: var(--forbes-font-sans); letter-spacing: -0.5px;">{{ $car->name }}</h6>
+                                <p class="text-danger font-weight-bold small mb-0">Tsh {{ number_format($car->price) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12 text-muted small">Tangazo la gari halijapatikana.</div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ======================== End Showcase ==================== -->
+
+<style>
+    .transition-scale { transition: transform 0.5s ease; }
+    .forbes-card:hover .transition-scale { transform: scale(1.05); }
+    .shadow-hover:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; transform: translateY(-3px); }
+    .marquee-wrapper { overflow: hidden; width: 100%; }
+    .marquee-content { animation: marquee 40s linear infinite; white-space: nowrap; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-wrapper:hover .marquee-content { animation-play-state: paused; }
+    .display-6 { font-size: 1.8rem; }
+    @media (max-width: 768px) {
+        .display-3 { font-size: 2.5rem; }
+        .border-right { border-right: none !important; }
+    }
+</style>
 
 @endsection

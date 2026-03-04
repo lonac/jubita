@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Content\Content;
 
 class MawasilianoController extends Controller
 {
@@ -12,56 +13,22 @@ class MawasilianoController extends Controller
      */
     public function index()
     {
-       // return view('website.pages.mawasiliano.index');
-      
+        $title = "MAWASILIANO";
+        $featuredPost = Content::whereHas('category', function($q) {
+                $q->where('name', 'Mawasiliano');
+            })
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->first();
 
-    }
+        $categoryPosts = Content::whereHas('category', function($q) {
+                $q->where('name', 'Mawasiliano');
+            })
+            ->where('status', 'published')
+            ->where('id', '!=', $featuredPost?->id)
+            ->latest('published_at')
+            ->paginate(12);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
     }
 }

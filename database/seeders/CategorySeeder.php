@@ -1,7 +1,5 @@
 <?php
 
-// database/seeders/CategorySeeder.php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -17,71 +15,92 @@ class CategorySeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
-            | CORE MENU CATEGORIES (TOP NAV)
+            | PARENT CATEGORIES (Main Menu)
             |--------------------------------------------------------------------------
             */
-
-            $coreCategories = [
-                ['name' => 'Masoko',      'description' => 'Masoko ya ndani na nje'],
-                ['name' => 'Uchumi',      'description' => 'Habari na takwimu za uchumi'],
-                ['name' => 'Biashara',    'description' => 'Biashara na uwekezaji'],
-                ['name' => 'Teknolojia',  'description' => 'Teknolojia na ubunifu'],
-                ['name' => 'Jiopolitiki', 'description' => 'Siasa na mahusiano ya kimataifa'],
-                ['name' => 'Fedha',       'description' => 'Fedha, benki na masoko ya mitaji'],
-                ['name' => 'Mawasiliano', 'description' => 'Mawasiliano na TEHAMA'],
+            $parentCategories = [
+                ['name' => 'Uchumi', 'description' => 'Habari na takwimu za uchumi', 'is_main' => 1],
+                ['name' => 'Jiopolitiki', 'description' => 'Siasa na mahusiano ya kimataifa', 'is_main' => 1],
+                ['name' => 'Biashara', 'description' => 'Biashara na uwekezaji', 'is_main' => 1],
+                ['name' => 'Masoko', 'description' => 'Masoko ya ndani na nje', 'is_main' => 1],
+                ['name' => 'Teknolojia', 'description' => 'Teknolojia na ubunifu', 'is_main' => 1],
+                ['name' => 'Advisory', 'description' => 'Ushauri wa kifedha', 'is_main' => 1],
             ];
 
-            foreach ($coreCategories as $cat) {
+            foreach ($parentCategories as $cat) {
                 Category::updateOrCreate(
                     ['slug' => Str::slug($cat['name'])],
                     [
-                        'name'        => $cat['name'],
+                        'name' => $cat['name'],
                         'description' => $cat['description'],
-                        'is_main'     => 1,
-                        'status'      => 1,
+                        'is_main' => $cat['is_main'],
+                        'status' => 1,
                     ]
                 );
             }
 
             /*
             |--------------------------------------------------------------------------
-            | NON-CORE / CONTENT CATEGORIES (NOT IN MAIN MENU)
+            | CHILD CATEGORIES (Dropdown Items)
             |--------------------------------------------------------------------------
             */
-
-            $otherCategories = [
-                'Siasa',
-                'World',
-                'Health',
-                'Lifestyle',
-                'Technology Reviews',
-                'AI & Robotics',
-                'Startups',
-                'Markets',
-                'Energy',
-                'Agriculture',
-                'Education',
-                'Environment',
-                'Sports',
-                'Travel',
-                'Food',
-                'Culture',
-                'Reviews',
-                'Advisory',
-                'Features',
+            $children = [
+                'Uchumi' => [
+                    'Kilimo', 
+                    'Biashara', 
+                    'Utalii', 
+                    'Nishati', 
+                    'Uzalishaji', 
+                    'Ujenzi'
+                ],
+                'Jiopolitiki' => [
+                    'Taifa (Tanzania)', 
+                    'Mataifa (Global)', 
+                    'Diplomasia', 
+                    'Ulinzi'
+                ],
+                'Biashara' => [
+                    'Uwekezaji', 
+                    'Viwanda', 
+                    'Ujasiriamali', 
+                    'Soko la Hisa (DSE)'
+                ],
+                'Masoko' => [
+                    'Dhahabu na Madini', 
+                    'Bidhaa za Kilimo', 
+                    'Fedha za Kigeni', 
+                    'Hisa na Dhamana'
+                ],
+                'Teknolojia' => [
+                    'TEHAMA', 
+                    'Ubunifu', 
+                    'Fintech', 
+                    'Mkongo wa Taifa'
+                ],
+                'Advisory' => [
+                    'Usimamizi wa Fedha', 
+                    'Kodi (TRA)', 
+                    'Uwekezaji wa Nyumba', 
+                    'Hisa'
+                ],
             ];
 
-            foreach ($otherCategories as $name) {
-                Category::updateOrCreate(
-                    ['slug' => Str::slug($name)],
-                    [
-                        'name'    => $name,
-                        'is_main' => 0,
-                        'status'  => 1,
-                    ]
-                );
+            foreach ($children as $parentName => $childNames) {
+                $parent = Category::where('name', $parentName)->first();
+                if ($parent) {
+                    foreach ($childNames as $childName) {
+                        Category::updateOrCreate(
+                            ['slug' => Str::slug($childName)],
+                            [
+                                'name' => $childName,
+                                'parent_id' => $parent->id,
+                                'is_main' => 0,
+                                'status' => 1,
+                            ]
+                        );
+                    }
+                }
             }
-
         });
     }
 }

@@ -6,23 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Content\Content;
 
-class JiopolitikiController extends Controller
+class ReviewsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $title = "JIOPOLITIKI";
+        $title = "REVIEWS & RECOMMENDATIONS";
+        
         $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Jiopolitiki');
+                $q->where('name', 'Reviews');
             })
             ->where('status', 'published')
             ->latest('published_at')
             ->first();
 
         $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Jiopolitiki');
+                $q->where('name', 'Reviews');
             })
             ->where('status', 'published')
             ->where('id', '!=', $featuredPost?->id)
