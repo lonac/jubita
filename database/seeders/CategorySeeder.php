@@ -19,12 +19,13 @@ class CategorySeeder extends Seeder
             |--------------------------------------------------------------------------
             */
             $parentCategories = [
-                ['name' => 'Uchumi', 'description' => 'Habari na takwimu za uchumi', 'is_main' => 1],
-                ['name' => 'Jiopolitiki', 'description' => 'Siasa na mahusiano ya kimataifa', 'is_main' => 1],
-                ['name' => 'Biashara', 'description' => 'Biashara na uwekezaji', 'is_main' => 1],
-                ['name' => 'Masoko', 'description' => 'Masoko ya ndani na nje', 'is_main' => 1],
-                ['name' => 'Teknolojia', 'description' => 'Teknolojia na ubunifu', 'is_main' => 1],
-                ['name' => 'Advisory', 'description' => 'Ushauri wa kifedha', 'is_main' => 1],
+                ['name' => 'UCHUMI', 'description' => 'Habari na takwimu za uchumi', 'is_main' => 1],
+                ['name' => 'JIOPOLITIKI', 'description' => 'Siasa na mahusiano ya kimataifa', 'is_main' => 1],
+                ['name' => 'BIASHARA', 'description' => 'Biashara na Uwekezaji', 'is_main' => 1],
+                ['name' => 'MASOKO', 'description' => 'Masoko ya Fedha na Bidhaa', 'is_main' => 1],
+                ['name' => 'TEKNOLOJIA', 'description' => 'Teknolojia na Ubunifu', 'is_main' => 1],
+                ['name' => 'NYUMBA', 'description' => 'Soko la Nyumba na Viwanja', 'is_main' => 1],
+                ['name' => 'MAGARI', 'description' => 'Soko la Magari', 'is_main' => 1],
             ];
 
             foreach ($parentCategories as $cat) {
@@ -45,44 +46,51 @@ class CategorySeeder extends Seeder
             |--------------------------------------------------------------------------
             */
             $children = [
-                'Uchumi' => [
+                'UCHUMI' => [
                     'Kilimo', 
-                    'Biashara', 
+                    'Viwanda', 
                     'Utalii', 
                     'Nishati', 
                     'Uzalishaji', 
                     'Ujenzi'
                 ],
-                'Jiopolitiki' => [
-                    'Taifa (Tanzania)', 
-                    'Mataifa (Global)', 
+                'JIOPOLITIKI' => [
+                    'Taifa', 
+                    'Mataifa', 
                     'Diplomasia', 
-                    'Ulinzi'
+                    'Ulinzi',
+                    'Utawala Bora'
                 ],
-                'Biashara' => [
+                'BIASHARA' => [
                     'Uwekezaji', 
-                    'Viwanda', 
                     'Ujasiriamali', 
-                    'Soko la Hisa (DSE)'
+                    'Soko la Hisa',
+                    'Kodi na Sheria'
                 ],
-                'Masoko' => [
+                'MASOKO' => [
                     'Dhahabu na Madini', 
                     'Bidhaa za Kilimo', 
                     'Fedha za Kigeni', 
                     'Hisa na Dhamana'
                 ],
-                'Teknolojia' => [
+                'TEKNOLOJIA' => [
                     'TEHAMA', 
                     'Ubunifu', 
                     'Fintech', 
-                    'Mkongo wa Taifa'
+                    'Mkongo wa Taifa',
+                    'AI & Robotiki'
                 ],
-                'Advisory' => [
-                    'Usimamizi wa Fedha', 
-                    'Kodi (TRA)', 
-                    'Uwekezaji wa Nyumba', 
-                    'Hisa'
+                'NYUMBA' => [
+                    'Kupanga',
+                    'Kununua',
+                    'Viwanja',
+                    'Miradi Mipya'
                 ],
+                'MAGARI' => [
+                    'Magari Mapya',
+                    'Used Cars',
+                    'Spea na Service'
+                ]
             ];
 
             foreach ($children as $parentName => $childNames) {

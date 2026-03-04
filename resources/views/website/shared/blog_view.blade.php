@@ -1,366 +1,98 @@
 @extends('website.shared.index')
 
-
 @section('title', $title)
-
 
 @section('content')
 
+<!-- =========================== Category Header =================================== -->
+<section class="py-5 border-bottom bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h1 class="display-4 font-weight-bold mb-3" style="font-family: var(--forbes-font-sans); letter-spacing: -2px; text-transform: uppercase;">{{ $title }}</h1>
+                    <p class="lead text-muted">{{ $category->description ?? 'Habari na uchambuzi wa kina kuhusu '.$title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- =========================== Main Content =================================== -->
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            
+            <!-- Left Column: Main Story -->
+            <div class="col-lg-8 border-right pr-lg-5">
+                @if($featuredPost)
+                <article class="mb-5">
+                    <a href="{{ route('article.show', $featuredPost->slug) }}" class="text-decoration-none">
+                        <img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200' }}" class="img-fluid w-100 mb-4" style="max-height: 450px; object-fit: cover;">
+                        <h2 class="display-5 font-weight-bold text-dark mb-3" style="font-family: var(--forbes-font-serif); line-height: 1.1;">{{ $featuredPost->title }}</h2>
+                    </a>
+                    <p class="lead text-dark mb-4" style="font-family: var(--forbes-font-serif); font-size: 1.2rem;">{{ $featuredPost->excerpt }}</p>
+                    <div class="d-flex align-items-center border-top pt-3">
+                        <span class="text-muted small font-weight-bold text-uppercase" style="letter-spacing: 1px;">Na {{ $featuredPost->author?->name ?? 'Jubita Desk' }} | {{ $featuredPost->published_at?->format('d M, Y') }}</span>
+                    </div>
+                </article>
+                @endif
 
+                <div class="row">
+                    @foreach($categoryPosts as $post)
+                    <div class="col-md-6 mb-4">
+                        <div class="card border-0 bg-transparent h-100">
+                            <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
+                                <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600' }}" class="card-img-top rounded-0 mb-3" style="height: 200px; object-fit: cover;">
+                                <h4 class="h5 font-weight-bold text-dark mb-2" style="font-family: var(--forbes-font-serif); line-height: 1.3;">{{ $post->title }}</h4>
+                            </a>
+                            <p class="small text-muted mb-0">Na {{ $post->author?->name ?? 'Jubita Desk' }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
 
-	<!-- =========================== Breadcrumbs =================================== -->
-    <div class="breadcrumbs_wrap dark">
-				<div class="container">
-					<div class="row align-items-center">
-						
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="text-center">
-								<h2 class="breadcrumbs_title">{{$title}}</h2>
-								<nav aria-label="breadcrumb">
-								  <ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="{{route('home')}}"><i class="ti-home"></i></a></li>
-									<li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
-								  </ol>
-								</nav>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			<!-- =========================== Breadcrumbs =================================== -->
-			
+                <div class="mt-5 d-flex justify-content-center">
+                    {{ $categoryPosts->links() }}
+                </div>
+            </div>
 
+            <!-- Right Column: Sidebar -->
+            <div class="col-lg-4 pl-lg-5">
+                <div class="cat-header mb-4">
+                    <h2 style="font-size: 18px;">Hivi Punde katika {{ $title }}</h2>
+                </div>
+                <ul class="list-unstyled">
+                    @php
+                        $latestInCategory = App\Models\Content\Content::where('category_id', $category->id)
+                            ->orWhereIn('category_id', $category->children->pluck('id'))
+                            ->latest()
+                            ->take(5)
+                            ->get();
+                    @endphp
+                    @foreach($latestInCategory as $news)
+                    <li class="pb-3 mb-3 border-bottom">
+                        <a href="{{ route('article.show', $news->slug) }}" class="text-dark font-weight-bold text-decoration-none" style="font-size: 0.95rem; line-height: 1.4; display: block;">{{ $news->title }}</a>
+                        <small class="text-muted">{{ $news->published_at?->diffForHumans() }}</small>
+                    </li>
+                    @endforeach
+                </ul>
 
-			<!-- =========================== latest insight Start =================================== -->
-			<section class="jubita-forbes-wrapper">
-				<div class="container">
+                <!-- Newsletter / Ad Placeholder -->
+                <div class="bg-dark text-white p-4 mt-5">
+                    <h4 class="font-weight-bold mb-3" style="font-family: var(--forbes-font-sans); font-size: 1.2rem;">JUBITA DAILY</h4>
+                    <p class="small mb-4">Pata habari muhimu za biashara na uchumi moja kwa moja kwenye email yako kila siku.</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control rounded-0 border-0" placeholder="Email yako...">
+                        <div class="input-group-append">
+                            <button class="btn btn-bloomberg">JIUNGE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				
-					<div class="jubita-forbes-cards rounded-section p-4">
-						<div class="row">
-
-						
-							<!-- CENTER COLUMN FEATURE -->
-							<div class="col-lg-8 col-md-12">
-								<h5 class="forbes-cat-title">Featured in {{ $title }}</h5>
-
-								@if($featuredPost)
-								<div class="forbes-feature-card">
-									<img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : asset('assets/img/tz.jpg') }}" alt="{{ $featuredPost->title }}" class="img-fluid rounded">
-									<h3><a href="{{ route('article.show', $featuredPost->slug) }}">{{ $featuredPost->title }}</a></h3>
-									<p class="author">By {{ $featuredPost->author?->name ?? 'Jubita Desk' }}</p>
-									<p class="excerpt">{{ $featuredPost->excerpt }}</p>
-									<a href="{{ route('article.show', $featuredPost->slug) }}" class="btn btn-theme btn-sm mt-2">Read More</a>
-								</div>
-								@else
-								<div class="text-center p-5">
-									<p>No featured articles in this category yet.</p>
-								</div>
-								@endif
-							</div>
-
-							<!-- RIGHT COLUMN -->
-							<div class="col-lg-4 col-md-6">
-								<h5 class="forbes-cat-title">Recent Updates</h5>
-
-								<ul class="forbes-list-card">
-									@foreach($categoryPosts as $post)
-									<li>
-										<div class="row align-items-center">
-											<div class="col-4">
-												<a href="{{ route('article.show', $post->slug) }}">
-													<img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://via.placeholder.com/80x80' }}" alt="{{ $post->title }}" class="img-fluid rounded">
-												</a>
-											</div>
-											<div class="col-8">
-												<span class="mini-cat">{{ $post->category?->name }}</span>
-												<h6><a href="{{ route('article.show', $post->slug) }}">{{ Str::limit($post->title, 50) }}</a></h6>
-												<small>By {{ $post->author?->name ?? 'Jubita Desk' }}</small>
-											</div>
-										</div>
-									</li>
-									@endforeach
-
-									@if($categoryPosts->isEmpty() && !$featuredPost)
-									<li>No recent articles found.</li>
-									@endif
-								</ul>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-			
-	
-			<!-- ======================== Business/Sell/Buy Start ==================== -->
-			<section class="">
-				<div class="container">
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="sec-heading-flex pl-2 pr-2">
-								<div class="sec-heading-flex-one">
-									<h2>Get more from {{$title}}</h2>
-								</div>
-								<div class="sec-heading-flex-last">
-									<a href="#" class="btn btn-theme">View More<i class="ti-arrow-right ml-2"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12">
-							<div class="owl-carousel products-slider owl-theme">
-							
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag hot">Hot</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag new">New</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_offer_sell">Save 10% Off</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag hot">Hot</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-								
-								<!-- Single Item -->
-								<div class="item">
-									<div class="woo_product_grid">
-										<span class="woo_pr_tag new">New</span>
-										<div class="woo_product_thumb">
-											<img src="https://via.placeholder.com/500x500" class="img-fluid" alt="" />
-										</div>
-										<div class="woo_product_caption center">
-											<div class="woo_rate">
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star filled"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="woo_title">
-												<h4 class="woo_pro_title"><a href="detail-1.html">Accumsan Tree Fusce</a></h4>
-											</div>
-											<div class="woo_price">
-												<h6>$72.47<span class="less_price">$112.10</span></h6>
-											</div>
-										</div>
-										<div class="woo_product_cart hover">
-											<ul>
-												<li><a href="javascript:void(0);" data-toggle="modal" data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i class="ti-eye"></i></a></li>
-												<li><a href="add-to-cart.html" class="woo_cart_btn btn_view"><i class="ti-shopping-cart"></i></a></li>
-												<li><a href="wishlist.html" class="woo_cart_btn btn_save"><i class="ti-heart"></i></a></li>
-											</ul>
-										</div>								
-									</div>
-								</div>
-							
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ======================== Business/Sell/Buy End ==================== -->
-
+        </div>
+    </div>
+</section>
 
 @endsection

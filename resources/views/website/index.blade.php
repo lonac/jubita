@@ -182,19 +182,19 @@
 <!-- =========================== BIASHARA Section End =================================== -->
 
 <!-- =========================== MASOKO Section Start =================================== -->
-<section class="bg-dark text-white py-5 border-bottom">
+<section class="bg-dark text-white py-5 border-bottom" style="background: #000 !important; border-top: 5px solid var(--forbes-yellow);">
     <div class="container">
         <div class="cat-header border-light" style="border-bottom-color: rgba(255,255,255,0.2);">
-            <h2 class="text-white">Masoko ya Fedha</h2>
-            <a href="#" class="view-all text-light font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+            <h2 class="text-white" style="font-family: var(--forbes-font-sans); letter-spacing: 1px;">Masoko ya Fedha</h2>
+            <a href="#" class="view-all text-warning font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none; color: var(--forbes-yellow) !important;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
         </div>
         <div class="row mt-4">
             @forelse($marketNews as $m)
             <div class="col-md-4 mb-4">
-                <div class="border-left border-secondary pl-3 h-100">
-                    <div class="meta-info text-warning mb-2" style="font-size: 10px; font-weight: 800; letter-spacing: 1px;">MASOKO</div>
+                <div class="border-left border-warning pl-3 h-100" style="border-left-width: 4px !important; border-left-color: var(--forbes-yellow) !important;">
+                    <div class="meta-info mb-2" style="font-size: 10px; font-weight: 900; letter-spacing: 1.5px; color: var(--forbes-yellow);">MASOKO</div>
                     <a href="{{ route('article.show', $m->slug) }}" class="text-white text-decoration-none">
-                        <h5 class="serif font-weight-bold h5 mb-0" style="font-family: var(--forbes-font-serif); line-height: 1.3;">{{ $m->title }}</h5>
+                        <h5 class="serif font-weight-bold h5 mb-0" style="font-family: var(--forbes-font-serif); line-height: 1.2; font-size: 1.25rem; color: #fff;">{{ $m->title }}</h5>
                     </a>
                 </div>
             </div>
@@ -207,7 +207,7 @@
 <!-- =========================== MASOKO Section End =================================== -->
 
 <!-- =========================== TEKNOLOJIA Section Start =================================== -->
-<section class="border-bottom">
+<section class="border-bottom bg-white">
     <div class="container">
         <div class="cat-header">
             <h2>Teknolojia</h2>
@@ -215,14 +215,19 @@
         </div>
         <div class="row">
             @forelse($techInsightPosts as $post)
-            <div class="col-md-6 mb-4">
-                <div class="d-flex align-items-center border p-3 rounded-0 bg-white shadow-sm h-100">
-                    <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=200' }}" class="rounded-0 mr-3" style="width: 140px; height: 100px; object-fit: cover; flex-shrink: 0;">
-                    <div>
-                        <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
-                            <h5 class="font-weight-bold text-dark mb-2" style="font-family: var(--forbes-font-serif); font-size: 1.1rem; line-height: 1.3;">{{ $post->title }}</h5>
+            <div class="col-lg-6 mb-4">
+                <div class="row no-gutters border bg-white shadow-sm h-100 transition-up hover-shadow">
+                    <div class="col-md-4">
+                        <a href="{{ route('article.show', $post->slug) }}">
+                            <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=400' }}" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 150px;">
                         </a>
-                        <p class="small text-muted mb-0">{{ Str::limit($post->excerpt, 80) }}</p>
+                    </div>
+                    <div class="col-md-8 p-3 d-flex flex-column justify-content-center">
+                        <div class="meta-info text-primary mb-2" style="font-size: 10px; font-weight: 900;">TECH INSIGHT</div>
+                        <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
+                            <h5 class="font-weight-bold text-dark mb-2" style="font-family: var(--forbes-font-serif); font-size: 1.2rem; line-height: 1.2;">{{ $post->title }}</h5>
+                        </a>
+                        <p class="small text-muted mb-0" style="font-size: 0.85rem; line-height: 1.4;">{{ Str::limit($post->excerpt, 100) }}</p>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('App\Http\Controllers\Website')->group(function () {
     Route::get('/', 'PagesController@index')->name('home');
     Route::get('/article/{slug}', 'PagesController@showArticle')->name('article.show');
+    Route::get('/category/{slug}', 'PagesController@showCategory')->name('category.show');
     Route::get('/masoko', 'PagesController@masoko')->name('masoko');
     Route::get('/biashara', 'PagesController@biashara')->name('biashara');
     Route::get('/fedha', 'PagesController@fedha')->name('fedha');
@@ -43,12 +44,14 @@ Route::middleware('auth')->namespace('App\Http\Controllers')->group(function () 
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
  
+/*
     //Accountant 
       Route::prefix('accountant')->name('accountant.')->group(function () {
         Route::resource('loans','Accountant\LoanController');
         Route::resource('overdues','Accountant\OverdueController');
 
     });
+*/
 
 
 

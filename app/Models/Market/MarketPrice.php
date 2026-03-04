@@ -16,6 +16,12 @@ class MarketPrice extends Model
         'recorded_at',
     ];
 
+    protected $casts = [
+        'recorded_at' => 'datetime',
+        'price_min' => 'decimal:2',
+        'price_max' => 'decimal:2',
+    ];
+
     public function commodity()
     {
         return $this->belongsTo(CommodityType::class,'commodity_type_id');

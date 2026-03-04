@@ -15,6 +15,11 @@ class Content extends Model
         'featured_image', 'is_featured', 'status', 'published_at',
     ];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+        'is_featured' => 'boolean',
+    ];
+
     public function postType()
     {
         return $this->belongsTo(PostType::class);

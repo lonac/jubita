@@ -15,23 +15,34 @@
 				--forbes-border: #e0e0e0;
 				--forbes-font-serif: 'Merriweather', serif;
 				--forbes-font-sans: 'Work Sans', sans-serif;
-				--bloomberg-blue: #0000ff; /* The iconic Bloomberg Blue */
+				--bloomberg-blue: #0000ff;
                 --bloomberg-hover: #0000cc;
+                --forbes-yellow: #f1d302; /* Sharp Forbes/Bloomberg Yellow */
 			}
 			
 			body { 
                 font-family: var(--forbes-font-sans); 
                 background-color: #ffffff; 
-                color: #333; 
+                color: #000; 
                 overflow-x: hidden; 
                 -webkit-font-smoothing: antialiased;
+                letter-spacing: -0.01em;
             }
 			
             h1, h2, h3, h4, h5, h6, .serif { 
                 font-family: var(--forbes-font-serif); 
                 font-weight: 900; 
                 color: var(--forbes-black); 
-                line-height: 1.1;
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+            }
+
+            .meta-info {
+                font-family: var(--forbes-font-sans);
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-size: 11px;
             }
 
             /* --- HEADER COLORS (Bloomberg Style) --- */
@@ -181,16 +192,21 @@
             .btn-bloomberg:hover { background: var(--bloomberg-hover); transform: translateY(-2px); }
 
 			/* Footer Styles */
-			footer { background: #fff; border-top: 10px solid #000; padding: 80px 0 40px; color: #000; }
-			.footer-column h4 { font-family: var(--forbes-font-sans); font-size: 14px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+			footer { background: #000; padding: 80px 0 40px; color: #fff; }
+			.footer-column h4 { font-family: var(--forbes-font-sans); font-size: 13px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1.5px; color: #fff; }
 			.footer-links { list-style: none; padding: 0; margin: 0; }
 			.footer-links li { margin-bottom: 12px; }
-			.footer-links li a { color: #555; font-size: 14px; text-decoration: none; font-weight: 500; transition: 0.2s; }
-			.footer-links li a:hover { color: #000; }
-			.footer-social a { color: #000; font-size: 20px; margin-right: 25px; }
-			.footer-bottom { border-top: 1px solid #eee; margin-top: 60px; padding-top: 30px; }
-			.footer-bottom p { font-size: 12px; color: #888; font-weight: 600; }
-			.footer-bottom-links a { color: #888; font-size: 11px; margin: 0 10px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+			.footer-links li a { color: #bbb; font-size: 14px; text-decoration: none; font-weight: 500; transition: 0.2s; }
+			.footer-links li a:hover { color: #fff; padding-left: 5px; }
+			.footer-social a { color: #fff; font-size: 18px; margin-right: 25px; transition: 0.2s; }
+			.footer-social a:hover { color: var(--bloomberg-blue); }
+			.footer-bottom { border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; }
+			.footer-bottom p { font-size: 11px; color: #666; font-weight: 700; letter-spacing: 0.5px; }
+			.footer-bottom-links a { color: #666; font-size: 11px; margin: 0 12px; font-weight: 700; text-transform: uppercase; text-decoration: none; transition: 0.2s; }
+			.footer-bottom-links a:hover { color: #fff; }
+
+			/* Logo filter for black background if needed */
+			.footer-logo { filter: brightness(0) invert(1); height: 40px; margin-bottom: 30px; display: block; }
 
 			/* Utility */
 			.search-box-header input { border: 1px solid var(--forbes-border); background: #fff; padding: 8px 15px; font-size: 13px; border-radius: 0; width: 100%; }
@@ -239,68 +255,45 @@
 					<ul class="nav-ul">
 						<li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{route('home')}}">Nyumbani</a></li>
 						
-						<li><a href="#">MASOKO</a></li>
-						<!-- UCHUMI -->
-						<li>
-							<a href="#">UCHUMI <i class="fas fa-caret-down ml-1" style="font-size: 9px;"></i></a>
-							<div class="mega-panel">
+                        @foreach($menuCategories as $category)
+						<li class="{{ request()->is('category/'.$category->slug) ? 'active' : '' }}">
+							<a href="{{ route('category.show', $category->slug) }}">{{ strtoupper($category->name) }} @if($category->children->count() > 0) <i class="fas fa-caret-down ml-1" style="font-size: 9px;"></i> @endif</a>
+							@if($category->children->count() > 0)
+                            <div class="mega-panel">
 								<div class="mega-content">
 									<div class="mega-col">
-										<div class="mega-title">Sekta za Uchumi</div>
+										<div class="mega-title">Sekta za {{ $category->name }}</div>
 										<ul class="sub-list">
-											<li><a href="#">Kilimo</a></li>
-											<li><a href="#">Biashara</a></li>
-											<li><a href="#">Utalii</a></li>
-											<li><a href="#">Nishati</a></li>
-											<li><a href="#">Uzalishaji</a></li>
-											<li><a href="#">Ujenzi</a></li>
+                                            @foreach($category->children as $child)
+											<li><a href="{{ route('category.show', $child->slug) }}">{{ $child->name }}</a></li>
+                                            @endforeach
 										</ul>
 									</div>
 									<div class="mega-col border-left pl-5">
-										<div class="mega-title">Habari Mpya za Uchumi</div>
+										<div class="mega-title">Habari Mpya za {{ $category->name }}</div>
 										<div class="featured-news-menu">
-											<a href="#" class="menu-news-item">
-												<div class="menu-news-img" style="background-image:url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=200')"></div>
-												<div class="menu-news-title">Uchambuzi: Jinsi gani Pato la Taifa litakua kwa 6% mwaka 2026</div>
+                                            @php
+                                                $latestInCategory = App\Models\Content\Content::where('category_id', $category->id)
+                                                    ->orWhereIn('category_id', $category->children->pluck('id'))
+                                                    ->latest()
+                                                    ->take(2)
+                                                    ->get();
+                                            @endphp
+                                            @forelse($latestInCategory as $news)
+											<a href="{{ route('article.show', $news->slug) }}" class="menu-news-item">
+												<div class="menu-news-img" style="background-image:url('{{ $news->featured_image ? asset('storage/'.$news->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=200' }}')"></div>
+												<div class="menu-news-title">{{ $news->title }}</div>
 											</a>
-											<a href="#" class="menu-news-item">
-												<div class="menu-news-img" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=200')"></div>
-												<div class="menu-news-title">Ripoti: Fursa mpya za uwekezaji katika sekta ya viwanda Tanzania</div>
-											</a>
+                                            @empty
+                                            <p class="text-muted small">Hakuna habari mpya hivi punde.</p>
+                                            @endforelse
 										</div>
 									</div>
 								</div>
 							</div>
+                            @endif
 						</li>
-
-						<!-- JIOPOLITIKI -->
-						<li>
-							<a href="#">JIOPOLITIKI <i class="fas fa-caret-down ml-1" style="font-size: 9px;"></i></a>
-							<div class="mega-panel">
-								<div class="mega-content">
-									<div class="mega-col">
-										<div class="mega-title">Siasa & Diplomasia</div>
-										<ul class="sub-list">
-											<li><a href="#">Taifa</a></li>
-											<li><a href="#">Mataifa</a></li>
-											<li><a href="#">Diplomasia</a></li>
-										</ul>
-									</div>
-									<div class="mega-col border-left pl-5">
-										<div class="mega-title">Jiopolitiki Afrika Mashariki</div>
-										<div class="featured-news-menu">
-											<a href="#" class="menu-news-item">
-												<div class="menu-news-img" style="background-image:url('https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=200')"></div>
-												<div class="menu-news-title">Tanzania na nafasi yake katika Jumuiya ya Afrika Mashariki (EAC)</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li><a href="#">FEDHA</a></li>
-						<li><a href="#">TEKNOLOJIA</a></li>
-						<li><a href="#">MAWASILIANO</a></li>
+                        @endforeach
 					</ul>
 				</div>
 			</nav>
@@ -320,7 +313,7 @@
                 <div class="container">
 					<div class="row">
 						<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-							<img src="{{asset('assets/img/logo2.png')}}" alt="JUBITA" style="height: 40px; margin-bottom: 30px; display: block;">
+							<img src="{{asset('assets/img/logo2.png')}}" alt="JUBITA" class="footer-logo">
 							<div class="footer-social">
 								<a href="#"><i class="fab fa-facebook-f"></i></a>
 								<a href="#"><i class="fab fa-twitter"></i></a>

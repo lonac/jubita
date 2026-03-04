@@ -40,8 +40,8 @@ class PagesController extends Controller
 
         // 4. Business Highlight
         $businessPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Biashara')->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'Biashara');
+                $q->where('name', 'BIASHARA')->orWhere('slug', 'biashara')->orWhereHas('parent', function($pq) {
+                    $pq->where('name', 'BIASHARA');
                 });
             })
             ->where('status', 'published')
@@ -50,9 +50,9 @@ class PagesController extends Controller
 
         // 5. Politics / Jiopolitiki
         $politicsPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Jiopolitiki')->orWhere('name', 'Siasa')
+                $q->where('name', 'JIOPOLITIKI')->orWhere('slug', 'jiopolitiki')->orWhere('name', 'Siasa')
                   ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'Jiopolitiki');
+                    $pq->where('name', 'JIOPOLITIKI');
                   });
             })
             ->where('status', 'published')
@@ -62,9 +62,9 @@ class PagesController extends Controller
 
         // 6. Uchumi (Economy)
         $economyPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Uchumi')
+                $q->where('name', 'UCHUMI')->orWhere('slug', 'uchumi')
                   ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'Uchumi');
+                    $pq->where('name', 'UCHUMI');
                   });
             })
             ->where('status', 'published')
@@ -74,9 +74,9 @@ class PagesController extends Controller
 
         // 7. Masoko (Markets) News
         $marketNews = Content::whereHas('category', function($q) {
-                $q->where('name', 'Masoko')
+                $q->where('name', 'MASOKO')->orWhere('slug', 'masoko')
                   ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'Masoko');
+                    $pq->where('name', 'MASOKO');
                   });
             })
             ->where('status', 'published')
@@ -103,7 +103,7 @@ class PagesController extends Controller
             ->get();
 
         $businessList = Content::whereHas('category', function($q) {
-                $q->where('name', 'Biashara');
+                $q->where('name', 'BIASHARA')->orWhere('slug', 'biashara');
             })
             ->where('status', 'published')
             ->latest('published_at')
@@ -112,7 +112,7 @@ class PagesController extends Controller
 
         // 8. Reviews & Recommendations
         $reviewPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Reviews');
+                $q->where('name', 'Reviews')->orWhere('slug', 'reviews');
             })
             ->where('status', 'published')
             ->latest('published_at')
@@ -121,7 +121,7 @@ class PagesController extends Controller
 
         // 9. Technology Insights
         $techInsightPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Technology Reviews')->orWhere('name', 'Teknolojia');
+                $q->where('name', 'TEKNOLOJIA')->orWhere('slug', 'teknolojia');
             })
             ->where('status', 'published')
             ->latest('published_at')
@@ -130,14 +130,14 @@ class PagesController extends Controller
 
         // 10. Advisory & Guidance
         $advisoryFeatured = Content::whereHas('category', function($q) {
-                $q->where('name', 'Advisory');
+                $q->where('name', 'Advisory')->orWhere('slug', 'advisory');
             })
             ->where('status', 'published')
             ->latest('published_at')
             ->first();
 
         $advisoryList = Content::whereHas('category', function($q) {
-                $q->where('name', 'Advisory');
+                $q->where('name', 'Advisory')->orWhere('slug', 'advisory');
             })
             ->where('status', 'published')
             ->where('id', '!=', $advisoryFeatured?->id)
@@ -159,7 +159,7 @@ class PagesController extends Controller
 
         // 13. Cars (Magari) - Fetch from Content or Products
         $carPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Magari')->orWhere('name', 'Automotive');
+                $q->where('name', 'MAGARI')->orWhere('slug', 'magari');
             })
             ->where('status', 'published')
             ->latest('published_at')
@@ -175,7 +175,7 @@ class PagesController extends Controller
 
         // 14. Real Estate (Nyumba)
         $housePosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Nyumba')->orWhere('name', 'Real Estate');
+                $q->where('name', 'NYUMBA')->orWhere('slug', 'nyumba');
             })
             ->where('status', 'published')
             ->latest('published_at')
@@ -216,6 +216,34 @@ class PagesController extends Controller
     /**
      * Display the specified article.
      */
+    /**
+     * Display posts for a specific category.
+     */
+    public function showCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $title = strtoupper($category->name);
+
+        $featuredPost = Content::where('category_id', $category->id)
+            ->orWhereHas('category', function($q) use ($category) {
+                $q->where('parent_id', $category->id);
+            })
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->first();
+
+        $categoryPosts = Content::where('category_id', $category->id)
+            ->orWhereHas('category', function($q) use ($category) {
+                $q->where('parent_id', $category->id);
+            })
+            ->where('status', 'published')
+            ->where('id', '!=', $featuredPost?->id)
+            ->latest('published_at')
+            ->paginate(12);
+
+        return view('website.shared.blog_view', compact('title', 'category', 'featuredPost', 'categoryPosts'));
+    }
+
     public function showArticle($slug)
     {
         $article = Content::with(['author', 'category'])

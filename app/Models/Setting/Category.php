@@ -15,6 +15,11 @@ class Category extends Model
         'status',
     ];
 
+    protected $casts = [
+        'is_main' => 'boolean',
+        'status' => 'boolean',
+    ];
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
