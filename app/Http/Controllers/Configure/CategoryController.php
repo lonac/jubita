@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Setting\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 
 class CategoryController extends Controller
@@ -26,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('settings.categories.create');
-
+        $parent_categories = Category::all();
+        return view('settings.categories.create', compact('parent_categories'));
     }
 
     /**
@@ -39,6 +40,7 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name'        => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string|max:255',
+            'parent_id'   => 'nullable|exists:categories,id',
         ]);
 
         DB::beginTransaction();
@@ -47,7 +49,9 @@ class CategoryController extends Controller
             // 2. Save category
             Category::create([
                 'name'        => $validated['name'],
+                'slug'        => Str::slug($validated['name']),
                 'description' => $validated['description'] ?? null,
+                'parent_id'   => $validated['parent_id'] ?? null,
                 'status'      => 1,
             ]);
 
@@ -77,7 +81,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('settings.categories.show', compact('category'));
     }
 
     /**
@@ -85,7 +90,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $parent_categories = Category::where('id', '!=', $id)->get();
+        return view('settings.categories.edit', compact('category', 'parent_categories'));
     }
 
     /**
@@ -93,7 +100,39 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $validated = $request->validate([
+            'name'        => 'required|string|max:255|unique:categories,name,' . $id,
+            'description' => 'nullable|string|max:255',
+            'parent_id'   => 'nullable|exists:categories,id',
+            'status'      => 'required|boolean',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $category->update([
+                'name'        => $validated['name'],
+                'description' => $validated['description'] ?? null,
+                'parent_id'   => $validated['parent_id'] ?? null,
+                'status'      => $validated['status'],
+            ]);
+
+            DB::commit();
+
+            return redirect()
+                ->route('settings.categories.index')
+                ->with('success', 'Category updated successfully.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Category Update Error: ' . $e->getMessage());
+
+            return redirect()
+                ->back()
+                ->with('fail', 'Failed to update category. Please try again.');
+        }
     }
 
     /**
@@ -101,6 +140,18 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+
+            return redirect()
+                ->route('settings.categories.index')
+                ->with('success', 'Category deleted successfully.');
+        } catch (\Exception $e) {
+            Log::error('Category Delete Error: ' . $e->getMessage());
+            return redirect()
+                ->back()
+                ->with('fail', 'Failed to delete category.');
+        }
     }
 }

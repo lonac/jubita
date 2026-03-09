@@ -77,7 +77,8 @@ class PostTypeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = PostType::findOrFail($id);
+        return view('settings.post_type.show', compact('category'));
     }
 
     /**
@@ -85,7 +86,8 @@ class PostTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = PostType::findOrFail($id);
+        return view('settings.post_type.edit', compact('category'));
     }
 
     /**
@@ -93,7 +95,37 @@ class PostTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = PostType::findOrFail($id);
+
+        $validated = $request->validate([
+            'name'        => 'required|string|max:255|unique:post_types,name,' . $id,
+            'description' => 'nullable|string|max:255',
+            'status'      => 'required|boolean',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $category->update([
+                'name'        => $validated['name'],
+                'description' => $validated['description'] ?? null,
+                'status'      => $validated['status'],
+            ]);
+
+            DB::commit();
+
+            return redirect()
+                ->route('settings.post_type.index')
+                ->with('success', 'Post type updated successfully.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('PostType Update Error: ' . $e->getMessage());
+
+            return redirect()
+                ->back()
+                ->with('fail', 'Failed to update post type.');
+        }
     }
 
     /**
@@ -101,6 +133,18 @@ class PostTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $category = PostType::findOrFail($id);
+            $category->delete();
+
+            return redirect()
+                ->route('settings.post_type.index')
+                ->with('success', 'Post type deleted successfully.');
+        } catch (\Exception $e) {
+            Log::error('PostType Delete Error: ' . $e->getMessage());
+            return redirect()
+                ->back()
+                ->with('fail', 'Failed to delete post type.');
+        }
     }
 }

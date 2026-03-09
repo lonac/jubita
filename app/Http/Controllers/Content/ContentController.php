@@ -74,9 +74,11 @@ class ContentController extends Controller
                 'content' => $request->content,
                 'post_type_id' => $request->post_type_id,
                 'category_id' => $request->category_id,
-                'author_id' => Auth::id(), // logged in user
+                'author_id' => $request->author_id ?? Auth::id(), // logged in user
                 'featured_image' => $imagePath,
                 'status' => $request->status ?? 'draft',
+                'is_featured' => $request->has('is_featured'),
+                'published_at' => ($request->status == 'published') ? now() : null,
             ]);
 
             // 6. Commit transaction
@@ -100,7 +102,8 @@ class ContentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $content = Content::findOrFail($id);
+        return view('contents.show', compact('content'));
     }
 
     /**
@@ -108,7 +111,11 @@ class ContentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $content = Content::findOrFail($id);
+        $postTypes = PostType::all();
+        $categories = Category::all();
+        $authors = User::all();
+        return view('contents.edit', compact('content', 'postTypes', 'categories', 'authors'));
     }
 
     /**
@@ -116,7 +123,54 @@ class ContentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $content = Content::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:contents,slug,' . $id,
+            'excerpt' => 'nullable|string',
+            'content' => 'required|string',
+            'post_type_id' => 'required|exists:post_types,id',
+            'category_id' => 'required|exists:categories,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $imagePath = $content->featured_image;
+            if ($request->hasFile('featured_image')) {
+                // Delete old image if exists
+                if ($imagePath && \Storage::disk('public')->exists($imagePath)) {
+                    \Storage::disk('public')->delete($imagePath);
+                }
+                $imagePath = $request->file('featured_image')->store('contents', 'public');
+            }
+
+            $slug = $request->slug ?: Str::slug($request->title);
+
+            $content->update([
+                'title' => $request->title,
+                'slug' => $slug,
+                'excerpt' => $request->excerpt,
+                'content' => $request->content,
+                'post_type_id' => $request->post_type_id,
+                'category_id' => $request->category_id,
+                'featured_image' => $imagePath,
+                'status' => $request->status ?? 'draft',
+                'is_featured' => $request->has('is_featured'),
+                'published_at' => ($request->status == 'published' && !$content->published_at) ? now() : $content->published_at,
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('content.content.index')->with('success', 'Content updated successfully.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Content update failed: ' . $e->getMessage());
+            return back()->withInput()->withErrors(['error' => 'Failed to update content.']);
+        }
     }
 
     /**
@@ -124,6 +178,17 @@ class ContentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $content = Content::findOrFail($id);
+            if ($content->featured_image && \Storage::disk('public')->exists($content->featured_image)) {
+                \Storage::disk('public')->delete($content->featured_image);
+            }
+            $content->delete();
+
+            return redirect()->route('content.content.index')->with('success', 'Content deleted successfully.');
+        } catch (\Exception $e) {
+            Log::error('Content deletion failed: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Failed to delete content.']);
+        }
     }
 }

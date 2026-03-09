@@ -20,7 +20,7 @@ class PagesController extends Controller
         $latestNews = Content::with(['author', 'category'])
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(5)
+            ->take(10)
             ->get();
 
         // 2. Main Featured Post (Center)
@@ -35,7 +35,7 @@ class PagesController extends Controller
             ->where('status', 'published')
             ->where('id', '!=', $featuredPost?->id)
             ->latest('published_at')
-            ->take(2)
+            ->take(4)
             ->get();
 
         // 4. Business Highlight
@@ -57,7 +57,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(5)
+            ->take(12)
             ->get();
 
         // 6. Uchumi (Economy)
@@ -69,7 +69,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(5)
+            ->take(8)
             ->get();
 
         // 7. Masoko (Markets) News
@@ -81,7 +81,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(5)
+            ->take(9)
             ->get();
 
         // 8. Lifestyle Posts
@@ -99,7 +99,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(8)
             ->get();
 
         $businessList = Content::whereHas('category', function($q) {
@@ -107,7 +107,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(12)
             ->get();
 
         // 8. Reviews & Recommendations
@@ -116,7 +116,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(8)
             ->get();
 
         // 9. Technology Insights
@@ -125,7 +125,7 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(12)
             ->get();
 
         // 10. Advisory & Guidance
@@ -142,19 +142,19 @@ class PagesController extends Controller
             ->where('status', 'published')
             ->where('id', '!=', $advisoryFeatured?->id)
             ->latest('published_at')
-            ->take(4)
+            ->take(8)
             ->get();
 
         // 11. Products
         $products = Product::where('status', 'active')
             ->latest()
-            ->take(8)
+            ->take(12)
             ->get();
 
         // 12. Market Prices
         $marketPrices = MarketPrice::with('commodity')
             ->latest('recorded_at')
-            ->take(12)
+            ->take(30)
             ->get();
 
         // 13. Cars (Magari) - Fetch from Content or Products
@@ -163,14 +163,18 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(8)
             ->get();
 
         $carProducts = Product::where('name', 'like', '%Car%')
             ->orWhere('description', 'like', '%Gari%')
+            ->orWhere('name', 'like', '%Toyota%')
+            ->orWhere('name', 'like', '%Mercedes%')
+            ->orWhere('name', 'like', '%Land Rover%')
+            ->orWhere('name', 'like', '%Suzuki%')
             ->where('status', 'active')
             ->latest()
-            ->take(4)
+            ->take(8)
             ->get();
 
         // 14. Real Estate (Nyumba)
@@ -179,14 +183,18 @@ class PagesController extends Controller
             })
             ->where('status', 'published')
             ->latest('published_at')
-            ->take(4)
+            ->take(8)
             ->get();
 
         $houseProducts = Product::where('name', 'like', '%House%')
             ->orWhere('description', 'like', '%Nyumba%')
+            ->orWhere('name', 'like', '%Plot%')
+            ->orWhere('name', 'like', '%Apartment%')
+            ->orWhere('name', 'like', '%Villa%')
+            ->orWhere('name', 'like', '%Warehouse%')
             ->where('status', 'active')
             ->latest()
-            ->take(4)
+            ->take(8)
             ->get();
 
         return view('website.index', compact(
@@ -213,9 +221,6 @@ class PagesController extends Controller
         ));
     }
 
-    /**
-     * Display the specified article.
-     */
     /**
      * Display posts for a specific category.
      */

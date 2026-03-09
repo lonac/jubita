@@ -1,19 +1,19 @@
 @extends('shared.master')
 
-@section('title', 'Cetegories Registration')
+@section('title', 'Edit Category')
 
 @section('content')
 
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Categories Registrations</h4>
+            <h4 class="page-title">Edit Category</h4>
         </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ route('settings.categories.index') }}">Category Type </a></li>
-                <li class="active">Registration</li>
+                <li><a href="{{ route('settings.categories.index') }}">Categories</a></li>
+                <li class="active">Edit</li>
             </ol>
         </div>
     </div>
@@ -22,14 +22,15 @@
             <div class="panel panel-info">
                 <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
-                        <form action="{{ route('settings.categories.store') }}" method="POST">
+                        <form action="{{ route('settings.categories.update', $category->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group @error('name') has-error @enderror">
                                             <label class="control-label"> Name</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Category Name" value="{{ old('name') }}">
+                                            <input type="text" name="name" class="form-control" placeholder="Category Name" value="{{ old('name', $category->name) }}">
                                             @error('name')
                                                 <span class="help-block">{{ $message }}</span>
                                             @enderror
@@ -44,7 +45,7 @@
                                             <select name="parent_id" class="form-control">
                                                 <option value="">-- No Parent --</option>
                                                 @foreach($parent_categories as $parent)
-                                                    <option value="{{ $parent->id }}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>{{ $parent->name }}</option>
+                                                    <option value="{{ $parent->id }}" {{ old('parent_id', $category->parent_id) == $parent->id ? 'selected' : '' }}>{{ $parent->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('parent_id')
@@ -56,21 +57,34 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <div class="form-group @error('status') has-error @enderror">
+                                            <label class="control-label"> Status</label>
+                                            <select name="status" class="form-control">
+                                                <option value="1" {{ old('status', $category->status) == 1 ? 'selected' : '' }}>Active</option>
+                                                <option value="0" {{ old('status', $category->status) == 0 ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                            @error('status')
+                                                <span class="help-block">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group @error('description') has-error @enderror">
                                             <label class="control-label"> Description</label>
-                                            <input type="text" name="description" class="form-control" placeholder="description" value="{{ old('description') }}">
+                                            <input type="text" name="description" class="form-control" placeholder="description" value="{{ old('description', $category->description) }}">
                                             @error('description')
                                                 <span class="help-block">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-                                
-                        
-                        
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Save Data</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Update Category</button>
+                                <a href="{{ route('settings.categories.index') }}" class="btn btn-default">Cancel</a>
                             </div>
                         </form>
                     </div>

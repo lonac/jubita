@@ -74,7 +74,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -82,7 +83,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -90,7 +92,52 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'slug'        => 'nullable|string|max:255|unique:products,slug,' . $id,
+            'description' => 'nullable|string',
+            'price'       => 'nullable|numeric|min:0',
+            'old_price'   => 'nullable|numeric|min:0',
+            'rating'      => 'nullable|numeric|min:0|max:5',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status'      => 'nullable|in:active,inactive',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $imagePath = $product->image;
+            if ($request->hasFile('image')) {
+                // Delete old image
+                if ($imagePath && \Storage::disk('public')->exists($imagePath)) {
+                    \Storage::disk('public')->delete($imagePath);
+                }
+                $imagePath = $request->file('image')->store('products', 'public');
+            }
+
+            $product->update([
+                'name'        => $request->name,
+                'slug'        => $request->slug ?? Str::slug($request->name),
+                'description' => $request->description,
+                'price'       => $request->price,
+                'old_price'   => $request->old_price,
+                'rating'      => $request->rating ?? 0,
+                'image'       => $imagePath,
+                'status'      => $request->status ?? 'active',
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('product.product.index')
+                ->with('success', 'Product updated successfully');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Log::error('Product update failed: ' . $e->getMessage());
+            return back()->withInput()->withErrors(['error' => 'Failed to update product']);
+        }
     }
 
     /**
@@ -98,6 +145,18 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+            if ($product->image && \Storage::disk('public')->exists($product->image)) {
+                \Storage::disk('public')->delete($product->image);
+            }
+            $product->delete();
+
+            return redirect()->route('product.product.index')
+                ->with('success', 'Product deleted successfully');
+        } catch (\Exception $e) {
+            \Log::error('Product deletion failed: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Failed to delete product']);
+        }
     }
 }

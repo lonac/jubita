@@ -24,8 +24,7 @@ class CategorySeeder extends Seeder
                 ['name' => 'BIASHARA', 'description' => 'Biashara na Uwekezaji', 'is_main' => 1],
                 ['name' => 'MASOKO', 'description' => 'Masoko ya Fedha na Bidhaa', 'is_main' => 1],
                 ['name' => 'TEKNOLOJIA', 'description' => 'Teknolojia na Ubunifu', 'is_main' => 1],
-                ['name' => 'NYUMBA', 'description' => 'Soko la Nyumba na Viwanja', 'is_main' => 1],
-                ['name' => 'MAGARI', 'description' => 'Soko la Magari', 'is_main' => 1],
+                ['name' => 'MAWASILIANO', 'description' => 'Soko la Magari', 'is_main' => 1],
             ];
 
             foreach ($parentCategories as $cat) {

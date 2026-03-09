@@ -162,15 +162,26 @@
                 margin-right: 15px; 
             }
 
-			/* --- SECTIONS & BUTTONS --- */
-            section { padding: 60px 0; border-bottom: 1px solid var(--forbes-border); }
+			.forbes-card {
+                margin-bottom: 15px;
+                transition: 0.3s;
+            }
+            .forbes-card figure { margin-bottom: 8px !important; }
+            .forbes-card h4, .forbes-card h5, .forbes-card h6 { 
+                margin-bottom: 5px !important; 
+                line-height: 1.2 !important;
+            }
+            .forbes-card .meta-info { color: var(--forbes-gray); font-size: 10px; }
+
+            /* --- SECTIONS & BUTTONS --- */
+            section { padding: 25px 0; border-bottom: 1px solid var(--forbes-border); }
             .bg-light { background-color: var(--forbes-light-gray) !important; }
             .bg-dark { background-color: var(--forbes-black) !important; }
             
 			.cat-header { 
-                border-bottom: 4px solid var(--forbes-black); 
-                margin-bottom: 40px; 
-                padding-bottom: 12px; 
+                border-bottom: 2px solid var(--forbes-black); 
+                margin-bottom: 15px; 
+                padding-bottom: 5px; 
                 display: flex; 
                 justify-content: space-between; 
                 align-items: flex-end;
@@ -192,21 +203,22 @@
             .btn-bloomberg:hover { background: var(--bloomberg-hover); transform: translateY(-2px); }
 
 			/* Footer Styles */
-			footer { background: #000; padding: 80px 0 40px; color: #fff; }
-			.footer-column h4 { font-family: var(--forbes-font-sans); font-size: 13px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1.5px; color: #fff; }
+			footer { background: #000; padding: 100px 0 60px; color: #fff; font-family: var(--forbes-font-sans); }
+			.footer-column h4 { font-size: 12px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px; color: #fff; border-bottom: 1px solid #333; padding-bottom: 10px; display: inline-block; }
 			.footer-links { list-style: none; padding: 0; margin: 0; }
-			.footer-links li { margin-bottom: 12px; }
-			.footer-links li a { color: #bbb; font-size: 14px; text-decoration: none; font-weight: 500; transition: 0.2s; }
-			.footer-links li a:hover { color: #fff; padding-left: 5px; }
-			.footer-social a { color: #fff; font-size: 18px; margin-right: 25px; transition: 0.2s; }
-			.footer-social a:hover { color: var(--bloomberg-blue); }
-			.footer-bottom { border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; }
-			.footer-bottom p { font-size: 11px; color: #666; font-weight: 700; letter-spacing: 0.5px; }
-			.footer-bottom-links a { color: #666; font-size: 11px; margin: 0 12px; font-weight: 700; text-transform: uppercase; text-decoration: none; transition: 0.2s; }
+			.footer-links li { margin-bottom: 15px; }
+			.footer-links li a { color: #888; font-size: 14px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+			.footer-links li a:hover { color: #fff; }
+			.footer-social a { color: #fff; font-size: 22px; margin-right: 30px; transition: 0.3s; }
+			.footer-social a:hover { color: var(--forbes-yellow); }
+			.footer-bottom { border-top: 1px solid #222; margin-top: 80px; padding-top: 40px; }
+			.footer-bottom p { font-size: 11px; color: #fff; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.9; }
+			.footer-bottom-links { margin-top: 20px; }
+			.footer-bottom-links a { color: #888; font-size: 10px; margin: 0 15px; font-weight: 800; text-transform: uppercase; text-decoration: none; transition: 0.3s; letter-spacing: 0.5px; }
 			.footer-bottom-links a:hover { color: #fff; }
 
-			/* Logo filter for black background if needed */
-			.footer-logo { filter: brightness(0) invert(1); height: 40px; margin-bottom: 30px; display: block; }
+			/* Logo filter for black background */
+			.footer-logo { filter: brightness(0) invert(1); height: 45px; margin-bottom: 40px; display: block; }
 
 			/* Utility */
 			.search-box-header input { border: 1px solid var(--forbes-border); background: #fff; padding: 8px 15px; font-size: 13px; border-radius: 0; width: 100%; }
