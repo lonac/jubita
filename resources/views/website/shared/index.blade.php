@@ -220,6 +220,64 @@
 			/* Logo filter for black background */
 			.footer-logo { filter: brightness(0) invert(1); height: 45px; margin-bottom: 40px; display: block; }
 
+			/* Mobile Responsive Adjustments */
+            @media (max-width: 991px) {
+                .header-middle { padding: 15px 0; }
+                .logo-container img { max-height: 30px; }
+                .nav-ul { display: none; }
+                .hero-section h1 { font-size: 2.5rem !important; }
+                .cat-header h2 { font-size: 20px; }
+                .ticker-label { display: none; }
+                .col-4.d-none.d-md-block { display: none !important; }
+                .col-md-4.col-12 { flex: 0 0 100%; max-width: 100%; text-align: center; }
+            }
+
+            /* Mobile Menu Drawer */
+            .mobile-menu-drawer {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                width: 300px;
+                height: 100%;
+                background: #fff;
+                z-index: 100001;
+                transition: 0.3s ease;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+                overflow-y: auto;
+                padding-top: 60px;
+            }
+            .mobile-menu-drawer.active { left: 0; }
+            .mobile-menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 100000;
+                display: none;
+            }
+            .mobile-menu-overlay.active { display: block; }
+            .mobile-nav-list { list-style: none; padding: 0; margin: 0; }
+            .mobile-nav-list li { border-bottom: 1px solid #eee; }
+            .mobile-nav-list li a { 
+                display: block; 
+                padding: 15px 25px; 
+                color: #000; 
+                font-weight: 800; 
+                text-transform: uppercase; 
+                font-size: 13px; 
+                text-decoration: none;
+            }
+            .mobile-nav-list li a:hover { background: #f9f9f9; color: var(--bloomberg-blue); }
+            .close-mobile-menu {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
 			/* Utility */
 			.search-box-header input { border: 1px solid var(--forbes-border); background: #fff; padding: 8px 15px; font-size: 13px; border-radius: 0; width: 100%; }
 			.social-header a { color: var(--forbes-black); font-size: 18px; margin-left: 20px; transition: 0.2s; }
@@ -232,6 +290,21 @@
 	<body>
 		<div id="preloader"><div class="spinner-border text-dark" style="width: 3rem; height: 3rem;"></div></div>
 		
+        <!-- Mobile Menu -->
+        <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu-drawer">
+            <span class="close-mobile-menu">&times;</span>
+            <div class="p-4 text-center border-bottom mb-3">
+                <img src="{{asset('assets/img/logo2.png')}}" alt="LOGO" style="height: 30px;">
+            </div>
+            <ul class="mobile-nav-list">
+                <li><a href="{{route('home')}}">Nyumbani</a></li>
+                @foreach($menuCategories as $category)
+                <li><a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
 		<div id="main-wrapper">
 			<div class="top-bar-minimal">
 				{{ now()->format('l, d F, Y') }} | JUBITA MEDIA GLOBAL EDITION
@@ -313,7 +386,7 @@
 			<!-- Mobile Header -->
 			<div class="d-lg-none p-3 border-bottom bg-white sticky-top">
 				<div class="d-flex justify-content-between align-items-center">
-					<button class="btn btn-link text-dark p-0"><i class="fas fa-bars fa-lg"></i></button>
+					<button class="btn btn-link text-dark p-0 toggle-mobile-menu"><i class="fas fa-bars fa-lg"></i></button>
 					<img src="{{asset('assets/img/logo2.png')}}" alt="LOGO" style="height: 28px;">
 					<button class="btn btn-link text-dark p-0"><i class="fas fa-search fa-lg"></i></button>
 				</div>
@@ -380,6 +453,14 @@
 		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 		<script>
 			$(window).on('load', function() { $('#preloader').fadeOut('slow'); });
+
+            // Mobile Menu Logic
+            $('.toggle-mobile-menu').on('click', function() {
+                $('.mobile-menu-drawer, .mobile-menu-overlay').addClass('active');
+            });
+            $('.close-mobile-menu, .mobile-menu-overlay').on('click', function() {
+                $('.mobile-menu-drawer, .mobile-menu-overlay').removeClass('active');
+            });
 		</script>
 	</body>
 </html>
