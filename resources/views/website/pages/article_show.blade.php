@@ -39,7 +39,7 @@
 
                     <!-- Featured Image -->
                     <figure class="mb-5">
-                        <img src="{{ $article->featured_image ? asset('storage/'.$article->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200' }}" class="img-fluid w-100" alt="{{ $article->title }}" style="max-height: 600px; object-fit: cover;">
+                        <img src="{{ $article->featured_image ? asset('storage/'.$article->featured_image) : 'https://picsum.photos/seed/jubitanews/1200/600' }}" class="img-fluid w-100" alt="{{ $article->title }}" style="max-height: 600px; object-fit: cover;">
                         @if($article->excerpt)
                         <figcaption class="mt-3 text-muted font-italic small border-left pl-3">{{ $article->excerpt }}</figcaption>
                         @endif
@@ -69,7 +69,7 @@
                         @foreach($relatedPosts as $related)
                         <div class="col-md-4 mb-4">
                             <a href="{{ route('article.show', $related->slug) }}" class="text-decoration-none">
-                                <img src="{{ $related->featured_image ? asset('storage/'.$related->featured_image) : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600' }}" class="img-fluid mb-3" style="height: 120px; width: 100%; object-fit: cover;">
+                                <img src="{{ $related->featured_image ? asset('storage/'.$related->featured_image) : 'https://picsum.photos/seed/jubitarelated/600/400' }}" class="img-fluid mb-3" style="height: 120px; width: 100%; object-fit: cover;">
                                 <h6 class="font-weight-bold text-dark" style="font-family: var(--forbes-font-serif); line-height: 1.3;">{{ $related->title }}</h6>
                             </a>
                         </div>

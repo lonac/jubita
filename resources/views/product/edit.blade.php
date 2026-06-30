@@ -1,16 +1,16 @@
 @extends('shared.master')
-@section('title','Add Product / Listing')
+@section('title','Edit Listing')
 @section('content')
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3">
-            <h4 class="page-title">New Product Listing</h4>
+            <h4 class="page-title">Edit Listing</h4>
         </div>
         <div class="col-lg-9">
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li><a href="{{ route('product.product.index') }}">Products</a></li>
-                <li class="active">New Listing</li>
+                <li class="active">Edit: {{ Str::limit($product->name, 30) }}</li>
             </ol>
         </div>
     </div>
@@ -21,14 +21,11 @@
     </div>
     @endif
 
-    <form action="{{ route('product.product.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+    <form action="{{ route('product.product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf @method('PUT')
         <div class="row">
 
-            {{-- Left Column --}}
             <div class="col-md-8">
-
-                {{-- Basic Info --}}
                 <div class="panel panel-info">
                     <div class="panel-heading"><h4 class="panel-title">Product Information</h4></div>
                     <div class="panel-body">
@@ -37,19 +34,19 @@
                             <div class="col-md-8">
                                 <div class="form-group @error('name') has-error @enderror">
                                     <label>Jina la Bidhaa <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="e.g. Toyota Land Cruiser Prado 2022" value="{{ old('name') }}">
+                                    <input type="text" name="name" class="form-control" value="{{ old('name', $product->name) }}">
                                     @error('name')<span class="help-block">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group @error('category_id') has-error @enderror">
-                                    <label>Category <span class="text-danger">*</span></label>
+                                    <label>Category</label>
                                     <select name="category_id" id="category_select" class="form-control">
-                                        <option value="">— Select Category —</option>
+                                        <option value="">— Select —</option>
                                         @foreach($categories as $cat)
                                         <option value="{{ $cat->id }}"
                                             data-is-vehicle="{{ $cat->isVehicleCategory() ? '1' : '0' }}"
-                                            {{ old('category_id') == $cat->id ? 'selected' : '' }}>
+                                            {{ old('category_id', $product->category_id) == $cat->id ? 'selected' : '' }}>
                                             {{ $cat->name }}
                                         </option>
                                         @endforeach
@@ -59,86 +56,77 @@
                             </div>
                         </div>
 
-                        <div class="form-group @error('description') has-error @enderror">
+                        <div class="form-group">
                             <label>Maelezo ya Bidhaa</label>
-                            <textarea name="description" class="form-control" rows="5" placeholder="Elezea bidhaa kwa undani — hali, sababu ya kuuza, n.k.">{{ old('description') }}</textarea>
-                            @error('description')<span class="help-block">{{ $message }}</span>@enderror
+                            <textarea name="description" class="form-control" rows="5">{{ old('description', $product->description) }}</textarea>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group @error('price') has-error @enderror">
-                                    <label>Bei (Tsh) <span class="text-danger">*</span></label>
-                                    <input type="number" step="1" name="price" class="form-control" placeholder="e.g. 45000000" value="{{ old('price') }}">
-                                    @error('price')<span class="help-block">{{ $message }}</span>@enderror
+                                <div class="form-group">
+                                    <label>Bei (Tsh)</label>
+                                    <input type="number" step="1" name="price" class="form-control" value="{{ old('price', $product->price) }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group @error('old_price') has-error @enderror">
-                                    <label>Bei ya Zamani (optional)</label>
-                                    <input type="number" step="1" name="old_price" class="form-control" placeholder="Bei ilikuwa..." value="{{ old('old_price') }}">
-                                    @error('old_price')<span class="help-block">{{ $message }}</span>@enderror
+                                <div class="form-group">
+                                    <label>Bei ya Zamani</label>
+                                    <input type="number" step="1" name="old_price" class="form-control" value="{{ old('old_price', $product->old_price) }}">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group @error('condition') has-error @enderror">
+                                <div class="form-group">
                                     <label>Hali ya Bidhaa</label>
                                     <select name="condition" class="form-control">
-                                        <option value="used"         {{ old('condition') === 'used'         ? 'selected' : '' }}>Imetumika</option>
-                                        <option value="fairly_used"  {{ old('condition') === 'fairly_used'  ? 'selected' : '' }}>Imetumika Kidogo</option>
-                                        <option value="new"          {{ old('condition') === 'new'          ? 'selected' : '' }}>Mpya</option>
+                                        <option value="used"        {{ old('condition', $product->condition) === 'used'        ? 'selected' : '' }}>Imetumika</option>
+                                        <option value="fairly_used" {{ old('condition', $product->condition) === 'fairly_used' ? 'selected' : '' }}>Imetumika Kidogo</option>
+                                        <option value="new"         {{ old('condition', $product->condition) === 'new'         ? 'selected' : '' }}>Mpya</option>
                                     </select>
-                                    @error('condition')<span class="help-block">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group @error('location') has-error @enderror">
-                                    <label>Mahali (Mji/Mkoa)</label>
-                                    <input type="text" name="location" class="form-control" placeholder="e.g. Dar es Salaam, Dodoma" value="{{ old('location') }}">
-                                    @error('location')<span class="help-block">{{ $message }}</span>@enderror
+                                <div class="form-group">
+                                    <label>Mahali</label>
+                                    <input type="text" name="location" class="form-control" value="{{ old('location', $product->location) }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group @error('status') has-error @enderror">
+                                <div class="form-group">
                                     <label>Status</label>
                                     <select name="status" class="form-control">
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
+                                        <option value="active"   {{ old('status', $product->status) === 'active'   ? 'selected' : '' }}>Active</option>
+                                        <option value="inactive" {{ old('status', $product->status) === 'inactive' ? 'selected' : '' }}>Inactive</option>
                                     </select>
-                                    @error('status')<span class="help-block">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                {{-- Vehicle Fields (hidden by default) --}}
+                {{-- Vehicle Fields --}}
                 <div id="vehicle_fields" class="panel panel-warning" style="display:none;">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><i class="fa fa-car"></i> Vehicle Details</h4>
-                    </div>
+                    <div class="panel-heading"><h4 class="panel-title"><i class="fa fa-car"></i> Vehicle Details</h4></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Make / Brand</label>
-                                    <input type="text" name="make" class="form-control" placeholder="Toyota, Mercedes, BMW..." value="{{ old('make') }}">
+                                    <input type="text" name="make" class="form-control" value="{{ old('make', $product->vehicleMeta('make')) }}" placeholder="Toyota, Mercedes...">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Model</label>
-                                    <input type="text" name="vehicle_model" class="form-control" placeholder="Prado, Vitz, X5..." value="{{ old('vehicle_model') }}">
+                                    <input type="text" name="vehicle_model" class="form-control" value="{{ old('vehicle_model', $product->vehicleMeta('model')) }}" placeholder="Prado, Vitz...">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Year of Manufacture</label>
-                                    <input type="number" name="year" class="form-control" placeholder="{{ date('Y') }}" min="1980" max="{{ date('Y')+1 }}" value="{{ old('year') }}">
+                                    <label>Year</label>
+                                    <input type="number" name="year" class="form-control" value="{{ old('year', $product->vehicleMeta('year')) }}" min="1980" max="{{ date('Y')+1 }}">
                                 </div>
                             </div>
                         </div>
@@ -146,7 +134,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Mileage (km)</label>
-                                    <input type="number" name="mileage" class="form-control" placeholder="e.g. 85000" value="{{ old('mileage') }}">
+                                    <input type="number" name="mileage" class="form-control" value="{{ old('mileage', $product->vehicleMeta('mileage')) }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -154,10 +142,9 @@
                                     <label>Fuel Type</label>
                                     <select name="fuel_type" class="form-control">
                                         <option value="">— Select —</option>
-                                        <option value="petrol"   {{ old('fuel_type')==='petrol'   ? 'selected' : '' }}>Petrol</option>
-                                        <option value="diesel"   {{ old('fuel_type')==='diesel'   ? 'selected' : '' }}>Diesel</option>
-                                        <option value="hybrid"   {{ old('fuel_type')==='hybrid'   ? 'selected' : '' }}>Hybrid</option>
-                                        <option value="electric" {{ old('fuel_type')==='electric' ? 'selected' : '' }}>Electric</option>
+                                        @foreach(['petrol','diesel','hybrid','electric'] as $ft)
+                                        <option value="{{ $ft }}" {{ old('fuel_type', $product->vehicleMeta('fuel_type')) === $ft ? 'selected' : '' }}>{{ ucfirst($ft) }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -166,8 +153,8 @@
                                     <label>Transmission</label>
                                     <select name="transmission" class="form-control">
                                         <option value="">— Select —</option>
-                                        <option value="automatic" {{ old('transmission')==='automatic' ? 'selected' : '' }}>Automatic</option>
-                                        <option value="manual"    {{ old('transmission')==='manual'    ? 'selected' : '' }}>Manual</option>
+                                        <option value="automatic" {{ old('transmission', $product->vehicleMeta('transmission')) === 'automatic' ? 'selected' : '' }}>Automatic</option>
+                                        <option value="manual"    {{ old('transmission', $product->vehicleMeta('transmission')) === 'manual'    ? 'selected' : '' }}>Manual</option>
                                     </select>
                                 </div>
                             </div>
@@ -176,7 +163,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Color</label>
-                                    <input type="text" name="vehicle_color" class="form-control" placeholder="White, Black..." value="{{ old('vehicle_color') }}">
+                                    <input type="text" name="vehicle_color" class="form-control" value="{{ old('vehicle_color', $product->vehicleMeta('color')) }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -184,43 +171,59 @@
                                     <label>Body Type</label>
                                     <select name="body_type" class="form-control">
                                         <option value="">— Select —</option>
-                                        <option value="suv"       {{ old('body_type')==='suv'       ? 'selected' : '' }}>SUV</option>
-                                        <option value="sedan"     {{ old('body_type')==='sedan'     ? 'selected' : '' }}>Sedan</option>
-                                        <option value="pickup"    {{ old('body_type')==='pickup'    ? 'selected' : '' }}>Pickup Truck</option>
-                                        <option value="minivan"   {{ old('body_type')==='minivan'   ? 'selected' : '' }}>Minivan / Bus</option>
-                                        <option value="coupe"     {{ old('body_type')==='coupe'     ? 'selected' : '' }}>Coupe</option>
-                                        <option value="hatchback" {{ old('body_type')==='hatchback' ? 'selected' : '' }}>Hatchback</option>
-                                        <option value="truck"     {{ old('body_type')==='truck'     ? 'selected' : '' }}>Truck</option>
+                                        @foreach(['suv','sedan','pickup','minivan','coupe','hatchback','truck'] as $bt)
+                                        <option value="{{ $bt }}" {{ old('body_type', $product->vehicleMeta('body_type')) === $bt ? 'selected' : '' }}>{{ ucfirst($bt) }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>Engine (CC)</label>
-                                    <input type="text" name="engine_cc" class="form-control" placeholder="e.g. 2700cc" value="{{ old('engine_cc') }}">
+                                    <label>Engine CC</label>
+                                    <input type="text" name="engine_cc" class="form-control" value="{{ old('engine_cc', $product->vehicleMeta('engine_cc')) }}">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Images --}}
+                {{-- Current Images --}}
+                @if($product->image || $product->images->count())
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h4 class="panel-title">Picha za Bidhaa</h4></div>
+                    <div class="panel-heading"><h4 class="panel-title">Current Images</h4></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            @if($product->image)
+                            <div class="col-md-2 text-center">
+                                <img src="{{ asset('storage/'.$product->image) }}" style="width:100%;height:80px;object-fit:cover;border-radius:4px;">
+                                <small class="text-muted">Main</small>
+                            </div>
+                            @endif
+                            @foreach($product->images as $img)
+                            <div class="col-md-2 text-center">
+                                <img src="{{ asset('storage/'.$img->image_path) }}" style="width:100%;height:80px;object-fit:cover;border-radius:4px;">
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                {{-- New Images --}}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4 class="panel-title">Update Photos</h4></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group @error('image') has-error @enderror">
-                                    <label>Picha Kuu (Main Photo)</label>
+                                <div class="form-group">
+                                    <label>Replace Main Photo</label>
                                     <input type="file" name="image" class="form-control" accept="image/*">
-                                    @error('image')<span class="help-block">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Picha Zaidi (up to 10)</label>
+                                    <label>Add More Photos</label>
                                     <input type="file" name="images[]" class="form-control" accept="image/*" multiple>
-                                    <span class="help-block text-muted" style="font-size:11px;">Hold Ctrl/Cmd to select multiple files</span>
                                 </div>
                             </div>
                         </div>
@@ -229,28 +232,24 @@
 
             </div>
 
-            {{-- Right Column --}}
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h4 class="panel-title">Seller Information</h4></div>
                     <div class="panel-body">
-                        <div class="form-group @error('seller_name') has-error @enderror">
+                        <div class="form-group">
                             <label>Seller Name</label>
-                            <input type="text" name="seller_name" class="form-control" placeholder="Jina la muuzaji" value="{{ old('seller_name') }}">
-                            @error('seller_name')<span class="help-block">{{ $message }}</span>@enderror
+                            <input type="text" name="seller_name" class="form-control" value="{{ old('seller_name', $product->seller_name) }}">
                         </div>
-                        <div class="form-group @error('phone') has-error @enderror">
-                            <label>Phone Number</label>
-                            <input type="text" name="phone" class="form-control" placeholder="+255 7XX XXX XXX" value="{{ old('phone') }}">
-                            @error('phone')<span class="help-block">{{ $message }}</span>@enderror
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" name="phone" class="form-control" value="{{ old('phone', $product->phone) }}">
                         </div>
                         <hr>
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="is_featured" value="1" {{ old('is_featured') ? 'checked' : '' }}>
+                                <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}>
                                 &nbsp;<strong>Featured Listing</strong>
                             </label>
-                            <span class="help-block text-muted" style="font-size:11px;">Featured listings appear prominently on the homepage and category pages.</span>
                         </div>
                     </div>
                 </div>
@@ -258,7 +257,7 @@
                 <div class="panel panel-success">
                     <div class="panel-body">
                         <button type="submit" class="btn btn-success btn-block btn-lg">
-                            <i class="fa fa-check"></i> Publish Listing
+                            <i class="fa fa-check"></i> Update Listing
                         </button>
                         <a href="{{ route('product.product.index') }}" class="btn btn-default btn-block mt-2">Cancel</a>
                     </div>
@@ -278,6 +277,6 @@
         document.getElementById('vehicle_fields').style.display = isVehicle ? 'block' : 'none';
     }
     document.getElementById('category_select').addEventListener('change', checkVehicle);
-    checkVehicle(); // run on load for old values
+    checkVehicle();
 </script>
 @endsection

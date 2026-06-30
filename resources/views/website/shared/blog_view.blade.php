@@ -28,7 +28,7 @@
                 @if($featuredPost)
                 <article class="mb-5">
                     <a href="{{ route('article.show', $featuredPost->slug) }}" class="text-decoration-none">
-                        <img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200' }}" class="img-fluid w-100 mb-4" style="max-height: 450px; object-fit: cover;">
+                        <img src="{{ $featuredPost->featured_image ? asset('storage/'.$featuredPost->featured_image) : 'https://picsum.photos/seed/jubitanews/1200/600' }}" class="img-fluid w-100 mb-4" style="max-height: 450px; object-fit: cover;">
                         <h2 class="display-5 font-weight-bold text-dark mb-3" style="font-family: var(--forbes-font-serif); line-height: 1.1;">{{ $featuredPost->title }}</h2>
                     </a>
                     <p class="lead text-dark mb-4" style="font-family: var(--forbes-font-serif); font-size: 1.2rem;">{{ $featuredPost->excerpt }}</p>
@@ -43,7 +43,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card border-0 bg-transparent h-100">
                             <a href="{{ route('article.show', $post->slug) }}" class="text-decoration-none">
-                                <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600' }}" class="card-img-top rounded-0 mb-3" style="height: 200px; object-fit: cover;">
+                                <img src="{{ $post->featured_image ? asset('storage/'.$post->featured_image) : 'https://picsum.photos/seed/jubitarelated/600/400' }}" class="card-img-top rounded-0 mb-3" style="height: 200px; object-fit: cover;">
                                 <h4 class="h5 font-weight-bold text-dark mb-2" style="font-family: var(--forbes-font-serif); line-height: 1.3;">{{ $post->title }}</h4>
                             </a>
                             <p class="small text-muted mb-0">Na {{ $post->author?->name ?? 'Jubita Desk' }}</p>

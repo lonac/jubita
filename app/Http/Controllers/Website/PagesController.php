@@ -12,251 +12,239 @@ use App\Models\Market\MarketPrice;
 class PagesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Homepage
      */
     public function index()
     {
-        // 1. Latest news for "Hivi Punde" sidebar (Left)
+        // Helper: build a content query for a category by slug or name
+        $byCat = fn (string ...$slugs) => fn ($q) =>
+            $q->whereIn('slug', $slugs)->orWhereIn('name', array_map('strtoupper', $slugs));
+
+        // 1. Latest news sidebar
         $latestNews = Content::with(['author', 'category'])
             ->where('status', 'published')
             ->latest('published_at')
             ->take(10)
             ->get();
 
-        // 2. Main Featured Post (Center)
+        // 2. Featured post
         $featuredPost = Content::with(['author', 'category'])
             ->where('status', 'published')
             ->where('is_featured', true)
             ->latest('published_at')
-            ->first() ?? Content::where('status', 'published')->latest('published_at')->first();
+            ->first()
+            ?? Content::with(['author', 'category'])
+                ->where('status', 'published')
+                ->latest('published_at')
+                ->first();
 
-        // 3. Side Grid Posts (Right sidebar)
+        // 3. Side grid (exclude featured)
         $sidePosts = Content::with(['author', 'category'])
             ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
+            ->when($featuredPost, fn ($q) => $q->where('id', '!=', $featuredPost->id))
             ->latest('published_at')
             ->take(4)
             ->get();
 
-        // 4. Business Highlight
-        $businessPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'BIASHARA')->orWhere('slug', 'biashara')->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'BIASHARA');
-                });
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        // 5. Politics / Jiopolitiki
-        $politicsPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'JIOPOLITIKI')->orWhere('slug', 'jiopolitiki')->orWhere('name', 'Siasa')
-                  ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'JIOPOLITIKI');
-                  });
-            })
+        // 4. Jiopolitiki
+        $politicsPosts = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('jiopolitiki', 'siasa'))
             ->where('status', 'published')
             ->latest('published_at')
             ->take(12)
             ->get();
 
-        // 6. Uchumi (Economy)
-        $economyPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'UCHUMI')->orWhere('slug', 'uchumi')
-                  ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'UCHUMI');
-                  });
-            })
+        // 5. Uchumi
+        $economyPosts = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('uchumi'))
             ->where('status', 'published')
             ->latest('published_at')
             ->take(8)
             ->get();
 
-        // 7. Masoko (Markets) News
-        $marketNews = Content::whereHas('category', function($q) {
-                $q->where('name', 'MASOKO')->orWhere('slug', 'masoko')
-                  ->orWhereHas('parent', function($pq) {
-                    $pq->where('name', 'MASOKO');
-                  });
-            })
+        // 6. Masoko news
+        $marketNews = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('masoko'))
             ->where('status', 'published')
             ->latest('published_at')
             ->take(9)
             ->get();
 
-        // 8. Lifestyle Posts
-        $lifestylePosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Lifestyle');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->take(1)
-            ->first();
-
-        // 9. Mini News & Business Columns
-        $newsList = Content::whereHas('category', function($q) {
-                $q->where('name', 'World')->orWhere('name', 'Siasa');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->take(8)
-            ->get();
-
-        $businessList = Content::whereHas('category', function($q) {
-                $q->where('name', 'BIASHARA')->orWhere('slug', 'biashara');
-            })
+        // 7. Teknolojia
+        $techInsightPosts = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('teknolojia'))
             ->where('status', 'published')
             ->latest('published_at')
             ->take(12)
             ->get();
 
-        // 8. Reviews & Recommendations
-        $reviewPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Reviews')->orWhere('slug', 'reviews');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->take(8)
-            ->get();
-
-        // 9. Technology Insights
-        $techInsightPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'TEKNOLOJIA')->orWhere('slug', 'teknolojia');
-            })
+        // 8. Biashara
+        $businessList = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('biashara'))
             ->where('status', 'published')
             ->latest('published_at')
             ->take(12)
             ->get();
 
-        // 10. Advisory & Guidance
-        $advisoryFeatured = Content::whereHas('category', function($q) {
-                $q->where('name', 'Advisory')->orWhere('slug', 'advisory');
-            })
+        $businessPosts = $businessList->first();
+
+        // 9. Advisory
+        $advisoryFeatured = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('advisory'))
             ->where('status', 'published')
             ->latest('published_at')
             ->first();
 
-        $advisoryList = Content::whereHas('category', function($q) {
-                $q->where('name', 'Advisory')->orWhere('slug', 'advisory');
-            })
+        $advisoryList = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('advisory'))
             ->where('status', 'published')
-            ->where('id', '!=', $advisoryFeatured?->id)
+            ->when($advisoryFeatured, fn ($q) => $q->where('id', '!=', $advisoryFeatured->id))
             ->latest('published_at')
             ->take(8)
             ->get();
 
-        // 11. Products
-        $products = Product::where('status', 'active')
-            ->latest()
-            ->take(12)
+        // 10. Reviews
+        $reviewPosts = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('reviews'))
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->take(8)
             ->get();
 
-        // 12. Market Prices
+        // 11. Other lists
+        $lifestylePosts = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('lifestyle'))
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->first();
+
+        $newsList = Content::with(['author', 'category'])
+            ->whereHas('category', $byCat('world', 'siasa'))
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->take(8)
+            ->get();
+
+        // 12. Market prices ticker
         $marketPrices = MarketPrice::with('commodity')
             ->latest('recorded_at')
             ->take(30)
             ->get();
 
-        // 13. Cars (Magari) - Fetch from Content or Products
-        $carPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'MAGARI')->orWhere('slug', 'magari');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
+        // 13. Product categories for homepage
+        $productCategories = Category::where('status', 1)
+            ->whereIn('category_type', ['product', 'both'])
+            ->whereNull('parent_id')
+            ->withCount('products')
+            ->orderByDesc('products_count')
             ->take(8)
             ->get();
 
-        $carProducts = Product::where('name', 'like', '%Car%')
-            ->orWhere('description', 'like', '%Gari%')
-            ->orWhere('name', 'like', '%Toyota%')
-            ->orWhere('name', 'like', '%Mercedes%')
-            ->orWhere('name', 'like', '%Land Rover%')
-            ->orWhere('name', 'like', '%Suzuki%')
+        // 14. Featured listings
+        $featuredProducts = Product::with('category')
+            ->where('status', 'active')
+            ->where('is_featured', true)
+            ->latest()
+            ->take(4)
+            ->get();
+
+        // 15. Latest listings
+        $latestProducts = Product::with('category')
             ->where('status', 'active')
             ->latest()
-            ->take(8)
+            ->take(4)
             ->get();
 
-        // 14. Real Estate (Nyumba)
-        $housePosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'NYUMBA')->orWhere('slug', 'nyumba');
+        // 16. Car products — filter in DB (matches isVehicleCategory() logic)
+        $vehicleCatIds = Category::where('status', 1)
+            ->whereIn('category_type', ['product', 'both'])
+            ->where(function ($q) {
+                $q->where('name', 'like', '%gari%')
+                  ->orWhere('name', 'like', '%car%')
+                  ->orWhere('name', 'like', '%vehicle%')
+                  ->orWhere('slug', 'like', '%gari%')
+                  ->orWhere('slug', 'like', '%car%')
+                  ->orWhere('slug', 'like', '%vehicle%');
             })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->take(8)
+            ->pluck('id')
+            ->toArray();
+
+        $carProducts = Product::with('category')
+            ->where('status', 'active')
+            ->when(!empty($vehicleCatIds), fn ($q) => $q->whereIn('category_id', $vehicleCatIds))
+            ->latest()
+            ->take(4)
             ->get();
 
-        $houseProducts = Product::where('name', 'like', '%House%')
-            ->orWhere('description', 'like', '%Nyumba%')
-            ->orWhere('name', 'like', '%Plot%')
-            ->orWhere('name', 'like', '%Apartment%')
-            ->orWhere('name', 'like', '%Villa%')
-            ->orWhere('name', 'like', '%Warehouse%')
+        // 17. House products
+        $houseProducts = Product::with('category')
             ->where('status', 'active')
-            ->latest()
-            ->take(8)
+            ->whereHas('category', fn ($q) =>
+                $q->where('slug', 'like', '%nyumba%')
+                  ->orWhere('name', 'like', '%nyumba%')
+                  ->orWhere('name', 'like', '%house%')
+            )
+            ->take(4)
             ->get();
+
+        $products = $latestProducts;
+        $carPosts = collect();
+        $housePosts = collect();
 
         return view('website.index', compact(
-            'latestNews', 
-            'featuredPost', 
-            'sidePosts', 
-            'businessPosts', 
-            'politicsPosts',
-            'lifestylePosts',
-            'newsList',
-            'businessList',
-            'reviewPosts',
-            'techInsightPosts',
-            'advisoryFeatured',
-            'advisoryList',
-            'products',
-            'marketPrices',
-            'carPosts',
-            'carProducts',
-            'housePosts',
-            'houseProducts',
-            'economyPosts',
-            'marketNews'
+            'latestNews', 'featuredPost', 'sidePosts',
+            'businessPosts', 'politicsPosts', 'lifestylePosts',
+            'newsList', 'businessList', 'reviewPosts',
+            'techInsightPosts', 'advisoryFeatured', 'advisoryList',
+            'products', 'marketPrices', 'carProducts',
+            'carPosts', 'houseProducts', 'housePosts',
+            'economyPosts', 'marketNews', 'productCategories',
+            'featuredProducts', 'latestProducts'
         ));
     }
 
     /**
-     * Display posts for a specific category.
+     * Category listing page
      */
-    public function showCategory($slug)
+    public function showCategory(string $slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $title = strtoupper($category->name);
+        $title    = strtoupper($category->name);
 
-        $featuredPost = Content::where('category_id', $category->id)
-            ->orWhereHas('category', function($q) use ($category) {
-                $q->where('parent_id', $category->id);
+        $featuredPost = Content::with(['author', 'category'])
+            ->where(function ($q) use ($category) {
+                $q->where('category_id', $category->id)
+                  ->orWhereHas('category', fn ($sq) => $sq->where('parent_id', $category->id));
             })
             ->where('status', 'published')
             ->latest('published_at')
             ->first();
 
-        $categoryPosts = Content::where('category_id', $category->id)
-            ->orWhereHas('category', function($q) use ($category) {
-                $q->where('parent_id', $category->id);
+        $categoryPosts = Content::with(['author', 'category'])
+            ->where(function ($q) use ($category) {
+                $q->where('category_id', $category->id)
+                  ->orWhereHas('category', fn ($sq) => $sq->where('parent_id', $category->id));
             })
             ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
+            ->when($featuredPost, fn ($q) => $q->where('id', '!=', $featuredPost->id))
             ->latest('published_at')
             ->paginate(12);
 
         return view('website.shared.blog_view', compact('title', 'category', 'featuredPost', 'categoryPosts'));
     }
 
-    public function showArticle($slug)
+    /**
+     * Single article page
+     */
+    public function showArticle(string $slug)
     {
         $article = Content::with(['author', 'category'])
             ->where('slug', $slug)
             ->where('status', 'published')
             ->firstOrFail();
 
-        $relatedPosts = Content::where('category_id', $article->category_id)
+        $relatedPosts = Content::with(['author', 'category'])
+            ->where('category_id', $article->category_id)
             ->where('id', '!=', $article->id)
             ->where('status', 'published')
             ->latest('published_at')
@@ -265,24 +253,22 @@ class PagesController extends Controller
 
         return view('website.pages.article_show', compact('article', 'relatedPosts'));
     }
+
     /**
-     * Category Pages
+     * Category-specific pages (shared pattern)
      */
-    public function masoko()
+    private function categoryPage(string $title, string $slug)
     {
-        $title = "MASOKO";
-        $featuredPost = Content::whereHas('category', function($q) use ($title) {
-                $q->where('name', 'Masoko');
-            })
+        $featuredPost = Content::with(['author', 'category'])
+            ->whereHas('category', fn ($q) => $q->where('slug', $slug)->orWhere('name', ucfirst($slug)))
             ->where('status', 'published')
             ->latest('published_at')
             ->first();
 
-        $categoryPosts = Content::whereHas('category', function($q) use ($title) {
-                $q->where('name', 'Masoko');
-            })
+        $categoryPosts = Content::with(['author', 'category'])
+            ->whereHas('category', fn ($q) => $q->where('slug', $slug)->orWhere('name', ucfirst($slug)))
             ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
+            ->when($featuredPost, fn ($q) => $q->where('id', '!=', $featuredPost->id))
             ->latest('published_at')
             ->take(6)
             ->get();
@@ -290,135 +276,38 @@ class PagesController extends Controller
         return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
     }
 
-    public function fedha()
+    public function masoko()      { return $this->categoryPage('MASOKO', 'masoko'); }
+    public function fedha()       { return $this->categoryPage('FEDHA', 'fedha'); }
+    public function biashara()    { return $this->categoryPage('BIASHARA', 'biashara'); }
+    public function jiopolitiki() { return $this->categoryPage('JIOPOLITIKI', 'jiopolitiki'); }
+    public function mawasiliano() { return $this->categoryPage('MAWASILIANO', 'mawasiliano'); }
+    public function teknolojia()  { return $this->categoryPage('TEKNOLOJIA', 'teknolojia'); }
+    public function uchumi()      { return $this->categoryPage('UCHUMI', 'uchumi'); }
+
+    /**
+     * Market prices page
+     */
+    public function marketPrices(Request $request)
     {
-        $title = "FEDHA";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Fedha');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
+        $request->validate([
+            'q'      => 'nullable|string|max:100',
+            'region' => 'nullable|string|max:100',
+            'type'   => 'nullable|in:trending,hot_offer,update',
+        ]);
 
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Fedha');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
+        $prices = MarketPrice::with('commodity')
+            ->when($request->q, fn ($q) =>
+                $q->whereHas('commodity', fn ($cq) => $cq->where('name', 'like', '%' . $request->q . '%'))
+            )
+            ->when($request->region, fn ($q) =>
+                $q->where('location', 'like', '%' . $request->region . '%')
+            )
+            ->when($request->type, fn ($q) =>
+                $q->where('market_type', $request->type)
+            )
+            ->latest('recorded_at')
+            ->paginate(48);
 
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
-    }
-
-    public function biashara()
-    {
-        $title = "BIASHARA";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Biashara');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Biashara');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
-
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
-    }
-
-    public function jiopolitiki()
-    {
-        $title = "JIOPOLITIKI";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Jiopolitiki');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Jiopolitiki');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
-
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
-    }
-
-    public function mawasiliano()
-    {
-        $title = "MAWASILIANO";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Mawasiliano');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Mawasiliano');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
-
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
-    }
-
-    public function teknolojia()
-    {
-        $title = "TEKNOLOJIA";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Teknolojia');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Teknolojia');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
-
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
-    }
-
-    public function uchumi()
-    {
-        $title = "UCHUMI";
-        $featuredPost = Content::whereHas('category', function($q) {
-                $q->where('name', 'Uchumi');
-            })
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
-
-        $categoryPosts = Content::whereHas('category', function($q) {
-                $q->where('name', 'Uchumi');
-            })
-            ->where('status', 'published')
-            ->where('id', '!=', $featuredPost?->id)
-            ->latest('published_at')
-            ->take(6)
-            ->get();
-
-        return view('website.shared.blog_view', compact('title', 'featuredPost', 'categoryPosts'));
+        return view('website.pages.market_prices', compact('prices'));
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::namespace('App\Http\Controllers\Website')->group(function () {
+Route::middleware(['throttle:60,1'])->namespace('App\Http\Controllers\Website')->group(function () {
     Route::get('/', 'PagesController@index')->name('home');
     Route::get('/article/{slug}', 'PagesController@showArticle')->name('article.show');
     Route::get('/category/{slug}', 'PagesController@showCategory')->name('category.show');
@@ -18,6 +18,14 @@ Route::namespace('App\Http\Controllers\Website')->group(function () {
     Route::get('/advisory', 'AdvisoryController@index')->name('advisory');
     Route::get('/reviews', 'ReviewsController@index')->name('reviews');
 
+    // Marketplace / Bidhaa routes
+    Route::get('/bidhaa', 'MarketplaceController@index')->name('marketplace.index');
+    Route::get('/bidhaa/kategoria/{slug}', 'MarketplaceController@byCategory')->name('marketplace.category');
+    Route::get('/bidhaa/{slug}', 'MarketplaceController@show')->name('marketplace.show');
+    Route::get('/magari', 'MarketplaceController@vehicles')->name('marketplace.vehicles');
+
+    // Market Prices
+    Route::get('/bei-za-soko', 'PagesController@marketPrices')->name('market.prices');
 });
 
 Route::prefix('website')->namespace('App\Http\Controllers\Website')->group(function () {
