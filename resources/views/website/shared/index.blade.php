@@ -400,7 +400,6 @@
 								<a href="#"><i class="fab fa-facebook-f"></i></a>
 								<a href="#"><i class="fab fa-twitter"></i></a>
 								<a href="#"><i class="fab fa-linkedin-in"></i></a>
-								<a href="#" class="btn-bloomberg ml-4" style="padding: 8px 20px; font-size: 11px;">PRO</a>
 							</div>
 						</div>
 					</div>

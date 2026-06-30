@@ -131,7 +131,13 @@
     <div class="container">
         <div class="cat-header">
             <h2>Jiopolitiki</h2>
-            <a href="{{ route('category.show', 'jiopolitiki') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <form action="{{ route('category.show', 'jiopolitiki') }}" method="GET" style="display:flex; align-items:stretch;">
+                    <input type="text" name="q" placeholder="Tafuta..." style="border:1px solid #ddd; border-right:none; padding:3px 8px; font-size:10px; font-weight:600; width:120px; outline:none; height:26px; font-family:var(--forbes-font-sans);">
+                    <button type="submit" style="background:#000; color:#fff; border:1px solid #000; padding:0 8px; height:26px; cursor:pointer; font-size:9px; line-height:1;"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{{ route('category.show', 'jiopolitiki') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing:1px; text-decoration:none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size:10px;"></i></a>
+            </div>
         </div>
         <div class="row">
             <!-- Large Bloomberg Feature -->
@@ -179,7 +185,13 @@
     <div class="container">
         <div class="cat-header" style="border-bottom-color: #1a7a4a;">
             <h2 style="color:#1a7a4a;">Uchumi</h2>
-            <a href="{{ route('category.show', 'uchumi') }}" class="view-all font-weight-bold small text-uppercase" style="letter-spacing:1px; text-decoration:none; color:#1a7a4a;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size:10px;"></i></a>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <form action="{{ route('category.show', 'uchumi') }}" method="GET" style="display:flex; align-items:stretch;">
+                    <input type="text" name="q" placeholder="Tafuta..." style="border:1px solid #1a7a4a; border-right:none; padding:3px 8px; font-size:10px; font-weight:600; width:120px; outline:none; height:26px; font-family:var(--forbes-font-sans);">
+                    <button type="submit" style="background:#1a7a4a; color:#fff; border:1px solid #1a7a4a; padding:0 8px; height:26px; cursor:pointer; font-size:9px; line-height:1;"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{{ route('category.show', 'uchumi') }}" class="view-all font-weight-bold small text-uppercase" style="letter-spacing:1px; text-decoration:none; color:#1a7a4a;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size:10px;"></i></a>
+            </div>
         </div>
     </div>
 
@@ -241,7 +253,13 @@
     <div class="container">
         <div class="cat-header" style="margin-bottom:10px;">
             <h2>Biashara</h2>
-            <a href="{{ route('category.show', 'biashara') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <form action="{{ route('category.show', 'biashara') }}" method="GET" style="display:flex; align-items:stretch;">
+                    <input type="text" name="q" placeholder="Tafuta..." style="border:1px solid #ddd; border-right:none; padding:3px 8px; font-size:10px; font-weight:600; width:120px; outline:none; height:26px; font-family:var(--forbes-font-sans);">
+                    <button type="submit" style="background:#000; color:#fff; border:1px solid #000; padding:0 8px; height:26px; cursor:pointer; font-size:9px; line-height:1;"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{{ route('category.show', 'biashara') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing:1px; text-decoration:none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size:10px;"></i></a>
+            </div>
         </div>
         <div class="row no-gutters" style="border:1px solid #ebebeb;">
             @forelse($businessList->take(4) as $biz)
@@ -350,7 +368,13 @@
     <div class="container">
         <div class="cat-header">
             <h2>Teknolojia</h2>
-            <a href="{{ route('category.show', 'teknolojia') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing: 1px; text-decoration: none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size: 10px;"></i></a>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <form action="{{ route('category.show', 'teknolojia') }}" method="GET" style="display:flex; align-items:stretch;">
+                    <input type="text" name="q" placeholder="Tafuta..." style="border:1px solid #ddd; border-right:none; padding:3px 8px; font-size:10px; font-weight:600; width:120px; outline:none; height:26px; font-family:var(--forbes-font-sans);">
+                    <button type="submit" style="background:#000; color:#fff; border:1px solid #000; padding:0 8px; height:26px; cursor:pointer; font-size:9px; line-height:1;"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="{{ route('category.show', 'teknolojia') }}" class="view-all text-dark font-weight-bold small text-uppercase" style="letter-spacing:1px; text-decoration:none;">Ona Zote <i class="fas fa-chevron-right ml-1" style="font-size:10px;"></i></a>
+            </div>
         </div>
         <div class="row">
             @forelse($techInsightPosts->take(4) as $post)
@@ -389,23 +413,29 @@
             </a>
         </div>
 
-        {{-- Category Tiles --}}
+        {{-- Category Tiles + Search bar --}}
         @if($productCategories->count())
-        <div class="row no-gutters mb-3" style="border:1px solid #e0e0e0;">
+        <div class="row no-gutters" style="border:1px solid #e0e0e0; margin-bottom:0;">
             @foreach($productCategories as $pcat)
             <div class="col-lg col-md-4 col-6" style="border-right:1px solid #e0e0e0;">
-                <a href="{{ route('marketplace.category', $pcat->slug) }}" style="text-decoration:none; display:block; padding:8px 10px; background:#111; text-align:center;">
+                {{-- Route vehicle cats to the dedicated vehicles page --}}
+                <a href="{{ $pcat->isVehicleCategory() ? route('marketplace.vehicles') : route('marketplace.category', $pcat->slug) }}"
+                   style="text-decoration:none; display:block; padding:8px 10px; background:#111; text-align:center;">
                     <div style="color:#fff; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ $pcat->name }}</div>
                 </a>
             </div>
             @endforeach
-            {{-- Vehicles tile --}}
-            <div class="col-lg col-md-4 col-6">
-                <a href="{{ route('marketplace.vehicles') }}" style="text-decoration:none; display:block; padding:8px 10px; background:#111; text-align:center;">
-                    <div style="color:#fff; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:0.5px;">Magari</div>
-                </a>
-            </div>
         </div>
+        {{-- Marketplace search bar --}}
+        <form action="{{ route('marketplace.index') }}" method="GET"
+              style="display:flex; align-items:stretch; border:1px solid #e0e0e0; border-top:none; margin-bottom:18px;">
+            <input type="text" name="q" value="{{ request('q') }}" placeholder="Tafuta bidhaa, gari, nyumba..."
+                   style="flex:1; border:none; padding:9px 14px; font-size:12px; font-weight:600; font-family:var(--forbes-font-sans); outline:none; background:#fafafa;">
+            <button type="submit"
+                    style="background:#111; color:#fff; border:none; padding:0 20px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:1px; cursor:pointer; white-space:nowrap;">
+                <i class="fas fa-search mr-1"></i> Tafuta
+            </button>
+        </form>
         @endif
 
         {{-- Featured Products --}}

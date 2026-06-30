@@ -206,31 +206,36 @@ class PagesController extends Controller
     /**
      * Category listing page
      */
-    public function showCategory(string $slug)
+    public function showCategory(Request $request, string $slug)
     {
+        $request->validate(['q' => 'nullable|string|max:100']);
+
         $category = Category::where('slug', $slug)->firstOrFail();
         $title    = strtoupper($category->name);
+        $search   = $request->q;
 
-        $featuredPost = Content::with(['author', 'category'])
-            ->where(function ($q) use ($category) {
+        $baseQuery = fn () => Content::with(['author', 'category'])
+            ->where(fn ($q) =>
                 $q->where('category_id', $category->id)
-                  ->orWhereHas('category', fn ($sq) => $sq->where('parent_id', $category->id));
-            })
+                  ->orWhereHas('category', fn ($sq) => $sq->where('parent_id', $category->id))
+            )
             ->where('status', 'published')
-            ->latest('published_at')
-            ->first();
+            ->when($search, fn ($q) =>
+                $q->where(fn ($sq) =>
+                    $sq->where('title', 'like', "%{$search}%")
+                       ->orWhere('excerpt', 'like', "%{$search}%")
+                )
+            );
 
-        $categoryPosts = Content::with(['author', 'category'])
-            ->where(function ($q) use ($category) {
-                $q->where('category_id', $category->id)
-                  ->orWhereHas('category', fn ($sq) => $sq->where('parent_id', $category->id));
-            })
-            ->where('status', 'published')
+        // Don't pin a featured post when searching — show flat results
+        $featuredPost  = $search ? null : $baseQuery()->latest('published_at')->first();
+        $categoryPosts = $baseQuery()
             ->when($featuredPost, fn ($q) => $q->where('id', '!=', $featuredPost->id))
             ->latest('published_at')
-            ->paginate(12);
+            ->paginate(12)
+            ->withQueryString();
 
-        return view('website.shared.blog_view', compact('title', 'category', 'featuredPost', 'categoryPosts'));
+        return view('website.shared.blog_view', compact('title', 'category', 'featuredPost', 'categoryPosts', 'search'));
     }
 
     /**
